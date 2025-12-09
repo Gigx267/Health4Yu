@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>About Us - Health4Yu</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <link rel="icon" type="image/x-icon" href="logo.webp">
+    
+    <!-- Multilingual Meta Descriptions -->
+    <meta content="Learn about Health4Yu's mission to build sustainable healthcare in Ghana. Our doctor-led initiative aims to transform healthcare accessibility in underserved communities through hospitals, equipment, and training.">
+    <meta name="description-de" content="Erfahren Sie mehr über die Mission von Health4Yu, nachhaltige Gesundheitsversorgung in Ghana aufzubauen. Unsere von Ärzten geleitete Initiative zielt darauf ab, den Zugang zur Gesundheitsversorgung in unterversorgten Gemeinden durch Krankenhäuser, Ausrüstung und Schulungen zu verbessern.">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wdth,wght@0,75..100,300..800;1,75..100,300..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet"> 
+
+    <!-- Icon Font Stylesheet -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- Language Switcher Styles -->
+    <style>
+        /* Language Switcher */
+        .language-switcher {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .language-btn {
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            padding: 5px 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+        
+        .language-btn:hover {
+            background: #f8f9fa;
+            border-color: #007bff;
+        }
+        
+        .language-dropdown {
+            display: none;
+            position: absolute;
+            background: white;
+            min-width: 140px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            z-index: 1000;
+            top: 100%;
+            right: 0;
+            margin-top: 5px;
+        }
+        
+        .language-dropdown.show {
+            display: block;
+        }
+        
+        .language-option {
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        
+        .language-option:hover {
+            background: #f8f9fa;
+        }
+        
+        .language-option.active {
+            background: #e9f7fe;
+            color: #007bff;
+        }
+        
+        .flag-icon {
+            width: 20px;
+            height: 15px;
+            border-radius: 2px;
+        }
+        
+        /* Language-specific content hiding */
+        .content-en {
+            display: block;
+        }
+        
+        .content-de {
+            display: none;
+        }
+        
+        .lang-de .content-en {
+            display: none;
+        }
+        
+        .lang-de .content-de {
+            display: block;
+        }
+        
+        /* Additional styles for the About page */
+        .mission-vision-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('kp (1).jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        
+        .story-timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .story-timeline::before {
+            content: '';
+            position: absolute;
+            left: 10px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: #0d6efd;
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 40px;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -30px;
+            top: 5px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: #0d6efd;
+            border: 3px solid white;
+        }
+        
+        .team-member-card {
+            transition: transform 0.3s;
+        }
+        
+        .team-member-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .stats-card {
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+        
+        .stats-card:hover {
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .leadership-image {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border: 5px solid rgba(13, 110, 253, 0.1);
+        }
+        
+        .values-icon {
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+        }
+    </style>
+</head>
+
+<body class="lang-en">
+
+    <!-- Spinner Start -->
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+            <span class="sr-only content-en">Loading...</span>
+            <span class="sr-only content-de">Lädt...</span>
+        </div>
+    </div>
+    <!-- Spinner End -->
+
+    <!-- Navbar & Hero Start -->
+    <div class="container-fluid position-relative p-0">
+        <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
+            <a href="index.html" class="navbar-brand p-0">
+                <img style="height: 3cm; opacity: 70%;" src="logo.webp" alt="Health4Yu Logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="fa fa-bars"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav ms-auto py-0">
+                    <!-- English Navigation -->
+                    <a href="index.html" class="nav-item nav-link content-en">Home</a>
+                    <a href="about.html" class="nav-item nav-link active content-en">About Us</a>
+                    <a href="service.html" class="nav-item nav-link content-en">Hospital Project</a>
+                    <a href="contact.html" class="nav-item nav-link content-en">Contact</a>
+                    
+                    <!-- German Navigation -->
+                    <a href="index.html" class="nav-item nav-link content-de">Startseite</a>
+                    <a href="about.html" class="nav-item nav-link active content-de">Über Uns</a>
+                    <a href="service.html" class="nav-item nav-link content-de">Krankenhausprojekt</a>
+                    <a href="contact.html" class="nav-item nav-link content-de">Kontakt</a>
+                </div>
+                
+                <!-- Language Switcher -->
+                <div class="language-switcher ms-3">
+                    <div class="language-btn" id="languageToggle">
+                        <img src="https://flagcdn.com/w20/gb.png" class="flag-icon" alt="English">
+                        <span class="content-en">EN</span>
+                        <span class="content-de">DE</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="language-dropdown" id="languageDropdown">
+                        <div class="language-option active" data-lang="en">
+                            <img src="https://flagcdn.com/w20/gb.png" class="flag-icon" alt="English">
+                            <span>English</span>
+                        </div>
+                        <div class="language-option" data-lang="de">
+                            <img src="https://flagcdn.com/w20/de.png" class="flag-icon" alt="Deutsch">
+                            <span>Deutsch</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <a href="Donate.html" class="btn btn-primary rounded-pill d-inline-flex flex-shrink-0 py-2 px-4 ms-3 content-en">Donate Now</a>
+                <a href="Donate.html" class="btn btn-primary rounded-pill d-inline-flex flex-shrink-0 py-2 px-4 ms-3 content-de">Jetzt Spenden</a>
+            </div>
+        </nav>
+
+        <!-- About Hero Section Start -->
+        <div class="container-fluid hero-header bg-light py-5 mb-5">
+            <div class="container py-5">
+                <div class="row g-5 align-items-center">
+                    <div class="col-lg-6">
+                        <!-- English Hero -->
+                        <div class="content-en">
+                            <h1 class="display-4 mb-3">About Health4Yu</h1>
+                            <p class="fs-5 text-muted mb-5">Building sustainable healthcare solutions in Ghana through intercultural collaboration and doctor-led initiatives.</p>
+                            <div class="d-flex">
+                                <a href="#mission" class="btn btn-primary rounded-pill flex-shrink-0 py-3 px-5 me-3">Our Mission</a>
+                                <a href="#story" class="btn btn-outline-primary rounded-pill flex-shrink-0 py-3 px-5">Our Story</a>
+                            </div>
+                        </div>
+                        
+                        <!-- German Hero -->
+                        <div class="content-de">
+                            <h1 class="display-4 mb-3">Über Health4Yu</h1>
+                            <p class="fs-5 text-muted mb-5">Aufbau nachhaltiger Gesundheitslösungen in Ghana durch interkulturelle Zusammenarbeit und von Ärzten geleitete Initiativen.</p>
+                            <div class="d-flex">
+                                <a href="#mission" class="btn btn-primary rounded-pill flex-shrink-0 py-3 px-5 me-3">Unsere Mission</a>
+                                <a href="#story" class="btn btn-outline-primary rounded-pill flex-shrink-0 py-3 px-5">Unsere Geschichte</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="overflow-hidden rounded">
+                            <img class="img-fluid rounded" src="kp (5).jpg" alt="Health4Yu Team in Ghana">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- About Hero Section End -->
+    </div>
+    <!-- Navbar & Hero End -->
+
+    <!-- Our Story Section Start -->
+    <div id="story" class="container-fluid py-5">
+        <div class="container py-5">
+            <div class="row g-5 align-items-center">
+                <div class="col-lg-6">
+                    <!-- English Timeline -->
+                    <div class="content-en">
+                        <div class="story-timeline">
+                            <div class="timeline-item">
+                                <h4 class="text-primary mb-3">2021: The Beginning</h4>
+                                <p class="mb-0">Founded by Dr. Fattah Yunusah after witnessing healthcare disparities during medical missions in rural Ghana. What started as personal efforts to provide medical supplies grew into a vision for sustainable healthcare infrastructure.</p>
+                            </div>
+                            <div class="timeline-item">
+                                <h4 class="text-primary mb-3">2022: Official Registration</h4>
+                                <p class="mb-0">Health4Yu was officially registered in Hamburg, Germany as a non-profit organization (VR 23339), establishing partnerships with local communities in Ghana and healthcare professionals in Europe.</p>
+                            </div>
+                            <div class="timeline-item">
+                                <h4 class="text-primary mb-3">2023: First Major Project</h4>
+                                <p class="mb-0">Launched our flagship hospital construction project in Northern Ghana, focusing on maternal and child healthcare services for underserved communities.</p>
+                            </div>
+                            <div class="timeline-item">
+                                <h4 class="text-primary mb-3">2024: Expansion & Growth</h4>
+                                <p class="mb-0">Expanded our initiatives to include medical equipment donations, healthcare professional training programs, and community health education campaigns.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- German Timeline -->
+                    <div class="content-de">
+                        <div class="story-timeline">
+                            <div class="timeline-item">
+                                <h4 class="text-primary mb-3">2021: Der Anfang</h4>
+                                <p class="mb-0">Gegründet von Dr. Fattah Yunusah nach der Beobachtung von Ungleichheiten in der Gesundheitsversorgung während medizinischer Einsätze im ländlichen Ghana. Was als persönliche Bemühungen begann, medizinische Versorgung zu leisten, entwickelte sich zu einer Vision für nachhaltige Gesundheitsinfrastruktur.</p>
+                            </div>
+                            <div class="timeline-item">
+                                <h4 class="text-primary mb-3">2022: Offizielle Registrierung</h4>
+                                <p class="mb-0">Health4Yu wurde offiziell in Hamburg, Deutschland als gemeinnützige Organisation (VR 23339) registriert und baute Partnerschaften mit lokalen Gemeinden in Ghana und medizinischen Fachkräften in Europa auf.</p>
+                            </div>
+                            <div class="timeline-item">
+                                <h4 class="text-primary mb-3">2023: Erstes Großprojekt</h4>
+                                <p class="mb-0">Start unseres Flaggschiff-Krankenhausbauprojekts in Nordghana mit Fokus auf Mutter-Kind-Gesundheitsdienste für unterversorgte Gemeinden.</p>
+                            </div>
+                            <div class="timeline-item">
+                                <h4 class="text-primary mb-3">2024: Expansion & Wachstum</h4>
+                                <p class="mb-0">Erweiterung unserer Initiativen um Spenden medizinischer Ausrüstung, Schulungsprogramme für medizinisches Personal und Aufklärungskampagnen zur Gemeindegesundheit.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <!-- English Story -->
+                    <div class="content-en">
+                        <h4 class="text-primary text-uppercase">Our Journey</h4>
+                        <h1 class="display-4 mb-4">From Vision to Reality</h1>
+                        <p class="fs-5 mb-4">Health4Yu emerged from a simple observation: while visiting family in Ghana, our founder, a medical doctor based in Germany, witnessed firsthand the healthcare challenges faced by rural communities. The long distances to medical facilities, lack of equipment, and shortage of trained personnel were barriers to basic healthcare access.</p>
+                        <p class="fs-5 mb-4">Driven by the belief that every life deserves quality healthcare regardless of geography or economic status, Health4Yu was founded as an intercultural bridge connecting resources, expertise, and compassion between Europe and Ghana.</p>
+                        <p class="fs-5 mb-5">Today, we're a growing community of healthcare professionals, volunteers, donors, and partners united by a common goal: building sustainable healthcare infrastructure that transforms lives and communities.</p>
+                        <a href="contact.html" class="btn btn-primary rounded-pill py-3 px-5">Join Our Journey</a>
+                    </div>
+                    
+                    <!-- German Story -->
+                    <div class="content-de">
+                        <h4 class="text-primary text-uppercase">Unsere Reise</h4>
+                        <h1 class="display-4 mb-4">Von der Vision zur Wirklichkeit</h1>
+                        <p class="fs-5 mb-4">Health4Yu entstand aus einer einfachen Beobachtung: Während eines Familienbesuchs in Ghana erlebte unser Gründer, ein in Deutschland praktizierender Arzt, aus erster Hand die Gesundheitsherausforderungen ländlicher Gemeinden. Die langen Wege zu medizinischen Einrichtungen, der Mangel an Ausrüstung und der Personalmangel waren Hindernisse für den Zugang zur Grundversorgung.</p>
+                        <p class="fs-5 mb-4">Angetrieben von der Überzeugung, dass jedes Leben unabhängig von geografischer Lage oder wirtschaftlichem Status eine qualitativ hochwertige Gesundheitsversorgung verdient, wurde Health4Yu als interkulturelle Brücke gegründet, die Ressourcen, Fachwissen und Mitgefühl zwischen Europa und Ghana verbindet.</p>
+                        <p class="fs-5 mb-5">Heute sind wir eine wachsende Gemeinschaft von medizinischen Fachkräften, Freiwilligen, Spendern und Partnern, die durch ein gemeinsames Ziel vereint sind: den Aufbau nachhaltiger Gesundheitsinfrastruktur, die Leben und Gemeinden verändert.</p>
+                        <a href="contact.html" class="btn btn-primary rounded-pill py-3 px-5">Begleiten Sie uns</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Our Story Section End -->
+
+    <!-- Mission & Vision Section Start -->
+    <div id="mission" class="container-fluid mission-vision-section py-5">
+        <div class="container py-5">
+            <div class="row g-5">
+                <div class="col-lg-6">
+                    <!-- English Mission -->
+                    <div class="content-en">
+                        <div class="bg-white rounded p-5 h-100">
+                            <div class="d-flex align-items-center mb-4">
+                                <div class="values-icon bg-primary">
+                                    <i class="fas fa-bullseye text-white fa-2x"></i>
+                                </div>
+                                <h2 class="ms-4">Our Mission</h2>
+                            </div>
+                            <p class="fs-5 mb-4">To build and sustain accessible, quality healthcare facilities in underserved regions of Ghana through intercultural collaboration, innovative solutions, and community empowerment.</p>
+                            <div class="mt-4">
+                                <h5 class="mb-3">How We Achieve This:</h5>
+                                <ul class="list-unstyled">
+                                    <li class="mb-3"><i class="fas fa-check-circle text-primary me-2"></i> Constructing and equipping hospitals and clinics</li>
+                                    <li class="mb-3"><i class="fas fa-check-circle text-primary me-2"></i> Training local healthcare professionals</li>
+                                    <li class="mb-3"><i class="fas fa-check-circle text-primary me-2"></i> Providing medical supplies and equipment</li>
+                                    <li class="mb-3"><i class="fas fa-check-circle text-primary me-2"></i> Implementing community health education programs</li>
+                                    <li><i class="fas fa-check-circle text-primary me-2"></i> Fostering partnerships between Ghana and international healthcare communities</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- German Mission -->
+                    <div class="content-de">
+                        <div class="bg-white rounded p-5 h-100">
+                            <div class="d-flex align-items-center mb-4">
+                                <div class="values-icon bg-primary">
+                                    <i class="fas fa-bullseye text-white fa-2x"></i>
+                                </div>
+                                <h2 class="ms-4">Unsere Mission</h2>
+                            </div>
+                            <p class="fs-5 mb-4">Aufbau und Erhalt zugänglicher, qualitativ hochwertiger Gesundheitseinrichtungen in unterversorgten Regionen Ghanas durch interkulturelle Zusammenarbeit, innovative Lösungen und Stärkung der Gemeinschaft.</p>
+                            <div class="mt-4">
+                                <h5 class="mb-3">Wie wir das erreichen:</h5>
+                                <ul class="list-unstyled">
+                                    <li class="mb-3"><i class="fas fa-check-circle text-primary me-2"></i> Bau und Ausstattung von Krankenhäusern und Kliniken</li>
+                                    <li class="mb-3"><i class="fas fa-check-circle text-primary me-2"></i> Schulung lokaler medizinischer Fachkräfte</li>
+                                    <li class="mb-3"><i class="fas fa-check-circle text-primary me-2"></i> Bereitstellung medizinischer Verbrauchsmaterialien und Ausrüstung</li>
+                                    <li class="mb-3"><i class="fas fa-check-circle text-primary me-2"></i> Umsetzung von Aufklärungsprogrammen zur Gemeindegesundheit</li>
+                                    <li><i class="fas fa-check-circle text-primary me-2"></i> Förderung von Partnerschaften zwischen Ghana und internationalen Gesundheitsgemeinschaften</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <!-- English Vision -->
+                    <div class="content-en">
+                        <div class="bg-white rounded p-5 h-100">
+                            <div class="d-flex align-items-center mb-4">
+                                <div class="values-icon bg-primary">
+                                    <i class="fas fa-eye text-white fa-2x"></i>
+                                </div>
+                                <h2 class="ms-4">Our Vision</h2>
+                            </div>
+                            <p class="fs-5 mb-4">A Ghana where every individual, regardless of location or economic status, has access to quality healthcare services, leading to improved health outcomes, stronger communities, and sustainable development.</p>
+                            <div class="mt-4">
+                                <h5 class="mb-3">Our Core Values:</h5>
+                                <div class="row g-3">
+                                    <div class="col-6">
+                                        <div class="p-3 border rounded">
+                                            <h6><i class="fas fa-heart text-primary me-2"></i> Compassion</h6>
+                                            <p class="small mb-0">Putting human dignity at the center of all we do</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="p-3 border rounded">
+                                            <h6><i class="fas fa-handshake text-primary me-2"></i> Collaboration</h6>
+                                            <p class="small mb-0">Working together across cultures and borders</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="p-3 border rounded">
+                                            <h6><i class="fas fa-shield-alt text-primary me-2"></i> Integrity</h6>
+                                            <p class="small mb-0">Transparent and accountable in all operations</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="p-3 border rounded">
+                                            <h6><i class="fas fa-seedling text-primary me-2"></i> Sustainability</h6>
+                                            <p class="small mb-0">Creating lasting solutions that communities can maintain</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- German Vision -->
+                    <div class="content-de">
+                        <div class="bg-white rounded p-5 h-100">
+                            <div class="d-flex align-items-center mb-4">
+                                <div class="values-icon bg-primary">
+                                    <i class="fas fa-eye text-white fa-2x"></i>
+                                </div>
+                                <h2 class="ms-4">Unsere Vision</h2>
+                            </div>
+                            <p class="fs-5 mb-4">Ein Ghana, in dem jeder Mensch unabhängig von Standort oder wirtschaftlichem Status Zugang zu qualitativ hochwertigen Gesundheitsdienstleistungen hat, was zu verbesserten Gesundheitsergebnissen, stärkeren Gemeinschaften und nachhaltiger Entwicklung führt.</p>
+                            <div class="mt-4">
+                                <h5 class="mb-3">Unsere Kernwerte:</h5>
+                                <div class="row g-3">
+                                    <div class="col-6">
+                                        <div class="p-3 border rounded">
+                                            <h6><i class="fas fa-heart text-primary me-2"></i> Mitgefühl</h6>
+                                            <p class="small mb-0">Menschenwürde in den Mittelpunkt unseres Handelns stellen</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="p-3 border rounded">
+                                            <h6><i class="fas fa-handshake text-primary me-2"></i> Zusammenarbeit</h6>
+                                            <p class="small mb-0">Grenzüberschreitend und interkulturell zusammenarbeiten</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="p-3 border rounded">
+                                            <h6><i class="fas fa-shield-alt text-primary me-2"></i> Integrität</h6>
+                                            <p class="small mb-0">Transparenz und Verantwortlichkeit in allen Operationen</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="p-3 border rounded">
+                                            <h6><i class="fas fa-seedling text-primary me-2"></i> Nachhaltigkeit</h6>
+                                            <p class="small mb-0">Schaffung dauerhafter Lösungen, die Gemeinden erhalten können</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Mission & Vision Section End -->
+
+    <!-- Impact Stats Section Start -->
+    <div class="container-fluid bg-light py-5">
+        <div class="container py-5">
+            <!-- English Impact Section -->
+            <div class="content-en">
+                <div class="text-center mx-auto mb-5" style="max-width: 800px;">
+                    <h4 class="text-primary text-uppercase">Our Impact</h4>
+                    <h1 class="display-4 mb-4">Transforming Healthcare in Ghana</h1>
+                    <p class="fs-5 mb-4">Since our founding, we've been working tirelessly to improve healthcare accessibility and outcomes in underserved communities.</p>
+                </div>
+                <div class="row g-4">
+                    <div class="col-md-6 col-lg-3">
+                        <div class="stats-card bg-white text-center p-4">
+                            <i class="fas fa-hospital text-primary fa-3x mb-3"></i>
+                            <h2 class="display-4 text-primary mb-2" data-count="2">0</h2>
+                            <h5 class="mb-3">Healthcare Facilities</h5>
+                            <p class="text-muted mb-0">Hospitals and clinics under construction or support</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="stats-card bg-white text-center p-4">
+                            <i class="fas fa-hand-holding-usd text-primary fa-3x mb-3"></i>
+                            <h2 class="display-4 text-primary mb-2" data-count="50000">0</h2>
+                            <h5 class="mb-3">Annual Donations</h5>
+                            <p class="text-muted mb-0">USD donated annually for healthcare projects</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="stats-card bg-white text-center p-4">
+                            <i class="fas fa-users text-primary fa-3x mb-3"></i>
+                            <h2 class="display-4 text-primary mb-2" data-count="150">0</h2>
+                            <h5 class="mb-3">Volunteers</h5>
+                            <p class="text-muted mb-0">Medical and non-medical volunteers engaged</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="stats-card bg-white text-center p-4">
+                            <i class="fas fa-ambulance text-primary fa-3x mb-3"></i>
+                            <h2 class="display-4 text-primary mb-2" data-count="45">0</h2>
+                            <h5 class="mb-3">Equipment Shipments</h5>
+                            <p class="text-muted mb-0">Medical equipment shipments delivered</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- German Impact Section -->
+            <div class="content-de">
+                <div class="text-center mx-auto mb-5" style="max-width: 800px;">
+                    <h4 class="text-primary text-uppercase">Unsere Wirkung</h4>
+                    <h1 class="display-4 mb-4">Transformation der Gesundheitsversorgung in Ghana</h1>
+                    <p class="fs-5 mb-4">Seit unserer Gründung arbeiten wir unermüdlich daran, die Zugänglichkeit und Ergebnisse der Gesundheitsversorgung in unterversorgten Gemeinden zu verbessern.</p>
+                </div>
+                <div class="row g-4">
+                    <div class="col-md-6 col-lg-3">
+                        <div class="stats-card bg-white text-center p-4">
+                            <i class="fas fa-hospital text-primary fa-3x mb-3"></i>
+                            <h2 class="display-4 text-primary mb-2" data-count="2">0</h2>
+                            <h5 class="mb-3">Gesundheitseinrichtungen</h5>
+                            <p class="text-muted mb-0">Krankenhäuser und Kliniken im Bau oder unterstützt</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="stats-card bg-white text-center p-4">
+                            <i class="fas fa-hand-holding-usd text-primary fa-3x mb-3"></i>
+                            <h2 class="display-4 text-primary mb-2" data-count="50000">0</h2>
+                            <h5 class="mb-3">Jährliche Spenden</h5>
+                            <p class="text-muted mb-0">USD jährlich für Gesundheitsprojekte gespendet</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="stats-card bg-white text-center p-4">
+                            <i class="fas fa-users text-primary fa-3x mb-3"></i>
+                            <h2 class="display-4 text-primary mb-2" data-count="150">0</h2>
+                            <h5 class="mb-3">Freiwillige</h5>
+                            <p class="text-muted mb-0">Medizinische und nicht-medizinische Freiwillige engagiert</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="stats-card bg-white text-center p-4">
+                            <i class="fas fa-ambulance text-primary fa-3x mb-3"></i>
+                            <h2 class="display-4 text-primary mb-2" data-count="45">0</h2>
+                            <h5 class="mb-3">Ausrüstungslieferungen</h5>
+                            <p class="text-muted mb-0">Medizinische Ausrüstungslieferungen geliefert</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Impact Stats Section End -->
+
+    <!-- Partners & Recognition Section Start -->
+    <div class="container-fluid py-5">
+        <div class="container py-5">
+            <!-- English Partners Section -->
+            <div class="content-en">
+                <div class="text-center mx-auto mb-5" style="max-width: 800px;">
+                    <h4 class="text-primary text-uppercase">Partners & Recognition</h4>
+                    <h1 class="display-4 mb-4">Working Together for Greater Impact</h1>
+                    <p class="fs-5 mb-4">We believe in the power of collaboration and are proud to work with partners who share our vision for sustainable healthcare in Ghana.</p>
+                </div>
+                
+                <div class="row g-4 mb-5">
+                    <div class="col-md-6">
+                        <div class="bg-light rounded p-4 h-100">
+                            <h4 class="mb-4">Our Partners</h4>
+                            <div class="row g-3">
+                                <div class="col-6 text-center">
+                                    <div class="p-3 border bg-white">
+                                        <h6 class="text-muted">Local Communities</h6>
+                                        <p class="small mb-0">Ghanaian community leaders and organizations</p>
+                                    </div>
+                                </div>
+                                <div class="col-6 text-center">
+                                    <div class="p-3 border bg-white">
+                                        <h6 class="text-muted">Medical Institutions</h6>
+                                        <p class="small mb-0">Hospitals and clinics in Germany and Ghana</p>
+                                    </div>
+                                </div>
+                                <div class="col-6 text-center">
+                                    <div class="p-3 border bg-white">
+                                        <h6 class="text-muted">Corporate Sponsors</h6>
+                                        <p class="small mb-0">Companies supporting healthcare initiatives</p>
+                                    </div>
+                                </div>
+                                <div class="col-6 text-center">
+                                    <div class="p-3 border bg-white">
+                                        <h6 class="text-muted">Individual Donors</h6>
+                                        <p class="small mb-0">People from around the world contributing</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="bg-light rounded p-4 h-100">
+                            <h4 class="mb-4">Transparency & Accountability</h4>
+                            <p class="mb-3">Health4Yu is committed to the highest standards of transparency and accountability in all our operations:</p>
+                            <ul class="mb-4">
+                                <li class="mb-2">Registered non-profit in Germany (VR 23339)</li>
+                                <li class="mb-2">All donations are tax-deductible</li>
+                                <li class="mb-2">Regular financial reports available to donors</li>
+                                <li class="mb-2">Impact assessment reports for all projects</li>
+                                <li>Governed by a board of directors with medical and development expertise</li>
+                            </ul>
+                            <a href="contact.html" class="btn btn-outline-primary rounded-pill py-2 px-4">Request Annual Report</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center">
+                    <h3 class="mb-4">Ready to Make a Difference?</h3>
+                    <p class="fs-5 mb-4">Join us in building sustainable healthcare solutions for Ghana. Whether through donations, volunteering, or partnerships, your support transforms lives.</p>
+                    <a href="Donate.html" class="btn btn-primary rounded-pill py-3 px-5 me-3">Donate Now</a>
+                    <a href="contact.html" class="btn btn-outline-primary rounded-pill py-3 px-5">Become a Partner</a>
+                </div>
+            </div>
+            
+            <!-- German Partners Section -->
+            <div class="content-de">
+                <div class="text-center mx-auto mb-5" style="max-width: 800px;">
+                    <h4 class="text-primary text-uppercase">Partner & Anerkennung</h4>
+                    <h1 class="display-4 mb-4">Gemeinsam für größere Wirkung</h1>
+                    <p class="fs-5 mb-4">Wir glauben an die Kraft der Zusammenarbeit und sind stolz darauf, mit Partnern zusammenzuarbeiten, die unsere Vision für nachhaltige Gesundheitsversorgung in Ghana teilen.</p>
+                </div>
+                
+                <div class="row g-4 mb-5">
+                    <div class="col-md-6">
+                        <div class="bg-light rounded p-4 h-100">
+                            <h4 class="mb-4">Unsere Partner</h4>
+                            <div class="row g-3">
+                                <div class="col-6 text-center">
+                                    <div class="p-3 border bg-white">
+                                        <h6 class="text-muted">Lokale Gemeinden</h6>
+                                        <p class="small mb-0">Ghanaische Gemeindeleiter und Organisationen</p>
+                                    </div>
+                                </div>
+                                <div class="col-6 text-center">
+                                    <div class="p-3 border bg-white">
+                                        <h6 class="text-muted">Medizinische Einrichtungen</h6>
+                                        <p class="small mb-0">Krankenhäuser und Kliniken in Deutschland und Ghana</p>
+                                    </div>
+                                </div>
+                                <div class="col-6 text-center">
+                                    <div class="p-3 border bg-white">
+                                        <h6 class="text-muted">Unternehmenssponsoren</h6>
+                                        <p class="small mb-0">Unternehmen, die Gesundheitsinitiativen unterstützen</p>
+                                    </div>
+                                </div>
+                                <div class="col-6 text-center">
+                                    <div class="p-3 border bg-white">
+                                        <h6 class="text-muted">Einzelspender</h6>
+                                        <p class="small mb-0">Menschen aus der ganzen Welt, die beitragen</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="bg-light rounded p-4 h-100">
+                            <h4 class="mb-4">Transparenz & Verantwortlichkeit</h4>
+                            <p class="mb-3">Health4Yu verpflichtet sich zu höchsten Standards an Transparenz und Verantwortlichkeit in all unseren Operationen:</p>
+                            <ul class="mb-4">
+                                <li class="mb-2">Registrierte gemeinnützige Organisation in Deutschland (VR 23339)</li>
+                                <li class="mb-2">Alle Spenden sind steuerlich absetzbar</li>
+                                <li class="mb-2">Regelmäßige Finanzberichte für Spender verfügbar</li>
+                                <li class="mb-2">Wirkungsbewertungsberichte für alle Projekte</li>
+                                <li>Geleitet von einem Vorstand mit medizinischer und entwicklungspolitischer Expertise</li>
+                            </ul>
+                            <a href="contact.html" class="btn btn-outline-primary rounded-pill py-2 px-4">Jahresbericht anfordern</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center">
+                    <h3 class="mb-4">Bereit, einen Unterschied zu machen?</h3>
+                    <p class="fs-5 mb-4">Begleiten Sie uns beim Aufbau nachhaltiger Gesundheitslösungen für Ghana. Ob durch Spenden, Freiwilligenarbeit oder Partnerschaften – Ihre Unterstützung verändert Leben.</p>
+                    <a href="Donate.html" class="btn btn-primary rounded-pill py-3 px-5 me-3">Jetzt Spenden</a>
+                    <a href="contact.html" class="btn btn-outline-primary rounded-pill py-3 px-5">Partner werden</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Partners & Recognition Section End -->
+
+    <!-- Footer Start -->
+    <div class="container-fluid footer py-5 wow fadeIn" data-wow-delay="0.2s">
+        <div class="container py-5">
+            <!-- English Footer -->
+            <div class="content-en">
+                <div class="row g-5 mb-5 align-items-center">
+                    <div class="col-lg-7">
+                        <div class="position-relative mx-auto">
+                            <input class="form-control rounded-pill w-100 py-3 ps-4 pe-5" type="text" placeholder="Email address to Subscribe">
+                            <button type="button" class="btn btn-secondary rounded-pill position-absolute top-0 end-0 py-2 px-4 mt-2 me-2">Subscribe</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row g-5">
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="footer-item d-flex flex-column">
+                            <div class="footer-item">
+                                <h3 class="text-white mb-4"><i class="fas  text-primary me-3"></i>Health4Yu</h3>
+                                <p class="mb-3">Health4Yu is an intercultural charity organization dedicated to building sustainable healthcare in Ghana. Together, we're transforming lives and improving health outcomes in underserved communities.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="footer-item d-flex flex-column">
+                            <h4 class="text-white mb-4">Quick Links</h4>
+                            <a href="index.html" class="text-white mb-2">Home</a>
+                            <a href="about.html" class="text-white mb-2">About Us</a>
+                            <a href="service.html" class="text-white mb-2">Hospital Project</a>
+                            <a href="contact.html" class="text-white mb-2">Contact</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="footer-item d-flex flex-column">
+                            <h4 class="text-white mb-4">Contact Info</h4>
+                            <a href="#"><i class="fa fa-map-marker-alt me-2"></i>Hamburg, Germany</a>
+                            <a href="mailto:contact@health4yu.org"><i class="fas fa-envelope me-2"></i>contact@health4yu.org</a>
+                            <a href="tel:+4921116366233"><i class="fas fa-phone me-2"></i>+49 211 163 66233</a>
+                            <a href="https://wa.me/491789354512"><i class="fab fa-whatsapp me-2"></i>+49 178 9354512 (WhatsApp)</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="footer-item d-flex flex-column">
+                            <h4 class="text-white mb-4">Banking Info</h4>
+                            <p class="text-white mb-2"><strong>Account Holder:</strong> Fattah Yunusah</p>
+                            <p class="text-white mb-2"><strong>IBAN:</strong> BE64 9671 9344 6052</p>
+                            <p class="text-white mb-2"><strong>BIC:</strong> TRWIBEB1XXX</p>
+                            <p class="text-white"><small>All donations are tax-deductible. Registration: VR 23339</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- German Footer -->
+            <div class="content-de">
+                <div class="row g-5 mb-5 align-items-center">
+                    <div class="col-lg-7">
+                        <div class="position-relative mx-auto">
+                            <input class="form-control rounded-pill w-100 py-3 ps-4 pe-5" type="text" placeholder="E-Mail-Adresse zum Abonnieren">
+                            <button type="button" class="btn btn-secondary rounded-pill position-absolute top-0 end-0 py-2 px-4 mt-2 me-2">Abonnieren</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row g-5">
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="footer-item d-flex flex-column">
+                            <div class="footer-item">
+                                <h3 class="text-white mb-4"><i class="fas  text-primary me-3"></i>Health4Yu</h3>
+                                <p class="mb-3">Health4Yu ist eine interkulturelle Wohltätigkeitsorganisation, die sich dem Aufbau nachhaltiger Gesundheitsversorgung in Ghana widmet. Gemeinsam verändern wir Leben und verbessern die Gesundheitsergebnisse in unterversorgten Gemeinden.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="footer-item d-flex flex-column">
+                            <h4 class="text-white mb-4">Schnellzugriff</h4>
+                            <a href="index.html" class="text-white mb-2">Startseite</a>
+                            <a href="about.html" class="text-white mb-2">Über Uns</a>
+                            <a href="service.html" class="text-white mb-2">Krankenhausprojekt</a>
+                            <a href="contact.html" class="text-white mb-2">Kontakt</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="footer-item d-flex flex-column">
+                            <h4 class="text-white mb-4">Kontaktinformationen</h4>
+                            <a href="#"><i class="fa fa-map-marker-alt me-2"></i>Hamburg, Deutschland</a>
+                            <a href="mailto:contact@health4yu.org"><i class="fas fa-envelope me-2"></i>contact@health4yu.org</a>
+                            <a href="tel:+4921116366233"><i class="fas fa-phone me-2"></i>+49 211 163 66233</a>
+                            <a href="https://wa.me/491789354512"><i class="fab fa-whatsapp me-2"></i>+49 178 9354512 (WhatsApp)</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="footer-item d-flex flex-column">
+                            <h4 class="text-white mb-4">Bankverbindung</h4>
+                            <p class="text-white mb-2"><strong>Kontoinhaber:</strong> Fattah Yunusah</p>
+                            <p class="text-white mb-2"><strong>IBAN:</strong> BE64 9671 9344 6052</p>
+                            <p class="text-white mb-2"><strong>BIC:</strong> TRWIBEB1XXX</p>
+                            <p class="text-white"><small>Alle Spenden sind steuerlich absetzbar. Registrierung: VR 23339</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+    <!-- Copyright Start -->
+    <div class="container-fluid copyright py-4">
+        <div class="container">
+            <div class="row g-4 align-items-center">
+                <div class="col-md-6 text-center text-md-start mb-md-0">
+                    <span class="text-body"><a href="#" class="border-bottom text-white"><i class="fas fa-copyright text-light me-2"></i>Health4Yu</a>, All rights reserved.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Copyright End -->
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-secondary btn-lg-square rounded-circle back-to-top"><i class="fa fa-arrow-up"></i></a>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+    
+    <!-- Language Switcher Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Language toggle functionality
+            const languageToggle = document.getElementById('languageToggle');
+            const languageDropdown = document.getElementById('languageDropdown');
+            const languageOptions = document.querySelectorAll('.language-option');
+            
+            // Toggle dropdown
+            if (languageToggle) {
+                languageToggle.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    languageDropdown.classList.toggle('show');
+                });
+            }
+            
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function() {
+                if (languageDropdown) {
+                    languageDropdown.classList.remove('show');
+                }
+            });
+            
+            // Language selection
+            languageOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    const selectedLang = this.getAttribute('data-lang');
+                    
+                    // Update active state
+                    languageOptions.forEach(opt => opt.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Update toggle button
+                    const flagImg = languageToggle.querySelector('img');
+                    const langText = languageToggle.querySelector('span');
+                    
+                    if (selectedLang === 'en') {
+                        flagImg.src = 'https://flagcdn.com/w20/gb.png';
+                        langText.textContent = 'EN';
+                        document.body.classList.remove('lang-de');
+                        document.body.classList.add('lang-en');
+                        document.documentElement.lang = 'en';
+                    } else {
+                        flagImg.src = 'https://flagcdn.com/w20/de.png';
+                        langText.textContent = 'DE';
+                        document.body.classList.remove('lang-en');
+                        document.body.classList.add('lang-de');
+                        document.documentElement.lang = 'de';
+                    }
+                    
+                    // Close dropdown
+                    languageDropdown.classList.remove('show');
+                    
+                    // Save language preference to localStorage
+                    localStorage.setItem('preferredLanguage', selectedLang);
+                });
+            });
+            
+            // Check for saved language preference
+            const savedLang = localStorage.getItem('preferredLanguage');
+            if (savedLang === 'de') {
+                // Trigger German language selection
+                const germanOption = document.querySelector('.language-option[data-lang="de"]');
+                if (germanOption) {
+                    germanOption.click();
+                }
+            }
+            
+            // Animated counter for statistics
+            const counters = document.querySelectorAll('[data-count]');
+            
+            counters.forEach(counter => {
+                const target = +counter.getAttribute('data-count');
+                const increment = target / 200;
+                let current = 0;
+                
+                const updateCounter = () => {
+                    if (current < target) {
+                        current += increment;
+                        counter.innerText = Math.floor(current);
+                        setTimeout(updateCounter, 10);
+                    } else {
+                        counter.innerText = target;
+                    }
+                };
+                
+                // Start counter when element is in viewport
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            updateCounter();
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                });
+                
+                observer.observe(counter);
+            });
+        });
+    </script>
+</body>
+</html>
