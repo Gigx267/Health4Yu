@@ -1,0 +1,1227 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Contact Us - Health4Yu</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <link rel="icon" type="image/x-icon" href="logo.webp">
+    
+    <!-- Multilingual Meta Descriptions -->
+    <meta content="Get in touch with Health4Yu. Contact us for donations, volunteering, partnerships, or inquiries about our healthcare projects in Ghana. We'd love to hear from you.">
+    <meta name="description-de" content="Nehmen Sie Kontakt mit Health4Yu auf. Kontaktieren Sie uns für Spenden, Freiwilligenarbeit, Partnerschaften oder Anfragen zu unseren Gesundheitsprojekten in Ghana. Wir freuen uns, von Ihnen zu hören.">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wdth,wght@0,75..100,300..800;1,75..100,300..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet"> 
+
+    <!-- Icon Font Stylesheet -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- Language Switcher Styles -->
+    <style>
+        /* Language Switcher */
+        .language-switcher {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .language-btn {
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            padding: 5px 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+        
+        .language-btn:hover {
+            background: #f8f9fa;
+            border-color: #007bff;
+        }
+        
+        .language-dropdown {
+            display: none;
+            position: absolute;
+            background: white;
+            min-width: 140px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            z-index: 1000;
+            top: 100%;
+            right: 0;
+            margin-top: 5px;
+        }
+        
+        .language-dropdown.show {
+            display: block;
+        }
+        
+        .language-option {
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        
+        .language-option:hover {
+            background: #f8f9fa;
+        }
+        
+        .language-option.active {
+            background: #e9f7fe;
+            color: #007bff;
+        }
+        
+        .flag-icon {
+            width: 20px;
+            height: 15px;
+            border-radius: 2px;
+        }
+        
+        /* Language-specific content hiding */
+        .content-en {
+            display: block;
+        }
+        
+        .content-de {
+            display: none;
+        }
+        
+        .lang-de .content-en {
+            display: none;
+        }
+        
+        .lang-de .content-de {
+            display: block;
+        }
+        
+        /* Contact Page Specific Styles */
+        .contact-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('kp (1).jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+        }
+        
+        .contact-info-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            height: 100%;
+            transition: transform 0.3s;
+        }
+        
+        .contact-info-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .contact-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #0d6efd 0%, #0b5ed7 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+        
+        .contact-icon i {
+            font-size: 30px;
+            color: white;
+        }
+        
+        .contact-form {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-control, .form-select {
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            padding: 12px 15px;
+            margin-bottom: 20px;
+            transition: all 0.3s;
+        }
+        
+        .form-control:focus, .form-select:focus {
+            border-color: #0d6efd;
+            box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+        }
+        
+        .btn-submit {
+            background: linear-gradient(135deg, #0d6efd 0%, #0b5ed7 100%);
+            border: none;
+            padding: 15px 40px;
+            border-radius: 10px;
+            color: white;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(13, 110, 253, 0.3);
+        }
+        
+        .faq-item {
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            padding: 20px;
+            background: white;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+        }
+        
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+        
+        .faq-item.active .faq-answer {
+            padding: 20px;
+            max-height: 500px;
+            background: #f8f9fa;
+        }
+        
+        .faq-item.active .faq-question {
+            background: #0d6efd;
+            color: white;
+        }
+        
+        .team-contact-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            height: 100%;
+        }
+        
+        .team-contact-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .team-contact-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .map-container {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .office-hours {
+            background: linear-gradient(135deg, #0d6efd 0%, #0b5ed7 100%);
+            color: white;
+            border-radius: 15px;
+            padding: 30px;
+        }
+        
+        .hours-table {
+            width: 100%;
+        }
+        
+        .hours-table tr {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .hours-table tr:last-child {
+            border-bottom: none;
+        }
+        
+        .hours-table td {
+            padding: 10px 0;
+        }
+        
+        .social-contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-contact-links a {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            transition: all 0.3s;
+        }
+        
+        .social-contact-links a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        @media (max-width: 768px) {
+            .contact-form {
+                padding: 20px;
+            }
+            
+            .contact-info-card {
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body class="lang-en">
+
+    <!-- Spinner Start -->
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+            <span class="sr-only content-en">Loading...</span>
+            <span class="sr-only content-de">Lädt...</span>
+        </div>
+    </div>
+    <!-- Spinner End -->
+
+    <!-- Navbar & Hero Start -->
+    <div class="container-fluid position-relative p-0">
+        <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
+            <a href="index.html" class="navbar-brand p-0">
+                <img style="height: 3cm; opacity: 70%;" src="logo.webp" alt="Health4Yu Logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="fa fa-bars"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav ms-auto py-0">
+                    <!-- English Navigation -->
+                    <a href="index.html" class="nav-item nav-link content-en">Home</a>
+                    <a href="about.html" class="nav-item nav-link content-en">About Us</a>
+                    <a href="service.html" class="nav-item nav-link content-en">Hospital Project</a>
+                    <a href="contact.html" class="nav-item nav-link active content-en">Contact</a>
+                    
+                    <!-- German Navigation -->
+                    <a href="index.html" class="nav-item nav-link content-de">Startseite</a>
+                    <a href="about.html" class="nav-item nav-link content-de">Über Uns</a>
+                    <a href="service.html" class="nav-item nav-link content-de">Krankenhausprojekt</a>
+                    <a href="contact.html" class="nav-item nav-link active content-de">Kontakt</a>
+                </div>
+                
+                <!-- Language Switcher -->
+                <div class="language-switcher ms-3">
+                    <div class="language-btn" id="languageToggle">
+                        <img src="https://flagcdn.com/w20/gb.png" class="flag-icon" alt="English">
+                        <span class="content-en">EN</span>
+                        <span class="content-de">DE</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="language-dropdown" id="languageDropdown">
+                        <div class="language-option active" data-lang="en">
+                            <img src="https://flagcdn.com/w20/gb.png" class="flag-icon" alt="English">
+                            <span>English</span>
+                        </div>
+                        <div class="language-option" data-lang="de">
+                            <img src="https://flagcdn.com/w20/de.png" class="flag-icon" alt="Deutsch">
+                            <span>Deutsch</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <a href="Donate.html" class="btn btn-primary rounded-pill d-inline-flex flex-shrink-0 py-2 px-4 ms-3 content-en">Donate Now</a>
+                <a href="Donate.html" class="btn btn-primary rounded-pill d-inline-flex flex-shrink-0 py-2 px-4 ms-3 content-de">Jetzt Spenden</a>
+            </div>
+        </nav>
+
+        <!-- Contact Hero Section Start -->
+        <div class="container-fluid contact-hero py-5 mb-5">
+            <div class="container py-5">
+                <div class="row g-5 align-items-center">
+                    <div class="col-lg-6">
+                        <!-- English Hero -->
+                        <div class="content-en">
+                            <h1 class="display-4 mb-3 text-white">Contact Health4Yu</h1>
+                            <p class="fs-5 text-light mb-5">Have questions about our healthcare projects in Ghana? Want to volunteer or make a donation? We're here to help and would love to hear from you.</p>
+                            <div class="d-flex">
+                                <a href="#contact-info" class="btn btn-primary rounded-pill flex-shrink-0 py-3 px-5 me-3">Contact Info</a>
+                                <a href="#contact-form" class="btn btn-outline-light rounded-pill flex-shrink-0 py-3 px-5">Send Message</a>
+                            </div>
+                        </div>
+                        
+                        <!-- German Hero -->
+                        <div class="content-de">
+                            <h1 class="display-4 mb-3 text-white">Kontaktieren Sie Health4Yu</h1>
+                            <p class="fs-5 text-light mb-5">Haben Sie Fragen zu unseren Gesundheitsprojekten in Ghana? Möchten Sie sich freiwillig engagieren oder eine Spende machen? Wir sind hier, um zu helfen und würden uns freuen, von Ihnen zu hören.</p>
+                            <div class="d-flex">
+                                <a href="#contact-info" class="btn btn-primary rounded-pill flex-shrink-0 py-3 px-5 me-3">Kontaktinformationen</a>
+                                <a href="#contact-form" class="btn btn-outline-light rounded-pill flex-shrink-0 py-3 px-5">Nachricht senden</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <!-- Hero Image Placeholder -->
+                        <div class="text-center">
+                            <i class="fas fa-comments fa-6x text-white opacity-50"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Contact Hero Section End -->
+    </div>
+    <!-- Navbar & Hero End -->
+
+    <!-- Contact Information Section -->
+    <div id="contact-info" class="container-fluid py-5">
+        <div class="container py-5">
+            <!-- English Contact Info -->
+            <div class="content-en">
+                <div class="text-center mx-auto mb-5" style="max-width: 800px;">
+                    <h4 class="text-primary text-uppercase">Ways to Reach Us</h4>
+                    <h1 class="display-4 mb-4">Multiple Contact Options</h1>
+                    <p class="fs-5 mb-4">Choose the contact method that works best for you. We typically respond within 24-48 hours.</p>
+                </div>
+                
+                <div class="row g-4 mb-5">
+                    <div class="col-md-4">
+                        <div class="contact-info-card text-center">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <h3 class="mb-3">Email Us</h3>
+                            <p class="mb-4">For general inquiries, partnership opportunities, and detailed questions.</p>
+                            <a href="mailto:contact@health4yu.org" class="btn btn-outline-primary rounded-pill">contact@health4yu.org</a>
+                            <p class="small text-muted mt-3">Response time: Within 24 hours</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="contact-info-card text-center">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <h3 class="mb-3">Call Us</h3>
+                            <p class="mb-4">For urgent matters, donation inquiries, and immediate assistance.</p>
+                            <a href="tel:+4921116366233" class="btn btn-outline-primary rounded-pill">+49 211 163 66233</a>
+                            <p class="small text-muted mt-3">Mon-Fri: 9AM-5PM (CET)</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="contact-info-card text-center">
+                            <div class="contact-icon">
+                                <i class="fab fa-whatsapp"></i>
+                            </div>
+                            <h3 class="mb-3">WhatsApp</h3>
+                            <p class="mb-4">For quick questions, volunteer coordination, and text-based communication.</p>
+                            <a href="https://wa.me/491789354512" class="btn btn-outline-primary rounded-pill">+49 178 9354512</a>
+                            <p class="small text-muted mt-3">Text messages only</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Office Location -->
+                <div class="row g-5 align-items-center mb-5">
+                    <div class="col-lg-6">
+                        <div class="office-hours">
+                            <h3 class="text-white mb-4">Office Hours</h3>
+                            <table class="hours-table">
+                                <tr>
+                                    <td>Monday - Thursday</td>
+                                    <td>9:00 AM - 5:00 PM</td>
+                                </tr>
+                                <tr>
+                                    <td>Friday</td>
+                                    <td>9:00 AM - 3:00 PM</td>
+                                </tr>
+                                <tr>
+                                    <td>Saturday</td>
+                                    <td>10:00 AM - 2:00 PM</td>
+                                </tr>
+                                <tr>
+                                    <td>Sunday</td>
+                                    <td>Closed</td>
+                                </tr>
+                            </table>
+                            <p class="mt-4 mb-0"><small>All times are Central European Time (CET)</small></p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="map-container">
+                            <div style="background: #f8f9fa; height: 300px; display: flex; align-items: center; justify-content: center; color: #666;">
+                                <div class="text-center">
+                                    <i class="fas fa-map-marker-alt fa-3x mb-3" style="color: #0d6efd;"></i>
+                                    <h4>Hamburg, Germany</h4>
+                                    <p>Our registered office location</p>
+                                    <a href="https://maps.google.com/?q=Hamburg,Germany" target="_blank" class="btn btn-primary btn-sm">Open in Google Maps</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- German Contact Info -->
+            <div class="content-de">
+                <div class="text-center mx-auto mb-5" style="max-width: 800px;">
+                    <h4 class="text-primary text-uppercase">Kontaktmöglichkeiten</h4>
+                    <h1 class="display-4 mb-4">Mehrere Kontaktoptionen</h1>
+                    <p class="fs-5 mb-4">Wählen Sie die Kontaktmethode, die für Sie am besten funktioniert. Wir antworten in der Regel innerhalb von 24-48 Stunden.</p>
+                </div>
+                
+                <div class="row g-4 mb-5">
+                    <div class="col-md-4">
+                        <div class="contact-info-card text-center">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <h3 class="mb-3">E-Mail</h3>
+                            <p class="mb-4">Für allgemeine Anfragen, Partnerschaftsmöglichkeiten und detaillierte Fragen.</p>
+                            <a href="mailto:contact@health4yu.org" class="btn btn-outline-primary rounded-pill">contact@health4yu.org</a>
+                            <p class="small text-muted mt-3">Antwortzeit: Innerhalb von 24 Stunden</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="contact-info-card text-center">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <h3 class="mb-3">Anrufen</h3>
+                            <p class="mb-4">Für dringende Angelegenheiten, Spendenanfragen und sofortige Unterstützung.</p>
+                            <a href="tel:+4921116366233" class="btn btn-outline-primary rounded-pill">+49 211 163 66233</a>
+                            <p class="small text-muted mt-3">Mo-Fr: 9-17 Uhr (MEZ)</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="contact-info-card text-center">
+                            <div class="contact-icon">
+                                <i class="fab fa-whatsapp"></i>
+                            </div>
+                            <h3 class="mb-3">WhatsApp</h3>
+                            <p class="mb-4">Für kurze Fragen, Freiwilligenkoordination und textbasierte Kommunikation.</p>
+                            <a href="https://wa.me/491789354512" class="btn btn-outline-primary rounded-pill">+49 178 9354512</a>
+                            <p class="small text-muted mt-3">Nur Textnachrichten</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Office Location -->
+                <div class="row g-5 align-items-center mb-5">
+                    <div class="col-lg-6">
+                        <div class="office-hours">
+                            <h3 class="text-white mb-4">Bürozeiten</h3>
+                            <table class="hours-table">
+                                <tr>
+                                    <td>Montag - Donnerstag</td>
+                                    <td>9:00 - 17:00 Uhr</td>
+                                </tr>
+                                <tr>
+                                    <td>Freitag</td>
+                                    <td>9:00 - 15:00 Uhr</td>
+                                </tr>
+                                <tr>
+                                    <td>Samstag</td>
+                                    <td>10:00 - 14:00 Uhr</td>
+                                </tr>
+                                <tr>
+                                    <td>Sonntag</td>
+                                    <td>Geschlossen</td>
+                                </tr>
+                            </table>
+                            <p class="mt-4 mb-0"><small>Alle Zeiten in Mitteleuropäischer Zeit (MEZ)</small></p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="map-container">
+                            <div style="background: #f8f9fa; height: 300px; display: flex; align-items: center; justify-content: center; color: #666;">
+                                <div class="text-center">
+                                    <i class="fas fa-map-marker-alt fa-3x mb-3" style="color: #0d6efd;"></i>
+                                    <h4>Hamburg, Deutschland</h4>
+                                    <p>Unser eingetragener Unternehmenssitz</p>
+                                    <a href="https://maps.google.com/?q=Hamburg,Germany" target="_blank" class="btn btn-primary btn-sm">In Google Maps öffnen</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Contact Information Section End -->
+
+    <!-- Contact Form Section -->
+    <div id="contact-form" class="container-fluid bg-light py-5">
+        <div class="container py-5">
+            <div class="row g-5">
+                <div class="col-lg-6">
+                    <!-- English Contact Form -->
+                    <div class="content-en">
+                        <div class="contact-form">
+                            <h3 class="mb-4">Send Us a Message</h3>
+                            <p class="mb-4">Fill out the form below and we'll get back to you as soon as possible.</p>
+                            
+                            <form id="contactForm" action="submit-contact.php" method="POST">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="firstName" class="form-label">First Name *</label>
+                                            <input type="text" class="form-control" id="firstName" name="firstName" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="lastName" class="form-label">Last Name *</label>
+                                            <input type="text" class="form-control" id="lastName" name="lastName" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="email" class="form-label">Email Address *</label>
+                                    <input type="email" class="form-control" id="email" name="email" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="phone" class="form-label">Phone Number</label>
+                                    <input type="tel" class="form-control" id="phone" name="phone">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="subject" class="form-label">Subject *</label>
+                                    <select class="form-select" id="subject" name="subject" required>
+                                        <option value="" selected disabled>Select a topic</option>
+                                        <option value="donation">Donation Inquiry</option>
+                                        <option value="volunteer">Volunteer Opportunity</option>
+                                        <option value="partnership">Partnership/Corporate Support</option>
+                                        <option value="equipment">Medical Equipment Donation</option>
+                                        <option value="project">Project Information</option>
+                                        <option value="media">Media/Press Inquiry</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="message" class="form-label">Your Message *</label>
+                                    <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
+                                </div>
+                                
+                                <div class="form-group form-check mb-4">
+                                    <input type="checkbox" class="form-check-input" id="newsletter" name="newsletter">
+                                    <label class="form-check-label" for="newsletter">
+                                        Subscribe to our newsletter for updates on our projects in Ghana
+                                    </label>
+                                </div>
+                                
+                                <button type="submit" class="btn-submit">Send Message</button>
+                            </form>
+                        </div>
+                    </div>
+                    
+                    <!-- German Contact Form -->
+                    <div class="content-de">
+                        <div class="contact-form">
+                            <h3 class="mb-4">Senden Sie uns eine Nachricht</h3>
+                            <p class="mb-4">Füllen Sie das untenstehende Formular aus und wir melden uns so schnell wie möglich bei Ihnen.</p>
+                            
+                            <form id="contactFormDE" action="submit-contact.php" method="POST">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="firstNameDE" class="form-label">Vorname *</label>
+                                            <input type="text" class="form-control" id="firstNameDE" name="firstName" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="lastNameDE" class="form-label">Nachname *</label>
+                                            <input type="text" class="form-control" id="lastNameDE" name="lastName" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="emailDE" class="form-label">E-Mail-Adresse *</label>
+                                    <input type="email" class="form-control" id="emailDE" name="email" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="phoneDE" class="form-label">Telefonnummer</label>
+                                    <input type="tel" class="form-control" id="phoneDE" name="phone">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="subjectDE" class="form-label">Betreff *</label>
+                                    <select class="form-select" id="subjectDE" name="subject" required>
+                                        <option value="" selected disabled>Thema auswählen</option>
+                                        <option value="donation">Spendenanfrage</option>
+                                        <option value="volunteer">Freiwilligenmöglichkeit</option>
+                                        <option value="partnership">Partnerschaft/Unternehmensunterstützung</option>
+                                        <option value="equipment">Spende medizinischer Ausrüstung</option>
+                                        <option value="project">Projektinformation</option>
+                                        <option value="media">Medien-/Presseanfrage</option>
+                                        <option value="other">Sonstiges</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="messageDE" class="form-label">Ihre Nachricht *</label>
+                                    <textarea class="form-control" id="messageDE" name="message" rows="5" required></textarea>
+                                </div>
+                                
+                                <div class="form-group form-check mb-4">
+                                    <input type="checkbox" class="form-check-input" id="newsletterDE" name="newsletter">
+                                    <label class="form-check-label" for="newsletterDE">
+                                        Abonnieren Sie unseren Newsletter für Updates zu unseren Projekten in Ghana
+                                    </label>
+                                </div>
+                                
+                                <button type="submit" class="btn-submit">Nachricht senden</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <!-- English FAQ Section -->
+                    <div class="content-en">
+                        <div class="mb-5">
+                            <h3 class="mb-4">Frequently Asked Questions</h3>
+                            <div class="faq-container">
+                                <div class="faq-item">
+                                    <div class="faq-question">
+                                        <span>How can I donate to Health4Yu?</span>
+                                        <i class="fas fa-chevron-down"></i>
+                                    </div>
+                                    <div class="faq-answer">
+                                        <p>You can donate through our website's donation page, bank transfer (IBAN: BE64 9671 9344 6052), or contact us for other donation methods. All donations are tax-deductible.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="faq-item">
+                                    <div class="faq-question">
+                                        <span>Can I volunteer in Ghana?</span>
+                                        <i class="fas fa-chevron-down"></i>
+                                    </div>
+                                    <div class="faq-answer">
+                                        <p>Yes! We welcome medical and non-medical volunteers. Please fill out our volunteer application form or contact us directly to discuss available opportunities.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="faq-item">
+                                    <div class="faq-question">
+                                        <span>Are donations tax-deductible?</span>
+                                        <i class="fas fa-chevron-down"></i>
+                                    </div>
+                                    <div class="faq-answer">
+                                        <p>Yes, all donations to Health4Yu are tax-deductible. We are a registered non-profit organization in Germany (VR 23339). We provide tax receipts for all donations.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="faq-item">
+                                    <div class="faq-question">
+                                        <span>How can my company partner with Health4Yu?</span>
+                                        <i class="fas fa-chevron-down"></i>
+                                    </div>
+                                    <div class="faq-answer">
+                                        <p>We offer various corporate partnership opportunities including sponsorship, equipment donations, and employee volunteer programs. Contact our partnership team for more information.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="faq-item">
+                                    <div class="faq-question">
+                                        <span>Can I donate medical equipment?</span>
+                                        <i class="fas fa-chevron-down"></i>
+                                    </div>
+                                    <div class="faq-answer">
+                                        <p>Absolutely! We accept donations of medical equipment and supplies. Please contact us with details of the equipment you wish to donate so we can coordinate logistics.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Banking Information -->
+                        <div class="bg-white rounded p-4">
+                            <h4 class="mb-3">Banking Information</h4>
+                            <p class="mb-3">For direct donations or wire transfers:</p>
+                            <div class="border rounded p-3 bg-light">
+                                <p class="mb-2"><strong>Account Holder:</strong> Fattah Yunusah</p>
+                                <p class="mb-2"><strong>IBAN:</strong> BE64 9671 9344 6052</p>
+                                <p class="mb-2"><strong>BIC:</strong> TRWIBEB1XXX</p>
+                                <p class="mb-0"><strong>Reference:</strong> Donation Health4Yu</p>
+                            </div>
+                            <p class="small text-muted mt-3">Please include "Donation Health4Yu" in the transfer reference for proper tracking.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- German FAQ Section -->
+                    <div class="content-de">
+                        <div class="mb-5">
+                            <h3 class="mb-4">Häufig gestellte Fragen</h3>
+                            <div class="faq-container">
+                                <div class="faq-item">
+                                    <div class="faq-question">
+                                        <span>Wie kann ich an Health4Yu spenden?</span>
+                                        <i class="fas fa-chevron-down"></i>
+                                    </div>
+                                    <div class="faq-answer">
+                                        <p>Sie können über unsere Spendenseite auf der Website, per Banküberweisung (IBAN: BE64 9671 9344 6052) spenden oder uns für andere Spendenmöglichkeiten kontaktieren. Alle Spenden sind steuerlich absetzbar.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="faq-item">
+                                    <div class="faq-question">
+                                        <span>Kann ich mich in Ghana freiwillig engagieren?</span>
+                                        <i class="fas fa-chevron-down"></i>
+                                    </div>
+                                    <div class="faq-answer">
+                                        <p>Ja! Wir heißen medizinische und nicht-medizinische Freiwillige willkommen. Bitte füllen Sie unser Freiwilligenbewerbungsformular aus oder kontaktieren Sie uns direkt, um über verfügbare Möglichkeiten zu sprechen.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="faq-item">
+                                    <div class="faq-question">
+                                        <span>Sind Spenden steuerlich absetzbar?</span>
+                                        <i class="fas fa-chevron-down"></i>
+                                    </div>
+                                    <div class="faq-answer">
+                                        <p>Ja, alle Spenden an Health4Yu sind steuerlich absetzbar. Wir sind eine eingetragene gemeinnützige Organisation in Deutschland (VR 23339). Wir stellen für alle Spenden Steuerquittungen aus.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="faq-item">
+                                    <div class="faq-question">
+                                        <span>Wie kann mein Unternehmen mit Health4Yu zusammenarbeiten?</span>
+                                        <i class="fas fa-chevron-down"></i>
+                                    </div>
+                                    <div class="faq-answer">
+                                        <p>Wir bieten verschiedene Unternehmenspartnerschaftsmöglichkeiten an, darunter Sponsoring, Ausrüstungsspenden und Mitarbeiter-Freiwilligenprogramme. Kontaktieren Sie unser Partnerschaftsteam für weitere Informationen.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="faq-item">
+                                    <div class="faq-question">
+                                        <span>Kann ich medizinische Ausrüstung spenden?</span>
+                                        <i class="fas fa-chevron-down"></i>
+                                    </div>
+                                    <div class="faq-answer">
+                                        <p>Absolut! Wir akzeptieren Spenden von medizinischer Ausrüstung und Materialien. Bitte kontaktieren Sie uns mit Details zu der Ausrüstung, die Sie spenden möchten, damit wir die Logistik koordinieren können.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Banking Information -->
+                        <div class="bg-white rounded p-4">
+                            <h4 class="mb-3">Bankverbindung</h4>
+                            <p class="mb-3">Für direkte Spenden oder Überweisungen:</p>
+                            <div class="border rounded p-3 bg-light">
+                                <p class="mb-2"><strong>Kontoinhaber:</strong> Fattah Yunusah</p>
+                                <p class="mb-2"><strong>IBAN:</strong> BE64 9671 9344 6052</p>
+                                <p class="mb-2"><strong>BIC:</strong> TRWIBEB1XXX</p>
+                                <p class="mb-0"><strong>Verwendungszweck:</strong> Spende Health4Yu</p>
+                            </div>
+                            <p class="small text-muted mt-3">Bitte geben Sie "Spende Health4Yu" im Verwendungszweck an, um die Zuordnung zu erleichtern.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Contact Form Section End -->
+
+    <!-- Footer Start -->
+    <div class="container-fluid footer py-5 wow fadeIn" data-wow-delay="0.2s">
+        <div class="container py-5">
+            <!-- English Footer -->
+            <div class="content-en">
+                <div class="row g-5 mb-5 align-items-center">
+                    <div class="col-lg-7">
+                        <div class="position-relative mx-auto">
+                            <input class="form-control rounded-pill w-100 py-3 ps-4 pe-5" type="text" placeholder="Email address to Subscribe">
+                            <button type="button" class="btn btn-secondary rounded-pill position-absolute top-0 end-0 py-2 px-4 mt-2 me-2">Subscribe</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row g-5">
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="footer-item d-flex flex-column">
+                            <div class="footer-item">
+                                <h3 class="text-white mb-4"><i class="fas  text-primary me-3"></i>Health4Yu</h3>
+                                <p class="mb-3">Health4Yu is an intercultural charity organization dedicated to building sustainable healthcare in Ghana. Together, we're transforming lives and improving health outcomes in underserved communities.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="footer-item d-flex flex-column">
+                            <h4 class="text-white mb-4">Quick Links</h4>
+                            <a href="index.html" class="text-white mb-2">Home</a>
+                            <a href="about.html" class="text-white mb-2">About Us</a>
+                            <a href="service.html" class="text-white mb-2">Hospital Project</a>
+                            <a href="contact.html" class="text-white mb-2">Contact</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="footer-item d-flex flex-column">
+                            <h4 class="text-white mb-4">Contact Info</h4>
+                            <a href="#"><i class="fa fa-map-marker-alt me-2"></i>Hamburg, Germany</a>
+                            <a href="mailto:contact@health4yu.org"><i class="fas fa-envelope me-2"></i>contact@health4yu.org</a>
+                            <a href="tel:+4921116366233"><i class="fas fa-phone me-2"></i>+49 211 163 66233</a>
+                            <a href="https://wa.me/491789354512"><i class="fab fa-whatsapp me-2"></i>+49 178 9354512 (WhatsApp)</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="footer-item d-flex flex-column">
+                            <h4 class="text-white mb-4">Banking Info</h4>
+                            <p class="text-white mb-2"><strong>Account Holder:</strong> Fattah Yunusah</p>
+                            <p class="text-white mb-2"><strong>IBAN:</strong> BE64 9671 9344 6052</p>
+                            <p class="text-white mb-2"><strong>BIC:</strong> TRWIBEB1XXX</p>
+                            <p class="text-white"><small>All donations are tax-deductible. Registration: VR 23339</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- German Footer -->
+            <div class="content-de">
+                <div class="row g-5 mb-5 align-items-center">
+                    <div class="col-lg-7">
+                        <div class="position-relative mx-auto">
+                            <input class="form-control rounded-pill w-100 py-3 ps-4 pe-5" type="text" placeholder="E-Mail-Adresse zum Abonnieren">
+                            <button type="button" class="btn btn-secondary rounded-pill position-absolute top-0 end-0 py-2 px-4 mt-2 me-2">Abonnieren</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row g-5">
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="footer-item d-flex flex-column">
+                            <div class="footer-item">
+                                <h3 class="text-white mb-4"><i class="fas  text-primary me-3"></i>Health4Yu</h3>
+                                <p class="mb-3">Health4Yu ist eine interkulturelle Wohltätigkeitsorganisation, die sich dem Aufbau nachhaltiger Gesundheitsversorgung in Ghana widmet. Gemeinsam verändern wir Leben und verbessern die Gesundheitsergebnisse in unterversorgten Gemeinden.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="footer-item d-flex flex-column">
+                            <h4 class="text-white mb-4">Schnellzugriff</h4>
+                            <a href="index.html" class="text-white mb-2">Startseite</a>
+                            <a href="about.html" class="text-white mb-2">Über Uns</a>
+                            <a href="service.html" class="text-white mb-2">Krankenhausprojekt</a>
+                            <a href="contact.html" class="text-white mb-2">Kontakt</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="footer-item d-flex flex-column">
+                            <h4 class="text-white mb-4">Kontaktinformationen</h4>
+                            <a href="#"><i class="fa fa-map-marker-alt me-2"></i>Hamburg, Deutschland</a>
+                            <a href="mailto:contact@health4yu.org"><i class="fas fa-envelope me-2"></i>contact@health4yu.org</a>
+                            <a href="tel:+4921116366233"><i class="fas fa-phone me-2"></i>+49 211 163 66233</a>
+                            <a href="https://wa.me/491789354512"><i class="fab fa-whatsapp me-2"></i>+49 178 9354512 (WhatsApp)</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="footer-item d-flex flex-column">
+                            <h4 class="text-white mb-4">Bankverbindung</h4>
+                            <p class="text-white mb-2"><strong>Kontoinhaber:</strong> Fattah Yunusah</p>
+                            <p class="text-white mb-2"><strong>IBAN:</strong> BE64 9671 9344 6052</p>
+                            <p class="text-white mb-2"><strong>BIC:</strong> TRWIBEB1XXX</p>
+                            <p class="text-white"><small>Alle Spenden sind steuerlich absetzbar. Registrierung: VR 23339</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+    <!-- Copyright Start -->
+    <div class="container-fluid copyright py-4">
+        <div class="container">
+            <div class="row g-4 align-items-center">
+                <div class="col-md-6 text-center text-md-start mb-md-0">
+                    <span class="text-body"><a href="#" class="border-bottom text-white"><i class="fas fa-copyright text-light me-2"></i>Health4Yu</a>, All rights reserved.</span>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <span class="text-body">contact@health4yu.org | +49 211 163 66233</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Copyright End -->
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-secondary btn-lg-square rounded-circle back-to-top"><i class="fa fa-arrow-up"></i></a>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+    
+    <!-- Language Switcher Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Language toggle functionality
+            const languageToggle = document.getElementById('languageToggle');
+            const languageDropdown = document.getElementById('languageDropdown');
+            const languageOptions = document.querySelectorAll('.language-option');
+            
+            // Toggle dropdown
+            if (languageToggle) {
+                languageToggle.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    languageDropdown.classList.toggle('show');
+                });
+            }
+            
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function() {
+                if (languageDropdown) {
+                    languageDropdown.classList.remove('show');
+                }
+            });
+            
+            // Language selection
+            languageOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    const selectedLang = this.getAttribute('data-lang');
+                    
+                    // Update active state
+                    languageOptions.forEach(opt => opt.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Update toggle button
+                    const flagImg = languageToggle.querySelector('img');
+                    const langText = languageToggle.querySelector('span');
+                    
+                    if (selectedLang === 'en') {
+                        flagImg.src = 'https://flagcdn.com/w20/gb.png';
+                        langText.textContent = 'EN';
+                        document.body.classList.remove('lang-de');
+                        document.body.classList.add('lang-en');
+                        document.documentElement.lang = 'en';
+                    } else {
+                        flagImg.src = 'https://flagcdn.com/w20/de.png';
+                        langText.textContent = 'DE';
+                        document.body.classList.remove('lang-en');
+                        document.body.classList.add('lang-de');
+                        document.documentElement.lang = 'de';
+                    }
+                    
+                    // Close dropdown
+                    languageDropdown.classList.remove('show');
+                    
+                    // Save language preference to localStorage
+                    localStorage.setItem('preferredLanguage', selectedLang);
+                });
+            });
+            
+            // Check for saved language preference
+            const savedLang = localStorage.getItem('preferredLanguage');
+            if (savedLang === 'de') {
+                // Trigger German language selection
+                const germanOption = document.querySelector('.language-option[data-lang="de"]');
+                if (germanOption) {
+                    germanOption.click();
+                }
+            }
+            
+            // FAQ Accordion functionality
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                
+                question.addEventListener('click', function() {
+                    // Close all other FAQ items
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item && otherItem.classList.contains('active')) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    
+                    // Toggle current item
+                    item.classList.toggle('active');
+                });
+            });
+            
+            // Contact form validation - English version
+            const contactForm = document.getElementById('contactForm');
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    handleFormSubmit(this);
+                });
+            }
+            
+            // Contact form validation - German version
+            const contactFormDE = document.getElementById('contactFormDE');
+            if (contactFormDE) {
+                contactFormDE.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    handleFormSubmit(this);
+                });
+            }
+            
+            function handleFormSubmit(form) {
+                // Basic validation
+                const firstName = form.querySelector('[name="firstName"]')?.value.trim();
+                const lastName = form.querySelector('[name="lastName"]')?.value.trim();
+                const email = form.querySelector('[name="email"]')?.value.trim();
+                const subject = form.querySelector('[name="subject"]')?.value;
+                const message = form.querySelector('[name="message"]')?.value.trim();
+                
+                let isValid = true;
+                let errorMessage = '';
+                
+                // Reset error states
+                const inputs = form.querySelectorAll('.form-control, .form-select');
+                inputs.forEach(input => {
+                    input.classList.remove('is-invalid');
+                });
+                
+                // Validate required fields
+                if (!firstName) {
+                    form.querySelector('[name="firstName"]')?.classList.add('is-invalid');
+                    isValid = false;
+                    errorMessage += (document.body.classList.contains('lang-de') ? 'Vorname ist erforderlich.\n' : 'First name is required.\n');
+                }
+                
+                if (!lastName) {
+                    form.querySelector('[name="lastName"]')?.classList.add('is-invalid');
+                    isValid = false;
+                    errorMessage += (document.body.classList.contains('lang-de') ? 'Nachname ist erforderlich.\n' : 'Last name is required.\n');
+                }
+                
+                if (!email) {
+                    form.querySelector('[name="email"]')?.classList.add('is-invalid');
+                    isValid = false;
+                    errorMessage += (document.body.classList.contains('lang-de') ? 'E-Mail-Adresse ist erforderlich.\n' : 'Email address is required.\n');
+                } else if (!isValidEmail(email)) {
+                    form.querySelector('[name="email"]')?.classList.add('is-invalid');
+                    isValid = false;
+                    errorMessage += (document.body.classList.contains('lang-de') ? 'Bitte geben Sie eine gültige E-Mail-Adresse ein.\n' : 'Please enter a valid email address.\n');
+                }
+                
+                if (!subject) {
+                    form.querySelector('[name="subject"]')?.classList.add('is-invalid');
+                    isValid = false;
+                    errorMessage += (document.body.classList.contains('lang-de') ? 'Bitte wählen Sie ein Thema.\n' : 'Please select a subject.\n');
+                }
+                
+                if (!message) {
+                    form.querySelector('[name="message"]')?.classList.add('is-invalid');
+                    isValid = false;
+                    errorMessage += (document.body.classList.contains('lang-de') ? 'Nachricht ist erforderlich.\n' : 'Message is required.\n');
+                }
+                
+                if (isValid) {
+                    const submitBtn = form.querySelector('.btn-submit');
+                    const originalText = submitBtn.textContent;
+                    
+                    // Simulate form submission
+                    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>' + 
+                                         (document.body.classList.contains('lang-de') ? 'Wird gesendet...' : 'Sending...');
+                    submitBtn.disabled = true;
+                    
+                    setTimeout(() => {
+                        // Show success message
+                        const successAlert = document.createElement('div');
+                        successAlert.className = 'alert alert-success alert-dismissible fade show';
+                        
+                        if (document.body.classList.contains('lang-de')) {
+                            successAlert.innerHTML = `
+                                <strong>Nachricht erfolgreich gesendet!</strong> Wir melden uns innerhalb von 24-48 Stunden bei Ihnen.
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                            `;
+                        } else {
+                            successAlert.innerHTML = `
+                                <strong>Message Sent Successfully!</strong> We'll get back to you within 24-48 hours.
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                            `;
+                        }
+                        
+                        form.insertBefore(successAlert, form.firstChild);
+                        
+                        // Reset form
+                        form.reset();
+                        
+                        // Reset button
+                        submitBtn.innerHTML = originalText;
+                        submitBtn.disabled = false;
+                        
+                        // Scroll to success message
+                        successAlert.scrollIntoView({ behavior: 'smooth' });
+                    }, 1500);
+                } else {
+                    alert((document.body.classList.contains('lang-de') ? 'Bitte beheben Sie die folgenden Fehler:\n\n' : 'Please fix the following errors:\n\n') + errorMessage);
+                }
+            }
+            
+            // Email validation function
+            function isValidEmail(email) {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return emailRegex.test(email);
+            }
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const targetId = this.getAttribute('href');
+                    
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        e.preventDefault();
+                        
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
