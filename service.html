@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Hospital Project - Health4Yu</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <link rel="icon" type="image/x-icon" href="logo.webp">
+    
+    <!-- Multilingual Meta Descriptions -->
+    <meta content="Support Health4Yu's hospital construction project in Ghana. Learn how we're building sustainable healthcare facilities, providing medical equipment, and training local healthcare professionals.">
+    <meta name="description-de" content="Unterstützen Sie das Krankenhausbauprojekt von Health4Yu in Ghana. Erfahren Sie, wie wir nachhaltige Gesundheitseinrichtungen aufbauen, medizinische Geräte bereitstellen und lokale medizinische Fachkräfte schulen.">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wdth,wght@0,75..100,300..800;1,75..100,300..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet"> 
+
+    <!-- Icon Font Stylesheet -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- Language Switcher Styles -->
+    <style>
+        /* Language Switcher */
+        .language-switcher {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .language-btn {
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            padding: 5px 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+        
+        .language-btn:hover {
+            background: #f8f9fa;
+            border-color: #007bff;
+        }
+        
+        .language-dropdown {
+            display: none;
+            position: absolute;
+            background: white;
+            min-width: 140px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            z-index: 1000;
+            top: 100%;
+            right: 0;
+            margin-top: 5px;
+        }
+        
+        .language-dropdown.show {
+            display: block;
+        }
+        
+        .language-option {
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        
+        .language-option:hover {
+            background: #f8f9fa;
+        }
+        
+        .language-option.active {
+            background: #e9f7fe;
+            color: #007bff;
+        }
+        
+        .flag-icon {
+            width: 20px;
+            height: 15px;
+            border-radius: 2px;
+        }
+        
+        /* Language-specific content hiding */
+        .content-en {
+            display: block;
+        }
+        
+        .content-de {
+            display: none;
+        }
+        
+        .lang-de .content-en {
+            display: none;
+        }
+        
+        .lang-de .content-de {
+            display: block;
+        }
+        
+        /* Additional styles for the Hospital Project page */
+        .project-hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('./lp2.webp');
+            background-size: cover;
+            background-position: center;
+            color: white;
+        }
+        
+        .phase-card {
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            height: 100%;
+        }
+        
+        .phase-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .phase-number {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #0d6efd;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            margin: 0 auto 20px;
+        }
+        
+        .impact-stats {
+            background: linear-gradient(135deg, #0d6efd 0%, #0b5ed7 100%);
+            color: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin: 20px 0;
+        }
+        
+        .support-option {
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            padding: 30px;
+            height: 100%;
+            transition: all 0.3s;
+        }
+        
+        .support-option:hover {
+            border-color: #0d6efd;
+            background-color: rgba(13, 110, 253, 0.05);
+        }
+        
+        .donation-tier {
+            border: 2px solid #0d6efd;
+            border-radius: 10px;
+            padding: 25px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+        
+        .donation-tier:hover {
+            background-color: rgba(13, 110, 253, 0.1);
+            transform: scale(1.02);
+        }
+        
+        .timeline-container {
+            position: relative;
+            padding-left: 40px;
+        }
+        
+        .timeline-container::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: #0d6efd;
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 40px;
+            padding-left: 20px;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -33px;
+            top: 5px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: white;
+            border: 4px solid #0d6efd;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .gallery-item {
+            overflow: hidden;
+            border-radius: 10px;
+            position: relative;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+
+<body class="lang-en">
+
+    <!-- Spinner Start -->
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+            <span class="sr-only content-en">Loading...</span>
+            <span class="sr-only content-de">Lädt...</span>
+        </div>
+    </div>
+    <!-- Spinner End -->
+
+    <!-- Navbar & Hero Start -->
+    <div class="container-fluid position-relative p-0">
+        <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
+            <a href="index.html" class="navbar-brand p-0">
+                <img style="height: 3cm; opacity: 70%;" src="logo.webp" alt="Health4Yu Logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="fa fa-bars"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav ms-auto py-0">
+                    <!-- English Navigation -->
+                    <a href="index.html" class="nav-item nav-link content-en">Home</a>
+                    <a href="about.html" class="nav-item nav-link content-en">About Us</a>
+                    <a href="service.html" class="nav-item nav-link active content-en">Hospital Project</a>
+                    <a href="contact.html" class="nav-item nav-link content-en">Contact</a>
+                    
+                    <!-- German Navigation -->
+                    <a href="index.html" class="nav-item nav-link content-de">Startseite</a>
+                    <a href="about.html" class="nav-item nav-link content-de">Über Uns</a>
+                    <a href="service.html" class="nav-item nav-link active content-de">Krankenhausprojekt</a>
+                    <a href="contact.html" class="nav-item nav-link content-de">Kontakt</a>
+                </div>
+                
+                <!-- Language Switcher -->
+                <div class="language-switcher ms-3">
+                    <div class="language-btn" id="languageToggle">
+                        <img src="https://flagcdn.com/w20/gb.png" class="flag-icon" alt="English">
+                        <span class="content-en">EN</span>
+                        <span class="content-de">DE</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="language-dropdown" id="languageDropdown">
+                        <div class="language-option active" data-lang="en">
+                            <img src="https://flagcdn.com/w20/gb.png" class="flag-icon" alt="English">
+                            <span>English</span>
+                        </div>
+                        <div class="language-option" data-lang="de">
+                            <img src="https://flagcdn.com/w20/de.png" class="flag-icon" alt="Deutsch">
+                            <span>Deutsch</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <a href="Donate.html" class="btn btn-primary rounded-pill d-inline-flex flex-shrink-0 py-2 px-4 ms-3 content-en">Donate Now</a>
+                <a href="Donate.html" class="btn btn-primary rounded-pill d-inline-flex flex-shrink-0 py-2 px-4 ms-3 content-de">Jetzt Spenden</a>
+            </div>
+        </nav>
+
+        <!-- Project Hero Section Start -->
+        <div class="container-fluid project-hero-section py-5 mb-5">
+            <div class="container py-5">
+                <div class="row g-5 align-items-center">
+                    <div class="col-lg-6">
+                        <!-- English Hero -->
+                        <div class="content-en">
+                            <h1 class="display-4 mb-3 text-white">Building Sustainable Healthcare in Ghana</h1>
+                            <p class="fs-5 text-light mb-5">Join us in constructing and equipping hospitals that will serve thousands in underserved communities. Your support creates lasting impact.</p>
+                            <div class="d-flex">
+                                <a href="#donate" class="btn btn-primary rounded-pill flex-shrink-0 py-3 px-5 me-3">Donate Now</a>
+                                <a href="#volunteer" class="btn btn-outline-light rounded-pill flex-shrink-0 py-3 px-5">Volunteer</a>
+                            </div>
+                        </div>
+                        
+                        <!-- German Hero -->
+                        <div class="content-de">
+                            <h1 class="display-4 mb-3 text-white">Nachhaltige Gesundheitsversorgung in Ghana aufbauen</h1>
+                            <p class="fs-5 text-light mb-5">Begleiten Sie uns beim Bau und der Ausstattung von Krankenhäusern, die Tausende in unterversorgten Gemeinden versorgen werden. Ihre Unterstützung schafft nachhaltige Wirkung.</p>
+                            <div class="d-flex">
+                                <a href="#donate" class="btn btn-primary rounded-pill flex-shrink-0 py-3 px-5 me-3">Jetzt Spenden</a>
+                                <a href="#volunteer" class="btn btn-outline-light rounded-pill flex-shrink-0 py-3 px-5">Freiwilligenarbeit</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <!-- Empty column for layout balance -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Project Hero Section End -->
+    </div>
+    <!-- Navbar & Hero End -->
+
+    <!-- Project Overview Section Start -->
+    <div class="container-fluid py-5">
+        <div class="container py-5">
+            <!-- English Project Overview -->
+            <div class="content-en">
+                <div class="text-center mx-auto mb-5" style="max-width: 800px;">
+                    <h4 class="text-primary text-uppercase">Our Flagship Initiative</h4>
+                    <h1 class="display-4 mb-4">Hospital Construction Project</h1>
+                    <p class="fs-5 mb-4">We're building a comprehensive healthcare facility in Northern Ghana that will provide essential medical services to over 50,000 people currently lacking access to proper healthcare.</p>
+                </div>
+                
+                <div class="row g-4">
+                    <div class="col-lg-4">
+                        <div class="phase-card bg-light p-4">
+                            <div class="phase-number">1</div>
+                            <h3 class="text-center mb-3">Planning & Design</h3>
+                            <p>Working with local communities and healthcare experts to design a facility that meets specific regional needs, with focus on maternal and child healthcare services.</p>
+                            <ul class="mt-3">
+                                <li>Community needs assessment</li>
+                                <li>Architectural design</li>
+                                <li>Equipment planning</li>
+                                <li>Budget development</li>
+                            </ul>
+                            <div class="mt-3">
+                                <span class="badge bg-success">Completed</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="phase-card bg-light p-4">
+                            <div class="phase-number">2</div>
+                            <h3 class="text-center mb-3">Construction Phase</h3>
+                            <p>Building the physical infrastructure with sustainable materials and local labor, creating employment opportunities while constructing the facility.</p>
+                            <ul class="mt-3">
+                                <li>Foundation and structure</li>
+                                <li>Utilities installation</li>
+                                <li>Interior finishing</li>
+                                <li>Local employment generation</li>
+                            </ul>
+                            <div class="mt-3">
+                                <span class="badge bg-primary">Current Phase</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="phase-card bg-light p-4">
+                            <div class="phase-number">3</div>
+                            <h3 class="text-center mb-3">Equipment & Operation</h3>
+                            <p>Equipping the hospital with necessary medical equipment and training local staff to ensure sustainable operation and maximum community impact.</p>
+                            <ul class="mt-3">
+                                <li>Medical equipment installation</li>
+                                <li>Staff recruitment & training</li>
+                                <li>Community health programs</li>
+                                <li>Sustainability planning</li>
+                            </ul>
+                            <div class="mt-3">
+                                <span class="badge bg-secondary">Upcoming</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- German Project Overview -->
+            <div class="content-de">
+                <div class="text-center mx-auto mb-5" style="max-width: 800px;">
+                    <h4 class="text-primary text-uppercase">Unsere Flaggschiff-Initiative</h4>
+                    <h1 class="display-4 mb-4">Krankenhausbauprojekt</h1>
+                    <p class="fs-5 mb-4">Wir bauen eine umfassende Gesundheitseinrichtung in Nordghana, die über 50.000 Menschen, die derzeit keinen Zugang zu angemessener Gesundheitsversorgung haben, wichtige medizinische Dienstleistungen bieten wird.</p>
+                </div>
+                
+                <div class="row g-4">
+                    <div class="col-lg-4">
+                        <div class="phase-card bg-light p-4">
+                            <div class="phase-number">1</div>
+                            <h3 class="text-center mb-3">Planung & Design</h3>
+                            <p>Zusammenarbeit mit lokalen Gemeinden und Gesundheitsexperten zur Gestaltung einer Einrichtung, die den spezifischen regionalen Bedürfnissen gerecht wird, mit Schwerpunkt auf Mutter-Kind-Gesundheitsdiensten.</p>
+                            <ul class="mt-3">
+                                <li>Gemeindebedarfsermittlung</li>
+                                <li>Architektonische Gestaltung</li>
+                                <li>Ausrüstungsplanung</li>
+                                <li>Budgetentwicklung</li>
+                            </ul>
+                            <div class="mt-3">
+                                <span class="badge bg-success">Abgeschlossen</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="phase-card bg-light p-4">
+                            <div class="phase-number">2</div>
+                            <h3 class="text-center mb-3">Bauphase</h3>
+                            <p>Errichtung der physischen Infrastruktur mit nachhaltigen Materialien und lokalen Arbeitskräften, Schaffung von Beschäftigungsmöglichkeiten während des Baus der Einrichtung.</p>
+                            <ul class="mt-3">
+                                <li>Fundament und Struktur</li>
+                                <li>Versorgungsleitungsinstallation</li>
+                                <li>Innenausbau</li>
+                                <li>Generierung lokaler Arbeitsplätze</li>
+                            </ul>
+                            <div class="mt-3">
+                                <span class="badge bg-primary">Aktuelle Phase</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="phase-card bg-light p-4">
+                            <div class="phase-number">3</div>
+                            <h3 class="text-center mb-3">Ausrüstung & Betrieb</h3>
+                            <p>Ausrüstung des Krankenhauses mit notwendiger medizinischer Ausstattung und Schulung des lokalen Personals, um einen nachhaltigen Betrieb und maximale Gemeindewirkung zu gewährleisten.</p>
+                            <ul class="mt-3">
+                                <li>Installation medizinischer Geräte</li>
+                                <li>Personalrekrutierung & Schulung</li>
+                                <li>Gemeindegesundheitsprogramme</li>
+                                <li>Nachhaltigkeitsplanung</li>
+                            </ul>
+                            <div class="mt-3">
+                                <span class="badge bg-secondary">Bevorstehend</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Project Overview Section End -->
+
+    <!-- Impact & Urgency Section Start -->
+    <div class="container-fluid bg-light py-5">
+        <div class="container py-5">
+            <div class="row g-5 align-items-center">
+                <div class="col-lg-6">
+                    <!-- English Urgency Section -->
+                    <div class="content-en">
+                        <h4 class="text-primary text-uppercase">The Urgent Need</h4>
+                        <h1 class="display-4 mb-4">Why This Project Matters</h1>
+                        <p class="fs-5 mb-4">In rural Ghana, access to healthcare remains a significant challenge. Many communities face:</p>
+                        
+                        <div class="timeline-container">
+                            <div class="timeline-item">
+                                <h5 class="text-primary">Long Travel Distances</h5>
+                                <p>Patients often travel 50+ kilometers to reach the nearest medical facility, risking complications during emergencies.</p>
+                            </div>
+                            <div class="timeline-item">
+                                <h5 class="text-primary">Lack of Equipment</h5>
+                                <p>Existing facilities frequently lack basic medical equipment, limiting their ability to provide adequate care.</p>
+                            </div>
+                            <div class="timeline-item">
+                                <h5 class="text-primary">Maternal & Child Health Crisis</h5>
+                                <p>High rates of maternal and infant mortality due to limited prenatal and postnatal care services.</p>
+                            </div>
+                            <div class="timeline-item">
+                                <h5 class="text-primary">Healthcare Professional Shortage</h5>
+                                <p>Insufficient numbers of trained medical staff in rural areas, leading to overwhelmed existing facilities.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- German Urgency Section -->
+                    <div class="content-de">
+                        <h4 class="text-primary text-uppercase">Der dringende Bedarf</h4>
+                        <h1 class="display-4 mb-4">Warum dieses Projekt wichtig ist</h1>
+                        <p class="fs-5 mb-4">Im ländlichen Ghana bleibt der Zugang zur Gesundheitsversorgung eine erhebliche Herausforderung. Viele Gemeinden sind mit folgenden Problemen konfrontiert:</p>
+                        
+                        <div class="timeline-container">
+                            <div class="timeline-item">
+                                <h5 class="text-primary">Lange Anfahrtswege</h5>
+                                <p>Patienten müssen oft 50+ Kilometer zurücklegen, um die nächste medizinische Einrichtung zu erreichen, was bei Notfällen zu Komplikationen führen kann.</p>
+                            </div>
+                            <div class="timeline-item">
+                                <h5 class="text-primary">Mangel an Ausrüstung</h5>
+                                <p>Bestehende Einrichtungen fehlt häufig grundlegende medizinische Ausrüstung, was ihre Fähigkeit zur angemessenen Versorgung einschränkt.</p>
+                            </div>
+                            <div class="timeline-item">
+                                <h5 class="text-primary">Gesundheitskrise bei Müttern und Kindern</h5>
+                                <p>Hohe Raten von Mütter- und Säuglingssterblichkeit aufgrund begrenzter prä- und postnataler Versorgungsdienste.</p>
+                            </div>
+                            <div class="timeline-item">
+                                <h5 class="text-primary">Mangel an medizinischem Fachpersonal</h5>
+                                <p>Unzureichende Anzahl ausgebildeter medizinischer Fachkräfte in ländlichen Gebieten, was zu überlasteten bestehenden Einrichtungen führt.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <!-- English Impact Stats -->
+                    <div class="content-en">
+                        <div class="impact-stats">
+                            <h3 class="text-center mb-4">Project Impact</h3>
+                            <div class="row text-center">
+                                <div class="col-6 mb-4">
+                                    <h2 class="display-4">50,000+</h2>
+                                    <p>People served annually</p>
+                                </div>
+                                <div class="col-6 mb-4">
+                                    <h2 class="display-4">100+</h2>
+                                    <p>Local jobs created</p>
+                                </div>
+                                <div class="col-6">
+                                    <h2 class="display-4">24/7</h2>
+                                    <p>Emergency services</p>
+                                </div>
+                                <div class="col-6">
+                                    <h2 class="display-4">10+</h2>
+                                    <p>Villages served</p>
+                                </div>
+                            </div>
+                            <div class="text-center mt-4">
+                                <p class="mb-0">This hospital will provide:</p>
+                                <div class="d-flex flex-wrap justify-content-center mt-2">
+                                    <span class="badge bg-light text-primary m-1 p-2">Maternity Care</span>
+                                    <span class="badge bg-light text-primary m-1 p-2">Pediatric Services</span>
+                                    <span class="badge bg-light text-primary m-1 p-2">Emergency Care</span>
+                                    <span class="badge bg-light text-primary m-1 p-2">General Medicine</span>
+                                    <span class="badge bg-light text-primary m-1 p-2">Laboratory Services</span>
+                                    <span class="badge bg-light text-primary m-1 p-2">Community Health Education</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- German Impact Stats -->
+                    <div class="content-de">
+                        <div class="impact-stats">
+                            <h3 class="text-center mb-4">Projektwirkung</h3>
+                            <div class="row text-center">
+                                <div class="col-6 mb-4">
+                                    <h2 class="display-4">50.000+</h2>
+                                    <p>Menschen jährlich versorgt</p>
+                                </div>
+                                <div class="col-6 mb-4">
+                                    <h2 class="display-4">100+</h2>
+                                    <p>Lokale Arbeitsplätze geschaffen</p>
+                                </div>
+                                <div class="col-6">
+                                    <h2 class="display-4">24/7</h2>
+                                    <p>Notfalldienste</p>
+                                </div>
+                                <div class="col-6">
+                                    <h2 class="display-4">10+</h2>
+                                    <p>Versorgte Dörfer</p>
+                                </div>
+                            </div>
+                            <div class="text-center mt-4">
+                                <p class="mb-0">Dieses Krankenhaus wird bieten:</p>
+                                <div class="d-flex flex-wrap justify-content-center mt-2">
+                                    <span class="badge bg-light text-primary m-1 p-2">Geburtshilfe</span>
+                                    <span class="badge bg-light text-primary m-1 p-2">Pädiatrische Dienste</span>
+                                    <span class="badge bg-light text-primary m-1 p-2">Notfallversorgung</span>
+                                    <span class="badge bg-light text-primary m-1 p-2">Allgemeinmedizin</span>
+                                    <span class="badge bg-light text-primary m-1 p-2">Labordienste</span>
+                                    <span class="badge bg-light text-primary m-1 p-2">Gemeindegesundheitsaufklärung</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Impact & Urgency Section End -->
+
+    <!-- How to Support Section Start -->
+    <div id="donate" class="container-fluid py-5">
+        <div class="container py-5">
+            <!-- English Support Section -->
+            <div class="content-en">
+                <div class="text-center mx-auto mb-5" style="max-width: 800px;">
+                    <h4 class="text-primary text-uppercase">Get Involved</h4>
+                    <h1 class="display-4 mb-4">How You Can Support</h1>
+                    <p class="fs-5 mb-4">Every contribution brings us closer to completing this life-saving facility. Choose how you'd like to make a difference.</p>
+                </div>
+                
+                <div class="row g-4 mb-5">
+                    <div class="col-md-4">
+                        <div class="support-option text-center">
+                            <i class="fas fa-donate text-primary fa-3x mb-3"></i>
+                            <h3 class="mb-3">Financial Donation</h3>
+                            <p class="mb-4">Direct financial support helps us purchase construction materials, medical equipment, and pay local workers.</p>
+                            <div class="mt-4">
+                                <h5>Tax Benefits:</h5>
+                                <p class="small">All donations are tax-deductible. Registration: VR 23339</p>
+                            </div>
+                            <a href="Donate.html" class="btn btn-primary rounded-pill mt-3">Donate Now</a>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="support-option text-center">
+                            <i class="fas fa-hands-helping text-primary fa-3x mb-3"></i>
+                            <h3 class="mb-3" id="volunteer">Volunteer</h3>
+                            <p class="mb-4">Medical professionals, construction experts, and general volunteers are needed both on-site and remotely.</p>
+                            <div class="mt-4">
+                                <h5>Volunteer Roles:</h5>
+                                <p class="small">Medical staff, construction help, fundraising, administrative support</p>
+                            </div>
+                            <a href="contact.html" class="btn btn-outline-primary rounded-pill mt-3">Volunteer Form</a>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="support-option text-center">
+                            <i class="fas fa-medkit text-primary fa-3x mb-3"></i>
+                            <h3 class="mb-3">Equipment & Supplies</h3>
+                            <p class="mb-4">Donate medical equipment, supplies, or help organize equipment drives in your community.</p>
+                            <div class="mt-4">
+                                <h5>Most Needed:</h5>
+                                <p class="small">Hospital beds, surgical tools, diagnostic equipment, medications</p>
+                            </div>
+                            <a href="contact.html" class="btn btn-primary rounded-pill mt-3">Inquire About Equipment</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Donation Tiers -->
+                <div class="text-center mb-5">
+                    <h3 class="mb-4">Donation Impact Examples</h3>
+                    <p class="mb-4">See how different donation amounts contribute to the project:</p>
+                </div>
+                
+                <div class="row g-4">
+                    <div class="col-md-3">
+                        <div class="donation-tier">
+                            <h4 class="text-primary">€50</h4>
+                            <p class="mb-3">Provides basic medical supplies for one week</p>
+                            <a href="Donate.html" class="btn btn-outline-primary btn-sm">Donate</a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="donation-tier">
+                            <h4 class="text-primary">€250</h4>
+                            <p class="mb-3">Sponsors a hospital bed</p>
+                            <a href="Donate.html" class="btn btn-outline-primary btn-sm">Donate</a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="donation-tier">
+                            <h4 class="text-primary">€1,000</h4>
+                            <p class="mb-3">Funds one month of construction labor</p>
+                            <a href="Donate.html" class="btn btn-outline-primary btn-sm">Donate</a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="donation-tier">
+                            <h4 class="text-primary">€5,000+</h4>
+                            <p class="mb-3">Sponsors an entire room or major equipment</p>
+                            <a href="Donate.html" class="btn btn-outline-primary btn-sm">Donate</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- German Support Section -->
+            <div class="content-de">
+                <div class="text-center mx-auto mb-5" style="max-width: 800px;">
+                    <h4 class="text-primary text-uppercase">Mitmachen</h4>
+                    <h1 class="display-4 mb-4">So können Sie unterstützen</h1>
+                    <p class="fs-5 mb-4">Jeder Beitrag bringt uns näher an die Fertigstellung dieser lebensrettenden Einrichtung. Wählen Sie, wie Sie einen Unterschied machen möchten.</p>
+                </div>
+                
+                <div class="row g-4 mb-5">
+                    <div class="col-md-4">
+                        <div class="support-option text-center">
+                            <i class="fas fa-donate text-primary fa-3x mb-3"></i>
+                            <h3 class="mb-3">Finanzielle Spende</h3>
+                            <p class="mb-4">Direkte finanzielle Unterstützung hilft uns, Baumaterialien, medizinische Ausrüstung zu kaufen und lokale Arbeiter zu bezahlen.</p>
+                            <div class="mt-4">
+                                <h5>Steuervorteile:</h5>
+                                <p class="small">Alle Spenden sind steuerlich absetzbar. Registrierung: VR 23339</p>
+                            </div>
+                            <a href="Donate.html" class="btn btn-primary rounded-pill mt-3">Jetzt Spenden</a>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="support-option text-center">
+                            <i class="fas fa-hands-helping text-primary fa-3x mb-3"></i>
+                            <h3 class="mb-3" id="volunteer">Freiwilligenarbeit</h3>
+                            <p class="mb-4">Medizinische Fachkräfte, Bauexperten und allgemeine Freiwillige werden sowohl vor Ort als auch aus der Ferne benötigt.</p>
+                            <div class="mt-4">
+                                <h5>Freiwilligenrollen:</h5>
+                                <p class="small">Medizinisches Personal, Bauhilfe, Fundraising, administrative Unterstützung</p>
+                            </div>
+                            <a href="contact.html" class="btn btn-outline-primary rounded-pill mt-3">Freiwilligenformular</a>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="support-option text-center">
+                            <i class="fas fa-medkit text-primary fa-3x mb-3"></i>
+                            <h3 class="mb-3">Ausrüstung & Materialien</h3>
+                            <p class="mb-4">Spenden Sie medizinische Ausrüstung, Materialien oder helfen Sie bei der Organisation von Ausrüstungssammlungen in Ihrer Gemeinde.</p>
+                            <div class="mt-4">
+                                <h5>Am meisten benötigt:</h5>
+                                <p class="small">Krankenhausbetten, chirurgische Instrumente, Diagnosegeräte, Medikamente</p>
+                            </div>
+                            <a href="contact.html" class="btn btn-primary rounded-pill mt-3">Zu Ausrüstung informieren</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Donation Tiers -->
+                <div class="text-center mb-5">
+                    <h3 class="mb-4">Beispiele für Spendenwirkungen</h3>
+                    <p class="mb-4">Sehen Sie, wie verschiedene Spendenbeträge zum Projekt beitragen:</p>
+                </div>
+                
+                <div class="row g-4">
+                    <div class="col-md-3">
+                        <div class="donation-tier">
+                            <h4 class="text-primary">€50</h4>
+                            <p class="mb-3">Stellt grundlegende medizinische Versorgungsmaterialien für eine Woche bereit</p>
+                            <a href="Donate.html" class="btn btn-outline-primary btn-sm">Spenden</a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="donation-tier">
+                            <h4 class="text-primary">€250</h4>
+                            <p class="mb-3">Sponsert ein Krankenhausbett</p>
+                            <a href="Donate.html" class="btn btn-outline-primary btn-sm">Spenden</a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="donation-tier">
+                            <h4 class="text-primary">€1.000</h4>
+                            <p class="mb-3">Finanziert einen Monat Bauarbeitskräfte</p>
+                            <a href="Donate.html" class="btn btn-outline-primary btn-sm">Spenden</a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="donation-tier">
+                            <h4 class="text-primary">€5.000+</h4>
+                            <p class="mb-3">Sponsert einen ganzen Raum oder größere Ausrüstung</p>
+                            <a href="Donate.html" class="btn btn-outline-primary btn-sm">Spenden</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- How to Support Section End -->
+
+    <!-- Transparency & Banking Section Start -->
+    <div class="container-fluid py-5">
+        <div class="container py-5">
+            <!-- English Transparency Section -->
+            <div class="content-en">
+                <div class="row g-5">
+                    <div class="col-lg-6">
+                        <div class="bg-light rounded p-5 h-100">
+                            <h3 class="mb-4">Transparency & Accountability</h3>
+                            <p class="mb-4">We are committed to using every donation effectively and transparently:</p>
+                            <ul class="mb-4">
+                                <li class="mb-2">✅ Registered non-profit in Germany (VR 23339)</li>
+                                <li class="mb-2">✅ All donations are tax-deductible</li>
+                                <li class="mb-2">✅ Regular project progress reports</li>
+                                <li class="mb-2">✅ Detailed financial accountability</li>
+                                <li>✅ Impact assessment for all initiatives</li>
+                            </ul>
+                            <p>We provide regular updates to donors about how their contributions are being used and the progress of construction.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="bg-light rounded p-5 h-100">
+                            <h3 class="mb-4">Banking Information</h3>
+                            <p class="mb-4">For direct donations to support the hospital construction project:</p>
+                            <div class="border p-4 rounded bg-white">
+                                <p class="mb-2"><strong>Account Holder:</strong> Fattah Yunusah</p>
+                                <p class="mb-2"><strong>IBAN:</strong> BE64 9671 9344 6052</p>
+                                <p class="mb-2"><strong>BIC:</strong> TRWIBEB1XXX</p>
+                                <p class="mb-0"><strong>Reference:</strong> Hospital Project Ghana</p>
+                            </div>
+                            <div class="mt-4">
+                                <p class="small text-muted">For wire transfers, please include "Hospital Project Ghana" in the reference field. All donors receive a confirmation email and tax receipt.</p>
+                            </div>
+                            <a href="contact.html" class="btn btn-outline-primary rounded-pill mt-3">Request Tax Receipt</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Final Call to Action -->
+                <div class="text-center mt-5 pt-5">
+                    <h2 class="mb-4">Ready to Make a Lasting Impact?</h2>
+                    <p class="fs-5 mb-4">Join hundreds of donors who are helping us build sustainable healthcare in Ghana. Every contribution brings hope and healing to thousands.</p>
+                    <div class="d-flex justify-content-center">
+                        <a href="Donate.html" class="btn btn-primary rounded-pill py-3 px-5 me-3">Donate Now</a>
+                        <a href="contact.html" class="btn btn-outline-primary rounded-pill py-3 px-5">Contact Us</a>
+                    </div>
+                    <p class="mt-4">
+                        <small class="text-muted">Questions? Email us at <a href="mailto:contact@health4yu.org">contact@health4yu.org</a> or call +49 211 163 66233</small>
+                    </p>
+                </div>
+            </div>
+            
+            <!-- German Transparency Section -->
+            <div class="content-de">
+                <div class="row g-5">
+                    <div class="col-lg-6">
+                        <div class="bg-light rounded p-5 h-100">
+                            <h3 class="mb-4">Transparenz & Verantwortlichkeit</h3>
+                            <p class="mb-4">Wir verpflichten uns, jede Spende effektiv und transparent zu nutzen:</p>
+                            <ul class="mb-4">
+                                <li class="mb-2">✅ Registrierte gemeinnützige Organisation in Deutschland (VR 23339)</li>
+                                <li class="mb-2">✅ Alle Spenden sind steuerlich absetzbar</li>
+                                <li class="mb-2">✅ Regelmäßige Projektfortschrittsberichte</li>
+                                <li class="mb-2">✅ Detaillierte finanzielle Verantwortlichkeit</li>
+                                <li>✅ Wirkungsbewertung für alle Initiativen</li>
+                            </ul>
+                            <p>Wir bieten Spendern regelmäßige Updates darüber, wie ihre Beiträge verwendet werden und wie der Bau voranschreitet.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="bg-light rounded p-5 h-100">
+                            <h3 class="mb-4">Bankverbindung</h3>
+                            <p class="mb-4">Für direkte Spenden zur Unterstützung des Krankenhausbauprojekts:</p>
+                            <div class="border p-4 rounded bg-white">
+                                <p class="mb-2"><strong>Kontoinhaber:</strong> Fattah Yunusah</p>
+                                <p class="mb-2"><strong>IBAN:</strong> BE64 9671 9344 6052</p>
+                                <p class="mb-2"><strong>BIC:</strong> TRWIBEB1XXX</p>
+                                <p class="mb-0"><strong>Verwendungszweck:</strong> Hospital Project Ghana</p>
+                            </div>
+                            <div class="mt-4">
+                                <p class="small text-muted">Für Überweisungen geben Sie bitte "Hospital Project Ghana" im Verwendungszweck an. Alle Spender erhalten eine Bestätigungs-E-Mail und eine Steuerquittung.</p>
+                            </div>
+                            <a href="contact.html" class="btn btn-outline-primary rounded-pill mt-3">Steuerquittung anfordern</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Final Call to Action -->
+                <div class="text-center mt-5 pt-5">
+                    <h2 class="mb-4">Bereit, nachhaltige Wirkung zu erzielen?</h2>
+                    <p class="fs-5 mb-4">Schließen Sie sich Hunderten von Spendern an, die uns beim Aufbau nachhaltiger Gesundheitsversorgung in Ghana helfen. Jeder Beitrag bringt Tausenden Hoffnung und Heilung.</p>
+                    <div class="d-flex justify-content-center">
+                        <a href="Donate.html" class="btn btn-primary rounded-pill py-3 px-5 me-3">Jetzt Spenden</a>
+                        <a href="contact.html" class="btn btn-outline-primary rounded-pill py-3 px-5">Kontaktieren Sie uns</a>
+                    </div>
+                    <p class="mt-4">
+                        <small class="text-muted">Fragen? Schreiben Sie uns an <a href="mailto:contact@health4yu.org">contact@health4yu.org</a> oder rufen Sie +49 211 163 66233 an</small>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Transparency & Banking Section End -->
+
+    <!-- Footer Start -->
+    <div class="container-fluid footer py-5 wow fadeIn" data-wow-delay="0.2s">
+        <div class="container py-5">
+            <!-- English Footer -->
+            <div class="content-en">
+                <div class="row g-5 mb-5 align-items-center">
+                    <div class="col-lg-7">
+                        <div class="position-relative mx-auto">
+                            <input class="form-control rounded-pill w-100 py-3 ps-4 pe-5" type="text" placeholder="Email address to Subscribe">
+                            <button type="button" class="btn btn-secondary rounded-pill position-absolute top-0 end-0 py-2 px-4 mt-2 me-2">Subscribe</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row g-5">
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="footer-item d-flex flex-column">
+                            <div class="footer-item">
+                                <h3 class="text-white mb-4"><i class="fas  text-primary me-3"></i>Health4Yu</h3>
+                                <p class="mb-3">Health4Yu is an intercultural charity organization dedicated to building sustainable healthcare in Ghana. Together, we're transforming lives and improving health outcomes in underserved communities.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="footer-item d-flex flex-column">
+                            <h4 class="text-white mb-4">Quick Links</h4>
+                            <a href="index.html" class="text-white mb-2">Home</a>
+                            <a href="about.html" class="text-white mb-2">About Us</a>
+                            <a href="service.html" class="text-white mb-2">Hospital Project</a>
+                            <a href="contact.html" class="text-white mb-2">Contact</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="footer-item d-flex flex-column">
+                            <h4 class="text-white mb-4">Contact Info</h4>
+                            <a href="#"><i class="fa fa-map-marker-alt me-2"></i>Hamburg, Germany</a>
+                            <a href="mailto:contact@health4yu.org"><i class="fas fa-envelope me-2"></i>contact@health4yu.org</a>
+                            <a href="tel:+4921116366233"><i class="fas fa-phone me-2"></i>+49 211 163 66233</a>
+                            <a href="https://wa.me/491789354512"><i class="fab fa-whatsapp me-2"></i>+49 178 9354512 (WhatsApp)</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="footer-item d-flex flex-column">
+                            <h4 class="text-white mb-4">Banking Info</h4>
+                            <p class="text-white mb-2"><strong>Account Holder:</strong> Fattah Yunusah</p>
+                            <p class="text-white mb-2"><strong>IBAN:</strong> BE64 9671 9344 6052</p>
+                            <p class="text-white mb-2"><strong>BIC:</strong> TRWIBEB1XXX</p>
+                            <p class="text-white"><small>All donations are tax-deductible. Registration: VR 23339</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- German Footer -->
+            <div class="content-de">
+                <div class="row g-5 mb-5 align-items-center">
+                    <div class="col-lg-7">
+                        <div class="position-relative mx-auto">
+                            <input class="form-control rounded-pill w-100 py-3 ps-4 pe-5" type="text" placeholder="E-Mail-Adresse zum Abonnieren">
+                            <button type="button" class="btn btn-secondary rounded-pill position-absolute top-0 end-0 py-2 px-4 mt-2 me-2">Abonnieren</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row g-5">
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="footer-item d-flex flex-column">
+                            <div class="footer-item">
+                                <h3 class="text-white mb-4"><i class="fas  text-primary me-3"></i>Health4Yu</h3>
+                                <p class="mb-3">Health4Yu ist eine interkulturelle Wohltätigkeitsorganisation, die sich dem Aufbau nachhaltiger Gesundheitsversorgung in Ghana widmet. Gemeinsam verändern wir Leben und verbessern die Gesundheitsergebnisse in unterversorgten Gemeinden.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="footer-item d-flex flex-column">
+                            <h4 class="text-white mb-4">Schnellzugriff</h4>
+                            <a href="index.html" class="text-white mb-2">Startseite</a>
+                            <a href="about.html" class="text-white mb-2">Über Uns</a>
+                            <a href="service.html" class="text-white mb-2">Krankenhausprojekt</a>
+                            <a href="contact.html" class="text-white mb-2">Kontakt</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="footer-item d-flex flex-column">
+                            <h4 class="text-white mb-4">Kontaktinformationen</h4>
+                            <a href="#"><i class="fa fa-map-marker-alt me-2"></i>Hamburg, Deutschland</a>
+                            <a href="mailto:contact@health4yu.org"><i class="fas fa-envelope me-2"></i>contact@health4yu.org</a>
+                            <a href="tel:+4921116366233"><i class="fas fa-phone me-2"></i>+49 211 163 66233</a>
+                            <a href="https://wa.me/491789354512"><i class="fab fa-whatsapp me-2"></i>+49 178 9354512 (WhatsApp)</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="footer-item d-flex flex-column">
+                            <h4 class="text-white mb-4">Bankverbindung</h4>
+                            <p class="text-white mb-2"><strong>Kontoinhaber:</strong> Fattah Yunusah</p>
+                            <p class="text-white mb-2"><strong>IBAN:</strong> BE64 9671 9344 6052</p>
+                            <p class="text-white mb-2"><strong>BIC:</strong> TRWIBEB1XXX</p>
+                            <p class="text-white"><small>Alle Spenden sind steuerlich absetzbar. Registrierung: VR 23339</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+    <!-- Copyright Start -->
+    <div class="container-fluid copyright py-4">
+        <div class="container">
+            <div class="row g-4 align-items-center">
+                <div class="col-md-6 text-center text-md-start mb-md-0">
+                    <span class="text-body"><a href="#" class="border-bottom text-white"><i class="fas fa-copyright text-light me-2"></i>Health4Yu</a>, All rights reserved.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Copyright End -->
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-secondary btn-lg-square rounded-circle back-to-top"><i class="fa fa-arrow-up"></i></a>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+    
+    <!-- Language Switcher Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Language toggle functionality
+            const languageToggle = document.getElementById('languageToggle');
+            const languageDropdown = document.getElementById('languageDropdown');
+            const languageOptions = document.querySelectorAll('.language-option');
+            
+            // Toggle dropdown
+            if (languageToggle) {
+                languageToggle.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    languageDropdown.classList.toggle('show');
+                });
+            }
+            
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function() {
+                if (languageDropdown) {
+                    languageDropdown.classList.remove('show');
+                }
+            });
+            
+            // Language selection
+            languageOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    const selectedLang = this.getAttribute('data-lang');
+                    
+                    // Update active state
+                    languageOptions.forEach(opt => opt.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Update toggle button
+                    const flagImg = languageToggle.querySelector('img');
+                    const langText = languageToggle.querySelector('span');
+                    
+                    if (selectedLang === 'en') {
+                        flagImg.src = 'https://flagcdn.com/w20/gb.png';
+                        langText.textContent = 'EN';
+                        document.body.classList.remove('lang-de');
+                        document.body.classList.add('lang-en');
+                        document.documentElement.lang = 'en';
+                    } else {
+                        flagImg.src = 'https://flagcdn.com/w20/de.png';
+                        langText.textContent = 'DE';
+                        document.body.classList.remove('lang-en');
+                        document.body.classList.add('lang-de');
+                        document.documentElement.lang = 'de';
+                    }
+                    
+                    // Close dropdown
+                    languageDropdown.classList.remove('show');
+                    
+                    // Save language preference to localStorage
+                    localStorage.setItem('preferredLanguage', selectedLang);
+                });
+            });
+            
+            // Check for saved language preference
+            const savedLang = localStorage.getItem('preferredLanguage');
+            if (savedLang === 'de') {
+                // Trigger German language selection
+                const germanOption = document.querySelector('.language-option[data-lang="de"]');
+                if (germanOption) {
+                    germanOption.click();
+                }
+            }
+            
+            // Simple animation for donation tiers on hover
+            const donationTiers = document.querySelectorAll('.donation-tier');
+            
+            donationTiers.forEach(tier => {
+                tier.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px)';
+                });
+                
+                tier.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+            
+            // Update year in copyright if needed
+            const yearSpan = document.querySelector('.current-year');
+            if (yearSpan) {
+                yearSpan.textContent = new Date().getFullYear();
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Health4Yu - Build a Hospital in Ghana</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <link rel="icon" type="image/x-icon" href="logo.webp">
+
+    <!-- Multilingual Meta Description -->
+    <meta content="Health4Yu is an intercultural charity organization dedicated to building sustainable healthcare facilities in Ghana. Join us through donations, volunteering, or sharing expertise to help underserved communities access life-saving medical services. Together, we can transform lives and improve health outcomes in Ghana.">
+    <meta name="description-de" content="Health4Yu ist eine interkulturelle Wohltätigkeitsorganisation, die sich dem Aufbau nachhaltiger Gesundheitseinrichtungen in Ghana widmet. Unterstützen Sie uns durch Spenden, Freiwilligenarbeit oder Fachwissen, um unterversorgten Gemeinden den Zugang zu lebensrettenden medizinischen Dienstleistungen zu ermöglichen. Gemeinsam können wir Leben verändern und die Gesundheitsergebnisse in Ghana verbessern.">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wdth,wght@0,75..100,300..800;1,75..100,300..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet"> 
+
+    <!-- Icon Font Stylesheet -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="lib/animate/animate.min.css" rel="stylesheet">
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="css/style.css" rel="stylesheet">
+    
+    <!-- Language Switcher Styles -->
+    <style>
+        .language-switcher {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .language-btn {
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            padding: 5px 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+        
+        .language-btn:hover {
+            background: #f8f9fa;
+            border-color: #007bff;
+        }
+        
+        .language-dropdown {
+            display: none;
+            position: absolute;
+            background: white;
+            min-width: 140px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            z-index: 1000;
+            top: 100%;
+            right: 0;
+            margin-top: 5px;
+        }
+        
+        .language-dropdown.show {
+            display: block;
+        }
+        
+        .language-option {
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        
+        .language-option:hover {
+            background: #f8f9fa;
+        }
+        
+        .language-option.active {
+            background: #e9f7fe;
+            color: #007bff;
+        }
+        
+        .flag-icon {
+            width: 20px;
+            height: 15px;
+            border-radius: 2px;
+        }
+        
+        /* RTL support for future Arabic/Hebrew if needed */
+        [dir="rtl"] .text-start {
+            text-align: right !important;
+        }
+        
+        [dir="rtl"] .me-2 {
+            margin-right: 0 !important;
+            margin-left: 0.5rem !important;
+        }
+        
+        [dir="rtl"] .ms-2 {
+            margin-left: 0 !important;
+            margin-right: 0.5rem !important;
+        }
+        
+        /* Language-specific content hiding */
+        .content-en {
+            display: block;
+        }
+        
+        .content-de {
+            display: none;
+        }
+        
+        .lang-de .content-en {
+            display: none;
+        }
+        
+        .lang-de .content-de {
+            display: block;
+        }
+    </style>
+</head>
+
+<body class="lang-en">
+
+    <!-- Spinner Start -->
+    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <!-- Spinner End -->
+
+    <!-- Navbar & Hero Start -->
+    <div class="container-fluid position-relative p-0">
+        <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
+            <a href="" class="navbar-brand p-0">
+                <img style="height: 3cm; opacity: 70%;" src="logo.webp" alt="Health4Yu Logo" srcset="">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="fa fa-bars"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav ms-auto py-0">
+                    <a href="index.html" class="nav-item nav-link active content-en">Home</a>
+                    <a href="index.html" class="nav-item nav-link active content-de">Startseite</a>
+                    
+                    <a href="about.html" class="nav-item nav-link content-en">About Us</a>
+                    <a href="about.html" class="nav-item nav-link content-de">Über Uns</a>
+                    
+                    <a href="service.html" class="nav-item nav-link content-en">Hospital Project</a>
+                    <a href="service.html" class="nav-item nav-link content-de">Krankenhausprojekt</a>
+                    
+                    <a href="contact.html" class="nav-item nav-link content-en">Contact Us</a>
+                    <a href="contact.html" class="nav-item nav-link content-de">Kontakt</a>
+                </div>
+                
+                <!-- Language Switcher -->
+                <div class="language-switcher ms-3">
+                    <div class="language-btn" id="languageToggle">
+                        <img src="https://flagcdn.com/w20/gb.png" class="flag-icon" alt="English">
+                        <span class="content-en">EN</span>
+                        <span class="content-de">DE</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="language-dropdown" id="languageDropdown">
+                        <div class="language-option active" data-lang="en">
+                            <img src="https://flagcdn.com/w20/gb.png" class="flag-icon" alt="English">
+                            <span>English</span>
+                        </div>
+                        <div class="language-option" data-lang="de">
+                            <img src="https://flagcdn.com/w20/de.png" class="flag-icon" alt="Deutsch">
+                            <span>Deutsch</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <a href="Donate.html" class="btn btn-primary rounded-pill d-inline-flex flex-shrink-0 py-2 px-4 ms-3 content-en">Donate Now</a>
+                <a href="Donate.html" class="btn btn-primary rounded-pill d-inline-flex flex-shrink-0 py-2 px-4 ms-3 content-de">Jetzt Spenden</a>
+            </div>
+        </nav>
+
+        <!-- Carousel Start -->
+        <div class="carousel-header">
+            <div id="carouselId" class="carousel slide" data-bs-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-bs-target="#carouselId" data-bs-slide-to="0" class="active"></li>
+                    <li data-bs-target="#carouselId" data-bs-slide-to="1"></li>
+                </ol>
+                <div class="carousel-inner" role="listbox">
+                    <!-- Slide 1 - English -->
+                    <div class="carousel-item active content-en">
+                        <img src="kp (3).jpg" class="img-fluid w-100" alt="Image">
+                        <div class="carousel-caption-1">
+                            <div class="carousel-caption-1-content" style="max-width: 900px;">
+                                <h4 class="text-white text-uppercase fw-bold mb-4 fadeInLeft animated" data-animation="fadeInLeft" data-delay="1s" style="animation-delay: 1s;" style="letter-spacing: 3px;">Help Us Build Ghana</h4>
+                                <h1 class="display-2 text-capitalize text-white mb-4 fadeInLeft animated" data-animation="fadeInLeft" data-delay="1.3s" style="animation-delay: 1.3s;">Join Us in Building a Hospital for Ghana</h1>
+                                <p class="mb-5 fs-5 text-white fadeInLeft animated" data-animation="fadeInLeft" data-delay="1.5s" style="animation-delay: 1.5s;">Many Ghanaians lack access to basic healthcare, leading to preventable illnesses. Your support will help establish sustainable healthcare facilities and transform lives.</p>
+                                <div class="carousel-caption-1-content-btn fadeInLeft animated" data-animation="fadeInLeft" data-delay="1.7s" style="animation-delay: 1.7s;">
+                                    <a class="btn btn-primary rounded-pill flex-shrink-0 py-3 px-5 me-2" href="#donate">Donate</a>
+                                    <a class="btn btn-secondary rounded-pill flex-shrink-0 py-3 px-5 ms-2" href="contact.html">Contact Us</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 1 - German -->
+                    <div class="carousel-item active content-de">
+                        <img src="kp (3).jpg" class="img-fluid w-100" alt="Bild">
+                        <div class="carousel-caption-1">
+                            <div class="carousel-caption-1-content" style="max-width: 900px;">
+                                <h4 class="text-white text-uppercase fw-bold mb-4 fadeInLeft animated" data-animation="fadeInLeft" data-delay="1s" style="animation-delay: 1s;" style="letter-spacing: 3px;">Helfen Sie uns, Ghana aufzubauen</h4>
+                                <h1 class="display-2 text-capitalize text-white mb-4 fadeInLeft animated" data-animation="fadeInLeft" data-delay="1.3s" style="animation-delay: 1.3s;">Bauen Sie mit uns ein Krankenhaus für Ghana</h1>
+                                <p class="mb-5 fs-5 text-white fadeInLeft animated" data-animation="fadeInLeft" data-delay="1.5s" style="animation-delay: 1.5s;">Viele Ghanaer haben keinen Zugang zur Grundversorgung, was zu vermeidbaren Krankheiten führt. Ihre Unterstützung hilft, nachhaltige Gesundheitseinrichtungen aufzubauen und Leben zu verändern.</p>
+                                <div class="carousel-caption-1-content-btn fadeInLeft animated" data-animation="fadeInLeft" data-delay="1.7s" style="animation-delay: 1.7s;">
+                                    <a class="btn btn-primary rounded-pill flex-shrink-0 py-3 px-5 me-2" href="#donate">Spenden</a>
+                                    <a class="btn btn-secondary rounded-pill flex-shrink-0 py-3 px-5 ms-2" href="contact.html">Kontaktieren Sie uns</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 2 - English -->
+                    <div class="carousel-item content-en">
+                        <img src="kp (2).jpg" class="img-fluid w-100" alt="Image">
+                        <div class="carousel-caption-2">
+                            <div class="carousel-caption-2-content" style="max-width: 900px;">
+                                <h4 class="text-white text-uppercase fw-bold mb-4 fadeInRight animated" data-animation="fadeInRight" data-delay="1s" style="animation-delay: 1s;" style="letter-spacing: 3px;">Multiple Ways to Help</h4>
+                                <h1 class="display-2 text-capitalize text-white mb-4 fadeInRight animated" data-animation="fadeInRight" data-delay="1.3s" style="animation-delay: 1.3s;">Donate, Volunteer, or Share Your Expertise</h1>
+                                <p class="mb-5 fs-5 text-white fadeInRight animated" data-animation="fadeInRight" data-delay="1.5s" style="animation-delay: 1.5s;">Whether you contribute funds, volunteer on-site, or donate equipment, every contribution makes a difference in healthcare delivery.</p>
+                                <div class="carousel-caption-2-content-btn fadeInRight animated" data-animation="fadeInRight" data-delay="1.7s" style="animation-delay: 1.7s;">
+                                    <a class="btn btn-primary rounded-pill flex-shrink-0 py-3 px-5 me-2" href="#donate">Support Our Mission</a>
+                                    <a class="btn btn-secondary rounded-pill flex-shrink-0 py-3 px-5 ms-2" href="contact.html">Volunteer</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 2 - German -->
+                    <div class="carousel-item content-de">
+                        <img src="kp (2).jpg" class="img-fluid w-100" alt="Bild">
+                        <div class="carousel-caption-2">
+                            <div class="carousel-caption-2-content" style="max-width: 900px;">
+                                <h4 class="text-white text-uppercase fw-bold mb-4 fadeInRight animated" data-animation="fadeInRight" data-delay="1s" style="animation-delay: 1s;" style="letter-spacing: 3px;">Viele Möglichkeiten zu Helfen</h4>
+                                <h1 class="display-2 text-capitalize text-white mb-4 fadeInRight animated" data-animation="fadeInRight" data-delay="1.3s" style="animation-delay: 1.3s;">Spenden, Freiwilligenarbeit oder Teilen Sie Ihr Fachwissen</h1>
+                                <p class="mb-5 fs-5 text-white fadeInRight animated" data-animation="fadeInRight" data-delay="1.5s" style="animation-delay: 1.5s;">Ob Sie Geld spenden, vor Ort mithelfen oder medizinische Geräte zur Verfügung stellen - jeder Beitrag verbessert die Gesundheitsversorgung.</p>
+                                <div class="carousel-caption-2-content-btn fadeInRight animated" data-animation="fadeInRight" data-delay="1.7s" style="animation-delay: 1.7s;">
+                                    <a class="btn btn-primary rounded-pill flex-shrink-0 py-3 px-5 me-2" href="#donate">Unsere Mission unterstützen</a>
+                                    <a class="btn btn-secondary rounded-pill flex-shrink-0 py-3 px-5 ms-2" href="contact.html">Freiwilligenarbeit</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselId" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon btn btn-primary fadeInLeft animated" aria-hidden="true" data-animation="fadeInLeft" data-delay="1.1s" style="animation-delay: 1.3s;"> <i class="fa fa-angle-left fa-3x"></i></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselId" data-bs-slide="next">
+                    <span class="carousel-control-next-icon btn btn-primary fadeInRight animated" aria-hidden="true" data-animation="fadeInLeft" data-delay="1.1s" style="animation-delay: 1.3s;"><i class="fa fa-angle-right fa-3x"></i></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+        <!-- Carousel End -->
+    </div>
+    <!-- Navbar & Hero End -->
+
+    <!-- About Start -->
+    <div class="container-fluid about overflow-hidden py-5">
+        <div class="container py-5">
+            <div class="row g-5">
+                <div class="col-xl-6 wow fadeInLeft" data-wow-delay="0.2s">
+                    <div class="about-img rounded h-100">
+                        <img src="kp (6).jpg" class="img-fluid rounded h-100 w-100" style="object-fit: cover;" alt="">
+                    </div>
+                </div>
+                <div class="col-xl-6 wow fadeInRight" data-wow-delay="0.2s">
+                    <div class="about-item">
+                        <!-- English Version -->
+                        <div class="content-en">
+                            <h4 class="text-primary text-uppercase">About Health4Yu</h4>
+                            <h1 class="display-3 mb-3">Building Sustainable Healthcare in Ghana</h1>
+                            <p class="mb-4">Health4Yu is an intercultural charity organization dedicated to improving healthcare accessibility in Ghana. We emerged from the motivation to help and offer solutions to existing challenges in healthcare, education, and training. Founded by a doctor determined to improve medical care in his home country, Health4Yu works independently and is politically impartial.</p>
+                            <div class="bg-light rounded p-4 mb-4">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="d-flex">
+                                            <div class="pe-4">
+                                                <div class="" style="width: 80px; height: 80px;"><i class="fas fa-hand-holding-heart text-primary fa-2x"></i></div>
+                                            </div>
+                                            <div class="">
+                                                <a href="#" class="h4 d-inline-block mb-3">Doctor-Led Initiative</a>
+                                                <p class="mb-0">Our organization was founded by healthcare professionals committed to transforming healthcare delivery in underserved communities.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bg-light rounded p-4 mb-4">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="d-flex">
+                                            <div class="pe-4">
+                                                <div class="" style="width: 80px; height: 80px;"><i class="fas fa-globe text-primary fa-2x"></i></div>
+                                            </div>
+                                            <div class="">
+                                                <a href="#" class="h4 d-inline-block mb-3">Sustainable Impact</a>
+                                                <p class="mb-0">We donate over $50,000 annually to build hospitals and provide healthcare assistance to rural communities in Ghana.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="about.html" class="btn btn-secondary rounded-pill py-3 px-5">Learn More</a>
+                        </div>
+                        
+                        <!-- German Version -->
+                        <div class="content-de">
+                            <h4 class="text-primary text-uppercase">Über Health4Yu</h4>
+                            <h1 class="display-3 mb-3">Nachhaltige Gesundheitsversorgung in Ghana aufbauen</h1>
+                            <p class="mb-4">Health4Yu ist eine interkulturelle Wohltätigkeitsorganisation, die sich dem verbesserten Zugang zur Gesundheitsversorgung in Ghana widmet. Wir entstanden aus der Motivation, bei bestehenden Herausforderungen im Gesundheitswesen, in der Bildung und Ausbildung zu helfen und Lösungen anzubieten. Gegründet von einem Arzt, der entschlossen ist, die medizinische Versorgung in seinem Heimatland zu verbessern, arbeitet Health4Yu unabhängig und ist politisch unparteiisch.</p>
+                            <div class="bg-light rounded p-4 mb-4">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="d-flex">
+                                            <div class="pe-4">
+                                                <div class="" style="width: 80px; height: 80px;"><i class="fas fa-hand-holding-heart text-primary fa-2x"></i></div>
+                                            </div>
+                                            <div class="">
+                                                <a href="#" class="h4 d-inline-block mb-3">Von Ärzten geleitete Initiative</a>
+                                                <p class="mb-0">Unsere Organisation wurde von medizinischen Fachkräften gegründet, die sich der Transformation der Gesundheitsversorgung in unterversorgten Gemeinden verschrieben haben.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bg-light rounded p-4 mb-4">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <div class="d-flex">
+                                            <div class="pe-4">
+                                                <div class="" style="width: 80px; height: 80px;"><i class="fas fa-globe text-primary fa-2x"></i></div>
+                                            </div>
+                                            <div class="">
+                                                <a href="#" class="h4 d-inline-block mb-3">Nachhaltige Wirkung</a>
+                                                <p class="mb-0">Wir spenden jährlich über 50.000 US-Dollar für den Bau von Krankenhäusern und die medizinische Unterstützung ländlicher Gemeinden in Ghana.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="about.html" class="btn btn-secondary rounded-pill py-3 px-5">Mehr erfahren</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- About End -->
+
+    <!-- Hospital Charity Section Start -->
+    <div class="container-fluid py-5">
+        <div class="container py-5">
+            <!-- English Version -->
+            <div class="content-en">
+                <div class="row mb-5">
+                    <div class="col-lg-8 mx-auto text-center">
+                        <h2 class="display-4 mb-4">Hospital Charity</h2>
+                        <h3 class="text-primary mb-4">Support Hospital Equipment for Ghana</h3>
+                        <p class="fs-5 mb-4">We are particularly interested in sustainable support for the local health sector, as well as any assistance in building hospitals and clinics in Ghana.</p>
+                        <p class="fs-5 text-muted">Stay Tuned</p>
+                    </div>
+                </div>
+
+                <div class="row g-4 mb-5">
+                    <div class="col-md-6">
+                        <div class="bg-light rounded p-4">
+                            <h4 class="mb-3">Reach Out to Us!</h4>
+                            <p class="mb-4">No matter what your inquiry is, we're excited to connect with you. Let's kick off the fundraising and make a difference together!</p>
+                            <p class="mb-2"><strong>Email Address:</strong> <a href="mailto:contact@health4yu.org">contact@health4yu.org</a></p>
+                            <p class="mb-2"><strong>Telephone:</strong> +49 211 163 66233</p>
+                            <p><strong>WhatsApp (only):</strong> +49 178 9354512</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="bg-light rounded p-4">
+                            <h4 class="mb-3">Health4Yu Registration</h4>
+                            <p class="mb-2">22047 Hamburg</p>
+                            <p class="mb-2"><strong>Commercial Register Extract:</strong> VR 23339</p>
+                            <p><strong>Corporate Tax (tax-privileged):</strong> 17/430/17036</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-8 mx-auto text-center mb-4">
+                        <h3 class="mb-4">Support Us in Any Way!</h3>
+                        <p class="fs-5 mb-5">Support Our Mission: Donate to Help Build a Hospital in Ghana or Join Us On-Site to Make a Difference!</p>
+                    </div>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-md-6 col-lg-4">
+                        <div class="text-center p-4 bg-light rounded">
+                            <i class="fas fa-heart text-primary fa-2x mb-3"></i>
+                            <h5>Contribute Funds</h5>
+                            <p class="text-muted">Tax-Deductible Donation for Hospital</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="text-center p-4 bg-light rounded">
+                            <i class="fas fa-hands-helping text-primary fa-2x mb-3"></i>
+                            <h5>Volunteer On-Site</h5>
+                            <p class="text-muted">Join us in Ghana to make a difference</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="text-center p-4 bg-light rounded">
+                            <i class="fas fa-box text-primary fa-2x mb-3"></i>
+                            <h5>Donate Equipment</h5>
+                            <p class="text-muted">Gather, Ship Equipment or Fundraise</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- German Version -->
+            <div class="content-de">
+                <div class="row mb-5">
+                    <div class="col-lg-8 mx-auto text-center">
+                        <h2 class="display-4 mb-4">Krankenhaus-Hilfsprojekt</h2>
+                        <h3 class="text-primary mb-4">Unterstützen Sie Krankenhausausrüstung für Ghana</h3>
+                        <p class="fs-5 mb-4">Wir sind besonders an nachhaltiger Unterstützung für den lokalen Gesundheitssektor sowie an jeglicher Hilfe beim Bau von Krankenhäusern und Kliniken in Ghana interessiert.</p>
+                        <p class="fs-5 text-muted">Bleiben Sie dran</p>
+                    </div>
+                </div>
+
+                <div class="row g-4 mb-5">
+                    <div class="col-md-6">
+                        <div class="bg-light rounded p-4">
+                            <h4 class="mb-3">Kontaktieren Sie uns!</h4>
+                            <p class="mb-4">Egal, um welche Anfrage es sich handelt, wir freuen uns, mit Ihnen in Kontakt zu treten. Lassen Sie uns gemeinsam mit der Spendenaktion beginnen und etwas bewegen!</p>
+                            <p class="mb-2"><strong>E-Mail-Adresse:</strong> <a href="mailto:contact@health4yu.org">contact@health4yu.org</a></p>
+                            <p class="mb-2"><strong>Telefon:</strong> +49 211 163 66233</p>
+                            <p><strong>WhatsApp (nur):</strong> +49 178 9354512</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="bg-light rounded p-4">
+                            <h4 class="mb-3">Health4Yu Registrierung</h4>
+                            <p class="mb-2">22047 Hamburg</p>
+                            <p class="mb-2"><strong>Handelsregisterauszug:</strong> VR 23339</p>
+                            <p><strong>Körperschaftsteuer (steuerbegünstigt):</strong> 17/430/17036</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-8 mx-auto text-center mb-4">
+                        <h3 class="mb-4">Unterstützen Sie uns auf jede erdenkliche Weise!</h3>
+                        <p class="fs-5 mb-5">Unterstützen Sie unsere Mission: Spenden Sie für den Bau eines Krankenhauses in Ghana oder helfen Sie vor Ort mit, um etwas zu bewegen!</p>
+                    </div>
+                </div>
+
+                <div class="row g-4">
+                    <div class="col-md-6 col-lg-4">
+                        <div class="text-center p-4 bg-light rounded">
+                            <i class="fas fa-heart text-primary fa-2x mb-3"></i>
+                            <h5>Geld spenden</h5>
+                            <p class="text-muted">Steuerlich absetzbare Spende für das Krankenhaus</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="text-center p-4 bg-light rounded">
+                            <i class="fas fa-hands-helping text-primary fa-2x mb-3"></i>
+                            <h5>Vor Ort mithelfen</h5>
+                            <p class="text-muted">Begleiten Sie uns nach Ghana, um etwas zu bewirken</p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4">
+                        <div class="text-center p-4 bg-light rounded">
+                            <i class="fas fa-box text-primary fa-2x mb-3"></i>
+                            <h5>Ausrüstung spenden</h5>
+                            <p class="text-muted">Sammeln, versenden oder Spendenaktionen durchführen</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Hospital Charity Section End -->
+
+    <!-- Footer Start -->
+    <div class="container-fluid footer py-5 wow fadeIn" data-wow-delay="0.2s">
+        <div class="container py-5">
+            <!-- English Footer -->
+            <div class="content-en">
+                <div class="row g-5 mb-5 align-items-center">
+                    <div class="col-lg-7">
+                        <div class="position-relative mx-auto">
+                            <input class="form-control rounded-pill w-100 py-3 ps-4 pe-5" type="text" placeholder="Email address to Subscribe">
+                            <button type="button" class="btn btn-secondary rounded-pill position-absolute top-0 end-0 py-2 px-4 mt-2 me-2">Subscribe</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row g-5">
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="footer-item d-flex flex-column">
+                            <div class="footer-item">
+                                <h3 class="text-white mb-4"><i class="fas  text-primary me-3"></i>Health4Yu</h3>
+                                <p class="mb-3">Health4Yu is an intercultural charity organization dedicated to building sustainable healthcare in Ghana. Together, we're transforming lives and improving health outcomes in underserved communities.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="footer-item d-flex flex-column">
+                            <h4 class="text-white mb-4">Quick Links</h4>
+                            <a href="about.html" class="text-white mb-2">About Us</a>
+                            <a href="service.html" class="text-white mb-2">Our Work</a>
+                            <a href="#donate" class="text-white mb-2">Donate</a>
+                            <a href="contact.html" class="text-white mb-2">Contact</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="footer-item d-flex flex-column">
+                            <h4 class="text-white mb-4">Contact Info</h4>
+                            <a href="#"><i class="fa fa-map-marker-alt me-2"></i>Hamburg, Germany</a>
+                            <a href="mailto:contact@health4yu.org"><i class="fas fa-envelope me-2"></i>contact@health4yu.org</a>
+                            <a href="tel:+4921116366233"><i class="fas fa-phone me-2"></i>+49 211 163 66233</a>
+                            <a href="https://wa.me/491789354512"><i class="fab fa-whatsapp me-2"></i>+49 178 9354512 (WhatsApp)</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="footer-item d-flex flex-column">
+                            <h4 class="text-white mb-4">Banking Info</h4>
+                            <p class="text-white mb-2"><strong>Account Holder:</strong> Fattah Yunusah</p>
+                            <p class="text-white mb-2"><strong>IBAN:</strong> BE64 9671 9344 6052</p>
+                            <p class="text-white mb-2"><strong>BIC:</strong> TRWIBEB1XXX</p>
+                            <p class="text-white"><small>All donations are tax-deductible. Registration: VR 23339</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- German Footer -->
+            <div class="content-de">
+                <div class="row g-5 mb-5 align-items-center">
+                    <div class="col-lg-7">
+                        <div class="position-relative mx-auto">
+                            <input class="form-control rounded-pill w-100 py-3 ps-4 pe-5" type="text" placeholder="E-Mail-Adresse zum Abonnieren">
+                            <button type="button" class="btn btn-secondary rounded-pill position-absolute top-0 end-0 py-2 px-4 mt-2 me-2">Abonnieren</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row g-5">
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="footer-item d-flex flex-column">
+                            <div class="footer-item">
+                                <h3 class="text-white mb-4"><i class="fas  text-primary me-3"></i>Health4Yu</h3>
+                                <p class="mb-3">Health4Yu ist eine interkulturelle Wohltätigkeitsorganisation, die sich dem Aufbau nachhaltiger Gesundheitsversorgung in Ghana widmet. Gemeinsam verändern wir Leben und verbessern die Gesundheitsergebnisse in unterversorgten Gemeinden.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="footer-item d-flex flex-column">
+                            <h4 class="text-white mb-4">Schnellzugriff</h4>
+                            <a href="about.html" class="text-white mb-2">Über Uns</a>
+                            <a href="service.html" class="text-white mb-2">Unsere Arbeit</a>
+                            <a href="#donate" class="text-white mb-2">Spenden</a>
+                            <a href="contact.html" class="text-white mb-2">Kontakt</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="footer-item d-flex flex-column">
+                            <h4 class="text-white mb-4">Kontaktinformationen</h4>
+                            <a href="#"><i class="fa fa-map-marker-alt me-2"></i>Hamburg, Deutschland</a>
+                            <a href="mailto:contact@health4yu.org"><i class="fas fa-envelope me-2"></i>contact@health4yu.org</a>
+                            <a href="tel:+4921116366233"><i class="fas fa-phone me-2"></i>+49 211 163 66233</a>
+                            <a href="https://wa.me/491789354512"><i class="fab fa-whatsapp me-2"></i>+49 178 9354512 (WhatsApp)</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-xl-3">
+                        <div class="footer-item d-flex flex-column">
+                            <h4 class="text-white mb-4">Bankverbindung</h4>
+                            <p class="text-white mb-2"><strong>Kontoinhaber:</strong> Fattah Yunusah</p>
+                            <p class="text-white mb-2"><strong>IBAN:</strong> BE64 9671 9344 6052</p>
+                            <p class="text-white mb-2"><strong>BIC:</strong> TRWIBEB1XXX</p>
+                            <p class="text-white"><small>Alle Spenden sind steuerlich absetzbar. Registrierung: VR 23339</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->
+
+    <!-- Copyright Start -->
+    <div class="container-fluid copyright py-4">
+        <div class="container">
+            <div class="row g-4 align-items-center">
+                <div class="col-md-6 text-center text-md-start mb-md-0">
+                    <span class="text-body"><a href="#" class="border-bottom text-white"><i class="fas fa-copyright text-light me-2"></i>Health4Yu</a>, All rights reserved.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Copyright End -->
+
+    <!-- Back to Top -->
+    <a href="#" class="btn btn-secondary btn-lg-square rounded-circle back-to-top"><i class="fa fa-arrow-up"></i></a>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lib/wow/wow.min.js"></script>
+    <script src="lib/easing/easing.min.js"></script>
+    <script src="lib/waypoints/waypoints.min.js"></script>
+    <script src="lib/counterup/counterup.min.js"></script>
+    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="js/main.js"></script>
+    
+    <!-- Language Switcher Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Language toggle functionality
+            const languageToggle = document.getElementById('languageToggle');
+            const languageDropdown = document.getElementById('languageDropdown');
+            const languageOptions = document.querySelectorAll('.language-option');
+            
+            // Toggle dropdown
+            languageToggle.addEventListener('click', function(e) {
+                e.stopPropagation();
+                languageDropdown.classList.toggle('show');
+            });
+            
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function() {
+                languageDropdown.classList.remove('show');
+            });
+            
+            // Language selection
+            languageOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    const selectedLang = this.getAttribute('data-lang');
+                    
+                    // Update active state
+                    languageOptions.forEach(opt => opt.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Update toggle button
+                    const flagImg = languageToggle.querySelector('img');
+                    const langText = languageToggle.querySelector('span');
+                    
+                    if (selectedLang === 'en') {
+                        flagImg.src = 'https://flagcdn.com/w20/gb.png';
+                        langText.textContent = 'EN';
+                        document.body.classList.remove('lang-de');
+                        document.body.classList.add('lang-en');
+                        document.documentElement.lang = 'en';
+                        
+                        // Update carousel active slides
+                        updateCarouselForLanguage('en');
+                    } else {
+                        flagImg.src = 'https://flagcdn.com/w20/de.png';
+                        langText.textContent = 'DE';
+                        document.body.classList.remove('lang-en');
+                        document.body.classList.add('lang-de');
+                        document.documentElement.lang = 'de';
+                        
+                        // Update carousel active slides
+                        updateCarouselForLanguage('de');
+                    }
+                    
+                    // Close dropdown
+                    languageDropdown.classList.remove('show');
+                    
+                    // Save language preference to localStorage
+                    localStorage.setItem('preferredLanguage', selectedLang);
+                });
+            });
+            
+            // Function to update carousel for language
+            function updateCarouselForLanguage(lang) {
+                const carousel = document.getElementById('carouselId');
+                if (!carousel) return;
+                
+                const carouselItems = carousel.querySelectorAll('.carousel-item');
+                
+                // Find active item index for current language
+                let activeIndex = 0;
+                carouselItems.forEach((item, index) => {
+                    if (item.classList.contains('active') && 
+                        ((lang === 'en' && item.classList.contains('content-en')) || 
+                         (lang === 'de' && item.classList.contains('content-de')))) {
+                        activeIndex = Math.floor(index / 2); // Divide by 2 because we have 2 language versions per slide
+                    }
+                });
+                
+                // Update indicators
+                const indicators = carousel.querySelectorAll('.carousel-indicators li');
+                indicators.forEach((indicator, index) => {
+                    if (index === activeIndex) {
+                        indicator.classList.add('active');
+                    } else {
+                        indicator.classList.remove('active');
+                    }
+                });
+            }
+            
+            // Check for saved language preference
+            const savedLang = localStorage.getItem('preferredLanguage');
+            if (savedLang === 'de') {
+                // Trigger German language selection
+                const germanOption = document.querySelector('.language-option[data-lang="de"]');
+                if (germanOption) {
+                    germanOption.click();
+                }
+            }
+            
+            // Initialize carousel for current language
+            const currentLang = document.body.classList.contains('lang-de') ? 'de' : 'en';
+            updateCarouselForLanguage(currentLang);
+        });
+    </script>
+</body>
+</html>
