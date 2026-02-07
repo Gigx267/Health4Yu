@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -411,7 +412,82 @@
                     </div>
                 </div>
             </div>
+            <div class="content-en">
+    <div class="account-card">
+        <div class="text-center mb-4">
+            <div class="bg-primary rounded-circle p-4 d-inline-block mb-3">
+                <i class="fas fa-mobile-alt fa-3x text-white"></i>
+            </div>
+            <h2>Mobile Money Donation</h2>
+            <p class="text-muted">Use the details below to donate via MoMo (Ghana)</p>
+        </div>
+        
+        <div class="account-details">
+            <div class="detail-item">
+                <div class="detail-label">Network Provider</div>
+                <div class="detail-value">MTN Ghana / All Networks</div>
+            </div>
             
+            <div class="detail-item">
+                <div class="detail-label">MoMo Number</div>
+                <div class="detail-value text-primary h3" id="momoValueEN">+233247124203</div>
+                <button class="copy-btn mt-2" onclick="copyToClipboard('momoValueEN', this)">
+                    <i class="fas fa-copy me-2"></i>Copy Number
+                </button>
+            </div>
+
+            <div class="detail-item">
+                <div class="detail-label">Account Name</div>
+                <div class="detail-value">Fattah Yunusah</div>
+            </div>
+        </div>
+        
+        <div class="steps-container">
+            <h4 class="text-center mb-4">How to Donate via MoMo</h4>
+            
+            <div class="step">
+                <div class="step-number">1</div>
+                <div>
+                    <h5>Copy MoMo Number</h5>
+                    <p class="text-muted">Copy the recipient number above using the copy button</p>
+                </div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">2</div>
+                <div>
+                    <h5>Dial or Use App</h5>
+                    <p class="text-muted">Open your MoMo menu (*170#) or use your provider's app</p>
+                </div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">3</div>
+                <div>
+                    <h5>Send Money</h5>
+                    <p class="text-muted">Select "Send Money", enter the number, and verify the name: <strong>Fattah Yunusah</strong></p>
+                </div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">4</div>
+                <div>
+                    <h5>Confirm Donation</h5>
+                    <p class="text-muted">Send a screenshot of your receipt to donations@health4yu.org for confirmation</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mt-4 p-3 border rounded">
+            <h6><i class="fas fa-info-circle text-primary me-2"></i>Important Notes:</h6>
+            <ul class="mb-0">
+                <li>Double-check the account name before authorizing the transaction</li>
+                <li>Ensure you have enough balance to cover any network transaction fees</li>
+                <li>Contact us if you need assistance: donations@health4yu.org</li>
+            </ul>
+        </div>
+    </div>
+</div>
             <!-- German Donation Information -->
             <div class="account-card">
     <div class="text-center mb-4">
@@ -455,17 +531,24 @@
         </div>
     </div>
     
-    <div class="momo-details mt-5 pt-3 border-top">
-        <h4 class="text-center mb-4">Oder Spenden per Mobile Money (MoMo)</h4>
+   <div class="momo-details mt-5 pt-3 border-top">
+    <div class="content-en">
+        <h4 class="text-center mb-4">Support via Mobile Money (MoMo)</h4>
+        
         <div class="detail-item text-center">
-            <div class="detail-label h5">MoMo Nummer (Ghana)</div>
-            <div class="detail-value h3 text-primary" id="momoValueGH">+233247124203</div>
-            <p class="text-muted">Bitte senden Sie den Betrag an diese Nummer über Ihren MoMo-Anbieter.</p>
-            <button class="copy-btn mt-2" onclick="copyToClipboard('momoValueGH', this)">
-                <i class="fas fa-copy me-2"></i>MoMo kopieren
+            <div class="detail-label h5 text-muted">Recipient Number (Ghana)</div>
+            <div class="detail-value h3 text-primary mb-1" id="momoValueEN">+233247124203</div>
+            
+            <p class="small text-uppercase font-weight-bold mb-3">Account Name: [Insert Name Here]</p>
+            
+            <p class="text-muted px-3">Transfer your contribution to the number above using your preferred MoMo service provider.</p>
+            
+            <button class="btn btn-outline-primary copy-btn mt-2" onclick="copyToClipboard('momoValueEN', this)">
+                <i class="fas fa-copy me-2"></i>Copy Number
             </button>
         </div>
     </div>
+</div>
     
     <div class="steps-container">
         <h4 class="text-center mb-4 mt-5">So spenden Sie (Banküberweisung)</h4>
