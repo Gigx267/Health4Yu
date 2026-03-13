@@ -1,0 +1,1775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcowasHealthSurvey2026 | Africa Health & Wellbeing</title>
+    <style>
+        :root {
+            --primary-blue: #2c3e50;
+            --accent-green: #27ae60;
+            --error-red: #e74c3c;
+            --bg-gray: #f4f7f6;
+            --warning-yellow: #f1c40f;
+            --text-dark: #2c3e50;
+            --text-light: #7f8c8d;
+            --border-light: #ecf0f1;
+            --shadow-sm: 0 2px 10px rgba(0,0,0,0.05);
+            --shadow-md: 0 5px 20px rgba(0,0,0,0.08);
+            --shadow-lg: 0 10px 30px rgba(0,0,0,0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        #survey-app {
+            max-width: 850px;
+            margin: 20px auto;
+            background: white;
+            border-radius: 24px;
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+            animation: slideUp 0.5s ease;
+        }
+
+        .survey-header {
+            background: linear-gradient(135deg, var(--primary-blue), #34495e);
+            color: white;
+            padding: 30px 40px;
+            text-align: center;
+        }
+
+        .survey-header h1 {
+            font-size: 2.2em;
+            margin-bottom: 10px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .survey-header p {
+            opacity: 0.9;
+            font-size: 1.1em;
+        }
+
+        .progress-container {
+            height: 8px;
+            background: var(--border-light);
+            position: relative;
+        }
+
+        #progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--accent-green), #2ecc71);
+            width: 0%;
+            transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        #progress-bar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            animation: shimmer 1.5s infinite;
+        }
+
+        .survey-content {
+            padding: 40px;
+        }
+
+        .survey-step {
+            animation: fadeIn 0.5s ease;
+        }
+
+        .step-indicator {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            padding: 0 10px;
+        }
+
+        .step-dot {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: white;
+            border: 2px solid var(--border-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            color: var(--text-light);
+            transition: var(--transition);
+        }
+
+        .step-dot.active {
+            background: var(--accent-green);
+            border-color: var(--accent-green);
+            color: white;
+            transform: scale(1.1);
+            box-shadow: 0 5px 15px rgba(39, 174, 96, 0.3);
+        }
+
+        .step-dot.completed {
+            background: var(--accent-green);
+            border-color: var(--accent-green);
+            color: white;
+        }
+
+        h2 {
+            font-size: 1.8em;
+            color: var(--primary-blue);
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .section-desc {
+            color: var(--text-light);
+            font-size: 1.1em;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--border-light);
+        }
+
+        .question-block {
+            margin-bottom: 35px;
+            padding: 20px;
+            background: #f8fafc;
+            border-radius: 12px;
+            border: 1px solid var(--border-light);
+            transition: var(--transition);
+        }
+
+        .question-block:hover {
+            box-shadow: var(--shadow-sm);
+            transform: translateY(-2px);
+        }
+
+        .question-text {
+            display: block;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--primary-blue);
+        }
+
+        .mandatory {
+            color: var(--error-red);
+            margin-left: 5px;
+            font-size: 0.9em;
+        }
+
+        input[type="number"],
+        input[type="text"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid var(--border-light);
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: var(--transition);
+            background: white;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--accent-green);
+            box-shadow: 0 0 0 3px rgba(39, 174, 96, 0.1);
+        }
+
+        .option-pill {
+            display: block;
+            padding: 14px 18px;
+            margin-bottom: 10px;
+            border: 2px solid var(--border-light);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: var(--transition);
+            background: white;
+            font-weight: 500;
+        }
+
+        .option-pill:hover {
+            background: #f0f9f4;
+            border-color: var(--accent-green);
+            transform: translateX(5px);
+        }
+
+        .option-pill:has(input:checked) {
+            background: #e8f5e9;
+            border-color: var(--accent-green);
+        }
+
+        input[type="radio"],
+        input[type="checkbox"] {
+            margin-right: 15px;
+            transform: scale(1.2);
+            accent-color: var(--accent-green);
+        }
+
+        .radio-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .radio-group .option-pill {
+            flex: 1;
+            min-width: 150px;
+            text-align: center;
+        }
+
+        .other-field {
+            display: none;
+            margin-top: 15px;
+            border-left: 4px solid var(--accent-green);
+            padding-left: 20px;
+            animation: slideDown 0.3s ease;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 14px 30px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: var(--transition);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-next {
+            background: var(--primary-blue);
+            color: white;
+            flex: 2;
+        }
+
+        .btn-next:hover {
+            background: #34495e;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(44, 62, 80, 0.3);
+        }
+
+        .btn-back {
+            background: #e0e0e0;
+            color: var(--text-dark);
+            flex: 1;
+        }
+
+        .btn-back:hover {
+            background: #d0d0d0;
+            transform: translateY(-2px);
+        }
+
+        .btn-submit {
+            background: var(--accent-green);
+            color: white;
+            flex: 2;
+        }
+
+        .btn-submit:hover {
+            background: #219a52;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(39, 174, 96, 0.3);
+        }
+
+        /* Matrix table styling */
+        .matrix-container {
+            overflow-x: auto;
+            margin-top: 15px;
+            border-radius: 12px;
+            border: 2px solid var(--border-light);
+            background: white;
+        }
+
+        .matrix-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: center;
+        }
+
+        .matrix-table th {
+            background: var(--primary-blue);
+            color: white;
+            padding: 15px;
+            font-weight: 500;
+        }
+
+        .matrix-table td {
+            padding: 12px;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .matrix-table tr:hover {
+            background: #f8fafc;
+        }
+
+        .matrix-label {
+            text-align: left;
+            font-weight: 500;
+            min-width: 200px;
+            color: var(--primary-blue);
+        }
+
+        .matrix-table input[type="radio"] {
+            transform: scale(1.3);
+            margin: 0;
+        }
+
+        /* Welcome card styling */
+        .welcome-card {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .info-badge {
+            background: #fff3cd;
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 5px solid var(--warning-yellow);
+            margin: 25px 0;
+            text-align: left;
+        }
+
+        .info-badge strong {
+            color: #856404;
+            font-size: 1.1em;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .survey-header {
+                padding: 20px;
+            }
+
+            .survey-header h1 {
+                font-size: 1.8em;
+            }
+
+            .survey-content {
+                padding: 20px;
+            }
+
+            .radio-group {
+                flex-direction: column;
+            }
+
+            .radio-group .option-pill {
+                width: 100%;
+            }
+
+            .nav-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .step-dot {
+                width: 30px;
+                height: 30px;
+                font-size: 0.9em;
+            }
+        }
+
+        /* Loading state */
+        .loading {
+            position: relative;
+            opacity: 0.7;
+            pointer-events: none;
+        }
+
+        .loading::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 30px;
+            height: 30px;
+            border: 3px solid var(--border-light);
+            border-top-color: var(--accent-green);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Error styling */
+        .error {
+            border-color: var(--error-red) !important;
+        }
+
+        .error-message {
+            color: var(--error-red);
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="survey-app">
+    <div class="survey-header">
+        <h1>🌍 EcowasHealthSurvey2026</h1>
+        <p>Africa Health & Wellbeing Study</p>
+    </div>
+
+    <div class="progress-container">
+        <div id="progress-bar"></div>
+    </div>
+
+    <div class="survey-content">
+        <form id="healthSurvey" action="https://formspree.io/f/mnjjdawq" method="POST">
+            
+            <!-- Step indicators -->
+            <div class="step-indicator" id="stepIndicator">
+                <span class="step-dot active" data-step="0">1</span>
+                <span class="step-dot" data-step="1">2</span>
+                <span class="step-dot" data-step="2">3</span>
+                <span class="step-dot" data-step="3">4</span>
+                <span class="step-dot" data-step="4">5</span>
+                <span class="step-dot" data-step="5">6</span>
+                <span class="step-dot" data-step="6">7</span>
+                <span class="step-dot" data-step="7">8</span>
+                <span class="step-dot" data-step="8">9</span>
+                <span class="step-dot" data-step="9">10</span>
+                <span class="step-dot" data-step="10">11</span>
+                <span class="step-dot" data-step="11">12</span>
+                <span class="step-dot" data-step="12">13</span>
+                <span class="step-dot" data-step="13">14</span>
+            </div>
+
+            <!-- Step 0: Welcome -->
+            <div class="survey-step" id="step0">
+                <div class="welcome-card">
+                    <h2>Welcome to the Health & Wellbeing Survey</h2>
+                    <p style="font-size: 1.2em; color: var(--text-light); margin: 20px 0;">This study helps improve healthcare services across the continent.</p>
+                    
+                    <div class="info-badge">
+                        <strong>⏱️ Estimated Time:</strong> 40–45 minutes<br>
+                        <strong>📋 Total Questions:</strong> 139<br>
+                        <strong>🔒 Privacy:</strong> Anonymous and confidential
+                    </div>
+
+                    <p style="margin: 25px 0; color: var(--text-dark);">Your participation helps us understand health needs better and improve healthcare services across Africa.</p>
+                    
+                    <button type="button" class="btn btn-next" onclick="navigate(1)" style="width: auto; margin: 0 auto; padding: 16px 50px;">Start Survey</button>
+                </div>
+            </div>
+
+           <div class="survey-step" id="step1" style="display:none;">
+    <h2>🧍‍♂️ 1. Demographics</h2>
+    <p class="section-desc">Basic information to understand health disparities.</p>
+
+    <div class="question-block">
+        <label class="question-text">Full Name<span class="mandatory">*</span></label>
+        <input type="text" name="Full_Name" placeholder="Enter your full name" required>
+    </div>
+
+    <div class="question-block">
+        <label class="question-text">Email Address<span class="mandatory">*</span></label>
+        <input type="email" name="Email" placeholder="example@mail.com" required>
+    </div>
+
+    <div class="question-block">
+        <label class="question-text">Phone Number<span class="mandatory">*</span></label>
+        <input type="tel" name="Phone" placeholder="0800 000 0000" required>
+    </div>
+
+    <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;">
+
+    <div class="question-block">
+        <label class="question-text">How old are you? <span class="mandatory">*</span></label>
+        <input type="number" name="Age" min="1" max="120" required>
+    </div>
+
+    <div class="question-block">
+        <label class="question-text">Who lives in your household? (Select all that apply)<span class="mandatory">*</span></label>
+        <label class="option-pill"><input type="checkbox" name="Household" value="partner"> Partner/Spouse</label>
+        <label class="option-pill"><input type="checkbox" name="Household" value="kids_u18"> Children &lt; 18</label>
+        <label class="option-pill"><input type="checkbox" name="Household" value="parents"> Parents/Grandparents</label>
+        <label class="option-pill"><input type="checkbox" name="Household" value="alone"> I live alone</label>
+        <textarea name="Household_Comment" rows="2" placeholder="Comment if needed..."></textarea>
+    </div>
+
+    <div class="question-block">
+        <label class="question-text">What Gender are you?<span class="mandatory">*</span></label>
+        <select name="Gender" required>
+            <option value="">Select Gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            <option value="non-binary">Non-binary</option>
+            <option value="pnts">Prefer not to say</option>
+        </select>
+    </div>
+
+    <div class="question-block">
+        <label class="question-text">Marital Status?<span class="mandatory">*</span></label>
+        <select name="Marital_Status" required>
+            <option value="">Select Status</option>
+            <option value="single">Single</option>
+            <option value="married">Married</option>
+            <option value="divorced">Divorced</option>
+            <option value="widowed">Widowed</option>
+            <option value="polygamous">Polygamous</option>
+        </select>
+    </div>
+
+    <div class="question-block">
+        <label class="question-text">Religious Affiliation?<span class="mandatory">*</span></label>
+        <select name="Religion" required onchange="toggleOther(this, 'rel_other')">
+            <option value="">Select Religion</option>
+            <option value="catholic">Christian (Catholic)</option>
+            <option value="protestant">Christian (Protestant)</option>
+            <option value="muslim">Muslim</option>
+            <option value="traditional">Traditional</option>
+            <option value="other">Other</option>
+        </select>
+        <div id="rel_other" class="other-field">
+            <input type="text" name="Religion_Other" placeholder="Specify religion">
+        </div>
+    </div>
+
+    <div class="nav-buttons">
+        <button type="button" class="btn btn-back" onclick="navigate(0)">Back</button>
+        <button type="button" class="btn btn-next" onclick="navigate(2)">Next Section</button>
+    </div>
+</div>
+
+            <!-- Step 2: Migration & Language -->
+            <div class="survey-step" id="step2" style="display:none;">
+                <h2>🌍 2. Migration & Language</h2>
+                <p class="section-desc">Language and background affect healthcare access.</p>
+
+                <div class="question-block">
+                    <label class="question-text">Country of birth?<span class="mandatory">*</span></label>
+                    <select name="Birth_Country" required onchange="toggleOther(this, 'birth_other')">
+                        <option value="">Select Country</option>
+                        <option value="Nigeria">Nigeria</option>
+                        <option value="Ghana">Ghana</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <div id="birth_other" class="other-field"><input type="text" name="Birth_Country_Other" placeholder="Specify country"></div>
+                </div>
+
+                <div class="question-block">
+                    <label class="question-text">First (mother) tongue?<span class="mandatory">*</span></label>
+                    <select name="Mother_Tongue" required onchange="toggleOther(this, 'lang_other')">
+                        <option value="">Select Language</option>
+                        <option value="Yoruba">Yoruba</option>
+                        <option value="Hausa">Hausa</option>
+                        <option value="Twi">Twi</option>
+                        <option value="English">English</option>
+                        <option value="French">French</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <div id="lang_other" class="other-field"><input type="text" name="Mother_Tongue_Other" placeholder="Specify language"></div>
+                </div>
+
+                <div class="question-block">
+                    <label class="question-text">English Language Skills?<span class="mandatory">*</span></label>
+                    <div class="radio-group">
+                        <label class="option-pill"><input type="radio" name="English_Level" value="native" required> Native</label>
+                        <label class="option-pill"><input type="radio" name="English_Level" value="good"> Good</label>
+                        <label class="option-pill"><input type="radio" name="English_Level" value="little"> Little/None</label>
+                    </div>
+                </div>
+
+                <div class="nav-buttons">
+                    <button type="button" class="btn btn-back" onclick="navigate(1)">Back</button>
+                    <button type="button" class="btn btn-next" onclick="navigate(3)">Next Section</button>
+                </div>
+            </div>
+
+            <!-- Step 3: Education & Employment -->
+            <div class="survey-step" id="step3" style="display:none;">
+                <h2>🎓 3. Education & Employment</h2>
+                <p class="section-desc">Work and schooling data related to health quality.</p>
+
+                <div class="question-block">
+                    <label class="question-text">Highest school qualification?<span class="mandatory">*</span></label>
+                    <select name="School_Level" required onchange="toggleOther(this, 'edu_other')">
+                        <option value="">Select Level</option>
+                        <option value="primary">Primary</option>
+                        <option value="secondary">Secondary</option>
+                        <option value="vocational">Vocational</option>
+                        <option value="university">University</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <div id="edu_other" class="other-field"><input type="text" name="School_Other" placeholder="Specify"></div>
+                </div>
+
+                <div class="question-block">
+                    <label class="question-text">Current Employment Status?<span class="mandatory">*</span></label>
+                    <div class="radio-group">
+                        <label class="option-pill"><input type="radio" name="Job_Status" value="full_time" required> Full-time</label>
+                        <label class="option-pill"><input type="radio" name="Job_Status" value="part_time"> Part-time</label>
+                        <label class="option-pill"><input type="radio" name="Job_Status" value="unemployed"> Unemployed</label>
+                        <label class="option-pill"><input type="radio" name="Job_Status" value="self"> Self-employed</label>
+                    </div>
+                </div>
+
+                <div class="question-block">
+                    <label class="question-text">Do you earn enough to cover basic needs?</label>
+                    <select name="Financial_Stability">
+                        <option value="always">Always</option>
+                        <option value="often">Often</option>
+                        <option value="sometimes">Sometimes</option>
+                        <option value="rarely">Rarely</option>
+                        <option value="never">Never</option>
+                    </select>
+                </div>
+
+                <div class="nav-buttons">
+                    <button type="button" class="btn btn-back" onclick="navigate(2)">Back</button>
+                    <button type="button" class="btn btn-next" onclick="navigate(4)">Next Section</button>
+                </div>
+            </div>
+
+            <!-- Step 4: Nutrition & Dietary Habits -->
+            <div class="survey-step" id="step4" style="display:none;">
+                <h2>🍎 4. Nutrition & Dietary Habits</h2>
+                <p class="section-desc">We ask about your eating habits – how often you consume certain foods, how regularly you eat, and whether you have access to healthy food.</p>
+
+                <div class="question-block">
+                    <label class="question-text">How many meals do you usually eat per day?<span class="mandatory">*</span></label>
+                    <select name="Meals_Per_Day" required onchange="toggleOther(this, 'meals_other')">
+                        <option value="">Select an option</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="more_than_3">More than 3</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <div id="meals_other" class="other-field">
+                        <input type="text" name="Meals_Other" placeholder="Please specify">
+                    </div>
+                </div>
+
+                <div class="question-block">
+                    <label class="question-text">Which of the following best describes your nutrition habits? (Select all that apply)<span class="mandatory">*</span></label>
+                    <label class="option-pill"><input type="checkbox" name="Habits" value="home_cooked"> Home-cooked meals</label>
+                    <label class="option-pill"><input type="checkbox" name="Habits" value="fast_food"> Fast food</label>
+                    <label class="option-pill"><input type="checkbox" name="Habits" value="vegetarian"> Vegetarian</label>
+                    <label class="option-pill"><input type="checkbox" name="Habits" value="vegan"> Vegan</label>
+                    <label class="option-pill"><input type="checkbox" name="Habits" value="traditional"> Traditional diet</label>
+                    <label class="option-pill"><input type="checkbox" name="Habits" value="mixed"> Mixed diet</label>
+                    <input type="text" name="Habits_Other" placeholder="Other habits..." style="margin-top:10px;">
+                </div>
+
+                <div class="question-block">
+                    <label class="question-text">Do you regularly eat breakfast?<span class="mandatory">*</span></label>
+                    <div class="radio-group">
+                        <label class="option-pill"><input type="radio" name="Breakfast" value="yes" required> Yes</label>
+                        <label class="option-pill"><input type="radio" name="Breakfast" value="no"> No</label>
+                    </div>
+                </div>
+
+                <div class="question-block">
+                    <label class="question-text">How would you describe your diet in general?</label>
+                    <select name="Diet_Description">
+                        <option value="very_healthy">Very healthy</option>
+                        <option value="fairly_healthy">Fairly healthy</option>
+                        <option value="not_very_healthy">Not very healthy</option>
+                        <option value="unhealthy">Unhealthy</option>
+                        <option value="dont_know">I don't know</option>
+                        <option value="no_answer">No answer</option>
+                    </select>
+                </div>
+
+                <div class="question-block">
+                    <label class="question-text">How often do you eat fruits and vegetables?</label>
+                    <select name="Fruit_Freq">
+                        <option value="several_times_day">Several times per day</option>
+                        <option value="daily">Daily</option>
+                        <option value="several_times_week">Several times per week</option>
+                        <option value="rarely">Rarely</option>
+                        <option value="never">Never</option>
+                        <option value="no_answer">No answer</option>
+                    </select>
+                </div>
+
+                <div class="question-block">
+                    <label class="question-text">Do you find it easy to access healthy food in your area?</label>
+                    <select name="Healthy_Access">
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                        <option value="sometimes">Sometimes</option>
+                        <option value="no_answer">No answer</option>
+                    </select>
+                </div>
+
+                <div class="question-block">
+                    <label class="question-text">Do you snack between meals?</label>
+                    <select name="Snacking">
+                        <option value="frequently">Frequently</option>
+                        <option value="sometimes">Sometimes</option>
+                        <option value="rarely">Rarely</option>
+                        <option value="never">Never</option>
+                        <option value="no_answer">No answer</option>
+                    </select>
+                </div>
+
+                <div class="question-block">
+                    <label class="question-text">Do you have regular access to clean drinking water?</label>
+                    <select name="Clean_Water">
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                        <option value="sometimes">Sometimes</option>
+                        <option value="no_answer">No answer</option>
+                    </select>
+                </div>
+
+                <div class="question-block">
+                    <label class="question-text">How often do you consume sugary drinks (e.g. soda, sweetened juices)?</label>
+                    <select name="Sugary_Drinks">
+                        <option value="daily">Daily</option>
+                        <option value="several_times_week">Several times per week</option>
+                        <option value="weekly">Weekly</option>
+                        <option value="rarely">Rarely</option>
+                        <option value="never">Never</option>
+                        <option value="no_answer">No answer</option>
+                    </select>
+                </div>
+
+                <div class="question-block">
+                    <label class="question-text">Are there cultural or religious factors that influence your diet?<span class="mandatory">*</span></label>
+                    <select name="Cultural_Diet" required onchange="toggleOther(this, 'cultural_spec')">
+                        <option value="">Select an option</option>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                    </select>
+                    <div id="cultural_spec" class="other-field">
+                        <input type="text" name="Cultural_Detail" placeholder="Please specify factors">
+                    </div>
+                    <textarea name="Diet_Comment" rows="2" placeholder="Please enter your comment here..." style="margin-top:15px;"></textarea>
+                </div>
+
+                <div class="nav-buttons">
+                    <button type="button" class="btn btn-back" onclick="navigate(3)">Back</button>
+                    <button type="button" class="btn btn-next" onclick="navigate(5)">Next Section</button>
+                </div>
+            </div>
+
+            <!-- Step 5: Physical Health -->
+            <div class="survey-step" id="step5" style="display:none;">
+                <h2>🏃‍♂️ 5. Physical Health, Activity & Body Measures</h2>
+                <p class="section-desc">This section covers your physical health, activity, weight, height, and general physical condition. This information helps assess health risks.</p>
+
+                <div class="question-block">
+                    <label class="question-text">How often are you physically active (walking, sports, chores, etc.) for at least 30 minutes?<span class="mandatory">*</span></label>
+                    <select name="Physical_Activity" required>
+                        <option value="">Select an option</option>
+                        <option value="daily">Daily</option>
+                        <option value="3-5_times_week">3–5 times/week</option>
+                        <option value="1-2_times_week">1–2 times/week</option>
+                        <option value="rarely">Rarely</option>
+                        <option value="never">Never</option>
+                    </select>
+                </div>
+
+                <div class="question-block">
+                    <label class="question-text">How would you rate your physical fitness?</label>
+                    <select name="Fitness_Rating">
+                        <option value="very_good">Very good</option>
+                        <option value="good">Good</option>
+                        <option value="average">Average</option>
+                        <option value="poor">Poor</option>
+                        <option value="very_poor">Very poor</option>
+                        <option value="no_answer">No answer</option>
+                    </select>
+                </div>
+
+                <div class="question-block">
+                    <label class="question-text">What is your current body weight (in kg)?<span class="mandatory">*</span></label>
+                    <input type="number" name="Weight_kg" placeholder="e.g. 70" required min="1" max="500" step="0.1">
+                </div>
+
+                <div class="question-block">
+                    <label class="question-text">What is your height (in cm)?<span class="mandatory">*</span></label>
+                    <input type="number" name="Height_cm" placeholder="e.g. 175" required min="1" max="300">
+                </div>
+
+                <div class="question-block">
+                    <label class="question-text">Do you have any physical limitation (e.g. walking, lifting, climbing stairs)?</label>
+                    <select name="Physical_Limitation">
+                        <option value="none">None</option>
+                        <option value="minor">Minor</option>
+                        <option value="moderate">Moderate</option>
+                        <option value="severe">Severe</option>
+                        <option value="no_answer">No answer</option>
+                    </select>
+                </div>
+
+                <div class="question-block">
+                    <label class="question-text">Have you experienced shortness of breath during the last 4 weeks?</label>
+                    <select name="Shortness_Breath">
+                        <option value="never">Never</option>
+                        <option value="rarely">Rarely</option>
+                        <option value="sometimes">Sometimes</option>
+                        <option value="often">Often</option>
+                        <option value="always">Always</option>
+                        <option value="no_answer">No answer</option>
+                    </select>
+                </div>
+
+                <div class="question-block">
+                    <label class="question-text">Have you experienced changes in appetite during the last 4 weeks?</label>
+                    <select name="Appetite_Change">
+                        <option value="never">Never</option>
+                        <option value="rarely">Rarely</option>
+                        <option value="sometimes">Sometimes</option>
+                        <option value="often">Often</option>
+                        <option value="always">Always</option>
+                        <option value="no_answer">No answer</option>
+                    </select>
+                </div>
+
+                <div class="question-block">
+                    <label class="question-text">Do you use any assistive devices? (Select all that apply)</label>
+                    <label class="option-pill"><input type="checkbox" name="Assistive" value="walking_aid"> Walking aid</label>
+                    <label class="option-pill"><input type="checkbox" name="Assistive" value="wheelchair"> Wheelchair</label>
+                    <label class="option-pill"><input type="checkbox" name="Assistive" value="hearing_aid"> Hearing aid</label>
+                    <label class="option-pill"><input type="checkbox" name="Assistive" value="visual_aid"> Visual aid</label>
+                    <label class="option-pill"><input type="checkbox" name="Assistive" value="none"> None</label>
+                    <input type="text" name="Assistive_Other" placeholder="Other devices..." style="margin-top:10px;">
+                </div>
+
+                <div class="nav-buttons">
+                    <button type="button" class="btn btn-back" onclick="navigate(4)">Back</button>
+                    <button type="button" class="btn btn-next" onclick="navigate(6)">Next Section</button>
+                </div>
+            </div>
+
+            <!-- Step 6: Mental Health -->
+            <div class="survey-step" id="step6" style="display:none;">
+                <h2>🧠 6. Mental Health & Emotions</h2>
+                <p class="section-desc">This section looks at your emotional well-being – whether you've felt stressed, exhausted, sad, or content. Such feelings have a strong impact on quality of life.</p>
+
+                <div class="question-block">
+                    <label class="question-text">In the last 4 weeks, how often did you experience the following?<span class="mandatory">*</span></label>
+                    <div class="matrix-container">
+                        <table class="matrix-table">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Never</th>
+                                    <th>Rarely</th>
+                                    <th>Sometimes</th>
+                                    <th>Often</th>
+                                    <th>Always</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="matrix-label">Felt anxious or nervous</td>
+                                    <td><input type="radio" name="M1_Anxious" value="never" required></td>
+                                    <td><input type="radio" name="M1_Anxious" value="rarely"></td>
+                                    <td><input type="radio" name="M1_Anxious" value="sometimes"></td>
+                                    <td><input type="radio" name="M1_Anxious" value="often"></td>
+                                    <td><input type="radio" name="M1_Anxious" value="always"></td>
+                                </tr>
+                                <tr>
+                                    <td class="matrix-label">Felt down or hopeless</td>
+                                    <td><input type="radio" name="M2_Depressed" value="never" required></td>
+                                    <td><input type="radio" name="M2_Depressed" value="rarely"></td>
+                                    <td><input type="radio" name="M2_Depressed" value="sometimes"></td>
+                                    <td><input type="radio" name="M2_Depressed" value="often"></td>
+                                    <td><input type="radio" name="M2_Depressed" value="always"></td>
+                                </tr>
+                                <tr>
+                                    <td class="matrix-label">Had trouble sleeping</td>
+                                    <td><input type="radio" name="M3_Sleep" value="never" required></td>
+                                    <td><input type="radio" name="M3_Sleep" value="rarely"></td>
+                                    <td><input type="radio" name="M3_Sleep" value="sometimes"></td>
+                                    <td><input type="radio" name="M3_Sleep" value="often"></td>
+                                    <td><input type="radio" name="M3_Sleep" value="always"></td>
+                                </tr>
+                                <tr>
+                                    <td class="matrix-label">Felt tired/no energy</td>
+                                    <td><input type="radio" name="M4_Energy" value="never" required></td>
+                                    <td><input type="radio" name="M4_Energy" value="rarely"></td>
+                                    <td><input type="radio" name="M4_Energy" value="sometimes"></td>
+                                    <td><input type="radio" name="M4_Energy" value="often"></td>
+                                    <td><input type="radio" name="M4_Energy" value="always"></td>
+                                </tr>
+                                <tr>
+                                    <td class="matrix-label">Little interest/pleasure</td>
+                                    <td><input type="radio" name="M5_Interest" value="never" required></td>
+                                    <td><input type="radio" name="M5_Interest" value="rarely"></td>
+                                    <td><input type="radio" name="M5_Interest" value="sometimes"></td>
+                                    <td><input type="radio" name="M5_Interest" value="often"></td>
+                                    <td><input type="radio" name="M5_Interest" value="always"></td>
+                                </tr>
+                                <tr>
+                                    <td class="matrix-label">Difficulty concentrating</td>
+                                    <td><input type="radio" name="M6_Concentrate" value="never" required></td>
+                                    <td><input type="radio" name="M6_Concentrate" value="rarely"></td>
+                                    <td><input type="radio" name="M6_Concentrate" value="sometimes"></td>
+                                    <td><input type="radio" name="M6_Concentrate" value="often"></td>
+                                    <td><input type="radio" name="M6_Concentrate" value="always"></td>
+                                </tr>
+                                <tr>
+                                    <td class="matrix-label">Felt lonely/isolated</td>
+                                    <td><input type="radio" name="M7_Lonely" value="never" required></td>
+                                    <td><input type="radio" name="M7_Lonely" value="rarely"></td>
+                                    <td><input type="radio" name="M7_Lonely" value="sometimes"></td>
+                                    <td><input type="radio" name="M7_Lonely" value="often"></td>
+                                    <td><input type="radio" name="M7_Lonely" value="always"></td>
+                                </tr>
+                                <tr>
+                                    <td class="matrix-label">Felt happy</td>
+                                    <td><input type="radio" name="M8_Happy" value="never" required></td>
+                                    <td><input type="radio" name="M8_Happy" value="rarely"></td>
+                                    <td><input type="radio" name="M8_Happy" value="sometimes"></td>
+                                    <td><input type="radio" name="M8_Happy" value="often"></td>
+                                    <td><input type="radio" name="M8_Happy" value="always"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="question-block">
+                    <label class="question-text">Have you experienced any of the following mental health conditions in the past year?<span class="mandatory">*</span></label>
+                    <label class="option-pill"><input type="checkbox" name="MH_Condition" value="depression"> Depression</label>
+                    <label class="option-pill"><input type="checkbox" name="MH_Condition" value="anxiety"> Anxiety</label>
+                    <label class="option-pill"><input type="checkbox" name="MH_Condition" value="burnout"> Burnout</label>
+                    <label class="option-pill"><input type="checkbox" name="MH_Condition" value="ptsd"> PTSD</label>
+                    <label class="option-pill"><input type="checkbox" name="MH_Condition" value="hypochondria"> Hypochondria</label>
+                    <label class="option-pill"><input type="checkbox" name="MH_Condition" value="none"> None</label>
+                    <input type="text" name="MH_Other" placeholder="Other conditions..." style="margin-top:10px;">
+                </div>
+
+                <div class="question-block">
+                    <label class="question-text">Have any of these mental health states led to increased use of alcohol or other substances?<span class="mandatory">*</span></label>
+                    <select name="Substance_Impact" required>
+                        <option value="">Select an option</option>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                        <option value="idk">I don't know</option>
+                    </select>
+                </div>
+
+                <div class="question-block">
+                    <label class="question-text">Have you received any mental health treatment in the past 12 months?<span class="mandatory">*</span></label>
+                    <select name="MH_Treatment" required>
+                        <option value="">Select an option</option>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                        <option value="pnts">I prefer not to say</option>
+                    </select>
+                </div>
+
+                <div class="question-block">
+                    <label class="question-text">Have emotional difficulties affected your work or social life in the past month?</label>
+                    <select name="Emotional_Impact">
+                        <option value="no">No</option>
+                        <option value="slightly">Yes, slightly</option>
+                        <option value="moderately">Yes, moderately</option>
+                        <option value="significantly">Yes, significantly</option>
+                        <option value="no_answer">No answer</option>
+                    </select>
+                </div>
+
+                <div class="question-block">
+                    <label class="question-text">In the past 12 months, have you taken any medication or herbal remedies for emotional issues?</label>
+                    <select name="MH_Medication">
+                        <option value="no">No</option>
+                        <option value="western">Yes – Western medicine</option>
+                        <option value="herbal">Yes – Herbal/traditional remedies</option>
+                        <option value="both">Yes – Both</option>
+                        <option value="no_answer">No answer</option>
+                    </select>
+                </div>
+
+                <div class="question-block">
+                    <label class="question-text">Do you currently feel supported by family or friends?<span class="mandatory">*</span></label>
+                    <select name="Social_Support" required onchange="toggleOther(this, 'support_other')">
+                        <option value="">Select an option</option>
+                        <option value="always">Yes, always</option>
+                        <option value="sometimes">Yes, sometimes</option>
+                        <option value="no">No</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <div id="support_other" class="other-field"><input type="text" name="Support_Other_Detail" placeholder="Please specify"></div>
+                </div>
+
+                <div class="question-block">
+                    <label class="question-text">Have you experienced traumatic events in the past?<span class="mandatory">*</span></label>
+                    <select name="Trauma_History" required>
+                        <option value="">Select an option</option>
+                        <option value="no">No</option>
+                        <option value="one">Yes, one event</option>
+                        <option value="multiple">Yes, multiple events</option>
+                    </select>
+                </div>
+
+                <div class="question-block">
+                    <label class="question-text">Do you currently have access to mental health services if needed?<span class="mandatory">*</span></label>
+                    <select name="MH_Access" required>
+                        <option value="">Select an option</option>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                        <option value="not_sure">Not sure</option>
+                    </select>
+                </div>
+
+                <div class="question-block">
+                    <label class="question-text">Would you feel comfortable talking to a health worker about mental challenges?</label>
+                    <select name="Comfort_Level">
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                        <option value="not_sure">Not sure</option>
+                        <option value="no_answer">No answer</option>
+                    </select>
+                </div>
+
+                <div class="nav-buttons">
+                    <button type="button" class="btn btn-back" onclick="navigate(5)">Back</button>
+                    <button type="button" class="btn btn-next" onclick="navigate(7)">Next Section</button>
+                </div>
+            </div>
+
+            <!-- Step 7: Health Insurance & Chronic Conditions -->
+            <div class="survey-step" id="step7" style="display:none;">
+                <h2>🏥 7. Health Insurance & Chronic Conditions</h2>
+                <p class="section-desc">We ask about your insurance coverage and whether you've experienced any problems related to chronic conditions. This information helps identify healthcare needs more clearly.</p>
+
+                <div class="question-block">
+                    <label class="question-text">Do you currently have health insurance?<span class="mandatory">*</span></label>
+                    <select name="Health_Insurance" required onchange="toggleOther(this, 'insurance_other')">
+                        <option value="">Select an option</option>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                        <option value="idk">I don't know</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <div id="insurance_other" class="other-field">
+                        <input type="text" name="Insurance_Other_Detail" placeholder="Please specify">
+                    </div>
+                </div>
+
+                <div class="question-block">
+                    <label class="question-text">Do you have one or more long-term, chronic diseases? (Select all that apply)<span class="mandatory">*</span></label>
+                    <label class="option-pill"><input type="checkbox" name="Chronic_Disease" value="hypertension"> Hypertension</label>
+                    <label class="option-pill"><input type="checkbox" name="Chronic_Disease" value="diabetes"> Diabetes</label>
+                    <label class="option-pill"><input type="checkbox" name="Chronic_Disease" value="heart_disease"> Heart disease</label>
+                    <label class="option-pill"><input type="checkbox" name="Chronic_Disease" value="asthma_lung"> Asthma or lung disease</label>
+                    <label class="option-pill"><input type="checkbox" name="Chronic_Disease" value="mental_illness"> Mental illness</label>
+                    <label class="option-pill"><input type="checkbox" name="Chronic_Disease" value="chronic_pain"> Chronic pain</label>
+                    <label class="option-pill"><input type="checkbox" name="Chronic_Disease" value="cancer"> Cancer</label>
+                    <label class="option-pill"><input type="checkbox" name="Chronic_Disease" value="none"> None</label>
+                    <input type="text" name="Chronic_Other" placeholder="Other condition..." style="margin-top:10px;">
+                </div>
+
+                <div class="question-block">
+                    <label class="question-text">Do you understand how to monitor your condition (e.g. blood pressure, sugar)?</label>
+                    <select name="Condition_Monitoring">
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                        <option value="na">Not applicable</option>
+                        <option value="no_answer">No answer</option>
+                    </select>
+                </div>
+
+                <div class="nav-buttons">
+                    <button type="button" class="btn btn-back" onclick="navigate(6)">Back</button>
+                    <button type="button" class="btn btn-next" onclick="navigate(8)">Next Section</button>
+                </div>
+            </div>
+
+            <!-- Step 8: Medication & Treatment Use -->
+            <div class="survey-step" id="step8" style="display:none;">
+                <h2>💊 8. Medication & Treatment Use</h2>
+                <p class="section-desc">This section explores which medications or treatments you currently use and how regularly you take them.</p>
+
+                <div class="question-block">
+                    <label class="question-text">Are you currently taking any of the following medications?<span class="mandatory">*</span></label>
+                    <select name="Medication_Type" required onchange="toggleOther(this, 'med_other')">
+                        <option value="">Select an option</option>
+                        <option value="painkillers">Painkillers</option>
+                        <option value="bp_med">Blood pressure medication</option>
+                        <option value="diabetes_med">Diabetes medication</option>
+                        <option value="mental_health_med">Antidepressants or anxiety medication</option>
+                        <option value="sleep_med">Sleep medication</option>
+                        <option value="herbal">Herbal or traditional remedies</option>
+                        <option value="none">None</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <div id="med_other" class="other-field"><input type="text" name="Med_Other_Detail" placeholder="Specify medication"></div>
+                </div>
+
+                <div class="question-block">
+                    <label class="question-text">Do you take any prescribed medications regularly?</label>
+                    <div class="radio-group">
+                        <label class="option-pill"><input type="radio" name="Prescribed_Regular" value="yes"> Yes</label>
+                        <label class="option-pill"><input type="radio" name="Prescribed_Regular" value="no"> No</label>
+                    </div>
+                </div>
+
+                <div class="question-block">
+                    <label class="question-text">Where do you usually get your medications?<span class="mandatory">*</span></label>
+                    <select name="Med_Source" required onchange="toggleOther(this, 'source_other')">
+                        <option value="">Select an option</option>
+                        <option value="pharmacy">Pharmacy</option>
+                        <option value="hospital">Hospital</option>
+                        <option value="street_vendor">Street vendor</option>
+                        <option value="traditional_healer">Traditional healer</option>
+                        <option value="friends_family">Friends/family</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <div id="source_other" class="other-field"><input type="text" name="Source_Other_Detail" placeholder="Specify source"></div>
+                </div>
+
+                <div class="question-block">
+                    <label class="question-text">Do you take your medication regularly as prescribed?<span class="mandatory">*</span></label>
+                    <select name="Adherence" required>
+                        <option value="">Select an option</option>
+                        <option value="always">Always</option>
+                        <option value="often">Often</option>
+                        <option value="sometimes">Sometimes</option>
+                        <option value="rarely">Rarely</option>
+                        <option value="never">Never</option>
+                    </select>
+                </div>
+
+                <div class="question-block">
+                    <label class="question-text">Have you ever stopped taking medicine because of side effects or fear?<span class="mandatory">*</span></label>
+                    <select name="Stopped_Med" required>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                        <option value="na">Not applicable</option>
+                    </select>
+                </div>
+
+                <div class="nav-buttons">
+                    <button type="button" class="btn btn-back" onclick="navigate(7)">Back</button>
+                    <button type="button" class="btn btn-next" onclick="navigate(9)">Next Section</button>
+                </div>
+            </div>
+
+            <!-- Step 9: Substance Use -->
+            <div class="survey-step" id="step9" style="display:none;">
+                <h2>🍺 9. Substance Use (Alcohol, Tobacco, Drugs)</h2>
+                <p class="section-desc">This section addresses your use of alcohol, tobacco, and other substances. These factors can significantly affect health.</p>
+
+                <div class="question-block">
+                    <label class="question-text">Do you currently consume alcohol?</label>
+                    <select name="Alcohol_User" onchange="showFrequency(this, 'alc_freq_div')">
+                        <option value="no">No</option>
+                        <option value="yes">Yes</option>
+                        <option value="occasionally">Occasionally</option>
+                        <option value="no_answer">No answer</option>
+                    </select>
+                </div>
+
+                <div id="alc_freq_div" class="question-block" style="display:none; border-left: 4px solid var(--accent-green); padding-left: 15px;">
+                    <label class="question-text">If yes, how often do you drink alcohol?<span class="mandatory">*</span></label>
+                    <select name="Alcohol_Freq" onchange="toggleOther(this, 'alc_other')">
+                        <option value="rarely">Rarely</option>
+                        <option value="once_week">Once per week</option>
+                        <option value="several_week">Several times per week</option>
+                        <option value="daily">Daily</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <div id="alc_other" class="other-field"><input type="text" name="Alc_Other_Detail" placeholder="Specify frequency"></div>
+                </div>
+
+                <div class="question-block">
+                    <label class="question-text">Do you currently use any of the following tobacco or nicotine products?<span class="mandatory">*</span></label>
+                    <select name="Tobacco_User" required onchange="showFrequency(this, 'smoke_freq_div')">
+                        <option value="">Select an option</option>
+                        <option value="no">No</option>
+                        <option value="cigarettes">Yes – Cigarettes</option>
+                        <option value="shisha">Yes – Shisha / Waterpipe</option>
+                        <option value="vape">Yes – Electronic cigarette (vape)</option>
+                        <option value="occasionally">Occasionally</option>
+                        <option value="quit">I used to, but not anymore</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <div id="smoke_freq_div" class="question-block" style="display:none; border-left: 4px solid var(--accent-green); padding-left: 15px;">
+                    <label class="question-text">If yes, how many cigarettes do you usually smoke per day?<span class="mandatory">*</span></label>
+                    <select name="Smoke_Count" onchange="toggleOther(this, 'smoke_other')">
+                        <option value="less_5">Less than 5</option>
+                        <option value="5-10">5–10</option>
+                        <option value="10-20">10–20</option>
+                        <option value="more_20">More than 20</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <div id="smoke_other" class="other-field"><input type="text" name="Smoke_Other_Detail" placeholder="Specify amount"></div>
+                </div>
+
+                <div class="question-block">
+                    <label class="question-text">Have you ever used any of the following substances for non-medical purposes?<span class="mandatory">*</span></label>
+                    <label class="option-pill"><input type="checkbox" name="Substances" value="marijuana"> Marijuana / Weed</label>
+                    <label class="option-pill"><input type="checkbox" name="Substances" value="opioids"> Tramadol / Oxycodon / Morphin (without prescription)</label>
+                    <label class="option-pill"><input type="checkbox" name="Substances" value="cocaine"> Cocaine</label>
+                    <label class="option-pill"><input type="checkbox" name="Substances" value="inhalants"> Inhalants / glue</label>
+                    <label class="option-pill"><input type="checkbox" name="Substances" value="none"> I have never used any of these</label>
+                    <input type="text" name="Substances_Other" placeholder="Other substances..." style="margin-top:10px; width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 8px;">
+                </div>
+
+                <div class="nav-buttons">
+                    <button type="button" class="btn btn-back" onclick="navigate(8)">Back</button>
+                    <button type="button" class="btn btn-next" onclick="navigate(10)">Next Section</button>
+                </div>
+            </div>
+
+            <!-- Step 10: Vaccination & Preventive Care -->
+            <div class="survey-step" id="step10" style="display:none;">
+                <h2>💉 10. Vaccination & Preventive Care</h2>
+                <p class="section-desc">We ask whether you've participated in preventive screenings and received vaccinations. Prevention is a key part of maintaining good health.</p>
+
+                <div class="question-block">
+                    <label class="question-text">Have you received any of the following in the past 12 months? (Select all that apply)<span class="mandatory">*</span></label>
+                    <label class="option-pill"><input type="checkbox" name="Prevention" value="checkup"> General health check-up</label>
+                    <label class="option-pill"><input type="checkbox" name="Prevention" value="bp_check"> Blood pressure check</label>
+                    <label class="option-pill"><input type="checkbox" name="Prevention" value="sugar_test"> Blood sugar test</label>
+                    <label class="option-pill"><input type="checkbox" name="Prevention" value="dental"> Dental exam</label>
+                    <label class="option-pill"><input type="checkbox" name="Prevention" value="cancer_screen"> Cancer screening</label>
+                    <label class="option-pill"><input type="checkbox" name="Prevention" value="none"> None</label>
+                    <input type="text" name="Prevention_Other" placeholder="Other screenings..." style="margin-top:10px; width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 8px;">
+                </div>
+
+                <div class="question-block">
+                    <label class="question-text">Is your vaccination status up to date?<span class="mandatory">*</span></label>
+                    <select name="Vaccine_Status" required>
+                        <option value="">Select an option</option>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                        <option value="idk">I don't know</option>
+                    </select>
+                </div>
+
+                <div class="question-block">
+                    <label class="question-text">Have you received any vaccinations in the last 12 months?<span class="mandatory">*</span></label>
+                    <div class="radio-group">
+                        <label class="option-pill"><input type="radio" name="Recent_Vax" value="yes" required> Yes</label>
+                        <label class="option-pill"><input type="radio" name="Recent_Vax" value="no"> No</label>
+                    </div>
+                </div>
+
+                <div class="question-block">
+                    <label class="question-text">Were you vaccinated against COVID-19?<span class="mandatory">*</span></label>
+                    <select name="Covid_Vax" required>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                        <option value="idk">I don't know</option>
+                    </select>
+                </div>
+
+                <div class="question-block">
+                    <label class="question-text">Have you ever had COVID-19?<span class="mandatory">*</span></label>
+                    <select name="Had_Covid" required>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                        <option value="idk">I don't know</option>
+                    </select>
+                </div>
+
+                <div class="question-block">
+                    <label class="question-text">Would you accept vaccines in the future if offered for free?<span class="mandatory">*</span></label>
+                    <select name="Future_Vax" required onchange="toggleOther(this, 'vax_other')">
+                        <option value="">Select an option</option>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                        <option value="depends">Depends on the vaccine</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <div id="vax_other" class="other-field"><input type="text" name="Vax_Other_Detail" placeholder="Please specify"></div>
+                </div>
+
+                <div class="question-block">
+                    <label class="question-text">Do you believe traditional medicine is more effective than modern treatment?<span class="mandatory">*</span></label>
+                    <select name="Traditional_Vs_Modern" required>
+                        <option value="strongly_agree">Strongly agree (Yes ++)</option>
+                        <option value="agree">Agree (Yes +)</option>
+                        <option value="neutral">Neutral (+-)</option>
+                        <option value="disagree">Disagree (No -)</option>
+                        <option value="strongly_disagree">Strongly disagree (No --)</option>
+                    </select>
+                </div>
+
+                <div class="nav-buttons">
+                    <button type="button" class="btn btn-back" onclick="navigate(9)">Back</button>
+                    <button type="button" class="btn btn-next" onclick="navigate(11)">Next Section</button>
+                </div>
+            </div>
+
+            <!-- Step 11: Family & Children -->
+            <div class="survey-step" id="step11" style="display:none;">
+                <h2>👪 11. Family & Children</h2>
+                <p class="section-desc">This section relates to your family and your access to social support.</p>
+
+                <div class="question-block">
+                    <label class="question-text">Do you have children under the age of 18?<span class="mandatory">*</span></label>
+                    <div class="radio-group">
+                        <label class="option-pill"><input type="radio" name="Has_Children" value="yes" required> Yes</label>
+                        <label class="option-pill"><input type="radio" name="Has_Children" value="no"> No</label>
+                    </div>
+                </div>
+
+                <div class="question-block">
+                    <label class="question-text">Do you feel supported by your family when you are sick?<span class="mandatory">*</span></label>
+                    <select name="Family_Support" required onchange="toggleOther(this, 'fam_support_other')">
+                        <option value="">Select an option</option>
+                        <option value="always">Yes, always</option>
+                        <option value="sometimes">Yes, sometimes</option>
+                        <option value="no">No</option>
+                        <option value="none">I have no close family</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <div id="fam_support_other" class="other-field"><input type="text" name="Fam_Support_Detail" placeholder="Please specify"></div>
+                </div>
+
+                <div class="question-block">
+                    <label class="question-text">Do you feel supported by your community?<span class="mandatory">*</span></label>
+                    <select name="Community_Support" required onchange="toggleOther(this, 'comm_support_other')">
+                        <option value="">Select an option</option>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                        <option value="sometimes">Sometimes</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <div id="comm_support_other" class="other-field"><input type="text" name="Comm_Support_Detail" placeholder="Please specify"></div>
+                </div>
+
+                <div class="question-block">
+                    <label class="question-text">Are you a member of any local support group or religious fellowship?<span class="mandatory">*</span></label>
+                    <div class="radio-group">
+                        <label class="option-pill"><input type="radio" name="Member_Group" value="yes" required> Yes</label>
+                        <label class="option-pill"><input type="radio" name="Member_Group" value="no"> No</label>
+                    </div>
+                </div>
+
+                <div class="question-block">
+                    <label class="question-text">Do you know where to go for non-medical needs (e.g. housing, food)?<span class="mandatory">*</span></label>
+                    <select name="Non_Medical_Help" required>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                        <option value="not_sure">Not sure</option>
+                    </select>
+                </div>
+
+                <div class="question-block">
+                    <label class="question-text">Have you ever received help from a social worker, NGO, or community project?<span class="mandatory">*</span></label>
+                    <div class="radio-group">
+                        <label class="option-pill"><input type="radio" name="NGO_Help" value="yes" required> Yes</label>
+                        <label class="option-pill"><input type="radio" name="NGO_Help" value="no"> No</label>
+                    </div>
+                </div>
+
+                <div class="nav-buttons">
+                    <button type="button" class="btn btn-back" onclick="navigate(10)">Back</button>
+                    <button type="button" class="btn btn-next" onclick="navigate(12)">Next Section</button>
+                </div>
+            </div>
+
+            <!-- Step 12: Digital Health & Information -->
+            <div class="survey-step" id="step12" style="display:none;">
+                <h2>📱 12. Digital Health & Information</h2>
+                <p class="section-desc">We want to know how you use digital devices to get health information.</p>
+
+                <div class="question-block">
+                    <label class="question-text">Do you have access to a smartphone or internet device?<span class="mandatory">*</span></label>
+                    <div class="radio-group">
+                        <label class="option-pill"><input type="radio" name="Smartphone_Access" value="yes" required> Yes</label>
+                        <label class="option-pill"><input type="radio" name="Smartphone_Access" value="no"> No</label>
+                    </div>
+                </div>
+
+                <div class="question-block">
+                    <label class="question-text">Do you feel confident understanding medical information from pros?<span class="mandatory">*</span></label>
+                    <select name="Confidence_Understanding" required>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                        <option value="sometimes">Sometimes</option>
+                    </select>
+                </div>
+
+                <div class="question-block">
+                    <label class="question-text">Have you ever used a health app or online service?<span class="mandatory">*</span></label>
+                    <div class="radio-group">
+                        <label class="option-pill"><input type="radio" name="Health_App" value="yes" required> Yes</label>
+                        <label class="option-pill"><input type="radio" name="Health_App" value="no"> No</label>
+                    </div>
+                </div>
+
+                <div class="question-block">
+                    <label class="question-text">Do you find it easy to understand health information online?<span class="mandatory">*</span></label>
+                    <select name="Ease_Online" required>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                        <option value="sometimes">Sometimes</option>
+                    </select>
+                </div>
+
+                <div class="question-block">
+                    <label class="question-text">Do you feel you have enough info to make health decisions?<span class="mandatory">*</span></label>
+                    <select name="Enough_Info" required>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                        <option value="sometimes">Sometimes</option>
+                    </select>
+                </div>
+
+                <div class="question-block">
+                    <label class="question-text">Have you ever participated in a health education session?<span class="mandatory">*</span></label>
+                    <div class="radio-group">
+                        <label class="option-pill"><input type="radio" name="Education_Session" value="yes" required> Yes</label>
+                        <label class="option-pill"><input type="radio" name="Education_Session" value="no"> No</label>
+                    </div>
+                </div>
+
+                <div class="nav-buttons">
+                    <button type="button" class="btn btn-back" onclick="navigate(11)">Back</button>
+                    <button type="button" class="btn btn-next" onclick="navigate(13)">Next Section</button>
+                </div>
+            </div>
+
+            <!-- Step 13: Health Perception & Final Questions -->
+            <div class="survey-step" id="step13" style="display:none;">
+                <h2>🏁 13. Health Perception & Final Questions</h2>
+                <p class="section-desc">In the final section, we ask about your general well-being, satisfaction with the healthcare system, and your feedback on the survey itself. Your input helps us improve.</p>
+
+                <div class="question-block">
+                    <label class="question-text">What is currently your biggest health concern?<span class="mandatory">*</span></label>
+                    <textarea name="Biggest_Concern" rows="3" required placeholder="Describe your concern..."></textarea>
+                </div>
+
+                <div class="question-block">
+                    <label class="question-text">What would most help you to improve your health or access better care?<span class="mandatory">*</span></label>
+                    <textarea name="Access_Improvement" rows="3" required placeholder="Your thoughts..."></textarea>
+                </div>
+
+                <div class="question-block">
+                    <label class="question-text">In the last 12 months, how often did you feel that you had control over your health decisions?<span class="mandatory">*</span></label>
+                    <select name="Health_Control" required>
+                        <option value="">Select an option</option>
+                        <option value="always">Always</option>
+                        <option value="often">Often</option>
+                        <option value="sometimes">Sometimes</option>
+                        <option value="rarely">Rarely</option>
+                        <option value="never">Never</option>
+                    </select>
+                </div>
+
+                <div class="question-block">
+                    <label class="question-text">In general, how satisfied are you with your current health?<span class="mandatory">*</span></label>
+                    <select name="Health_Satisfaction" required>
+                        <option value="very_satisfied">Very satisfied</option>
+                        <option value="satisfied">Satisfied</option>
+                        <option value="neutral">Neutral</option>
+                        <option value="dissatisfied">Dissatisfied</option>
+                        <option value="very_dissatisfied">Very dissatisfied</option>
+                    </select>
+                </div>
+
+                <div class="question-block">
+                    <label class="question-text">In general, how satisfied are you with the healthcare you receive?<span class="mandatory">*</span></label>
+                    <select name="Healthcare_Satisfaction" required>
+                        <option value="very_satisfied">Very satisfied</option>
+                        <option value="satisfied">Satisfied</option>
+                        <option value="neutral">Neutral</option>
+                        <option value="dissatisfied">Dissatisfied</option>
+                        <option value="very_dissatisfied">Very dissatisfied</option>
+                    </select>
+                </div>
+
+                <div class="question-block">
+                    <label class="question-text">Do you feel your background (language, religion, ethnicity, gender) influences how you are treated?<span class="mandatory">*</span></label>
+                    <select name="Background_Influence" required>
+                        <option value="pos_influence">Yes – positively</option>
+                        <option value="neg_influence">Yes – negatively</option>
+                        <option value="no_difference">No difference</option>
+                        <option value="not_sure">Not sure</option>
+                    </select>
+                </div>
+
+                <div class="question-block">
+                    <label class="question-text">How much do you trust healthcare providers in your community?<span class="mandatory">*</span></label>
+                    <select name="Provider_Trust" required>
+                        <option value="completely">Completely</option>
+                        <option value="mostly">Mostly</option>
+                        <option value="somewhat">Somewhat</option>
+                        <option value="not_much">Not much</option>
+                        <option value="not_at_all">Not at all</option>
+                    </select>
+                </div>
+
+                <div class="question-block">
+                    <label class="question-text">Do you feel that healthcare in your area is fair and accessible to everyone?</label>
+                    <select name="Accessibility_Fairness">
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                        <option value="not_sure">Not sure</option>
+                        <option value="no_answer">No answer</option>
+                    </select>
+                </div>
+
+                <div class="question-block">
+                    <label class="question-text">If you became seriously ill, where would you prefer to receive care?<span class="mandatory">*</span></label>
+                    <select name="Care_Preference" required onchange="toggleOther(this, 'care_other')">
+                        <option value="">Select an option</option>
+                        <option value="home">At home</option>
+                        <option value="hospital">Hospital or clinic</option>
+                        <option value="religious">Religious institution</option>
+                        <option value="relatives">With relatives</option>
+                        <option value="idk">I don't know</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <div id="care_other" class="other-field"><input type="text" name="Care_Other_Detail" placeholder="Please specify"></div>
+                </div>
+
+                <div class="question-block">
+                    <label class="question-text">Would you like more health info/education in your preferred language?<span class="mandatory">*</span></label>
+                    <select name="Language_Education" required>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                        <option value="not_sure">Not sure</option>
+                    </select>
+                </div>
+
+                <div class="question-block">
+                    <label class="question-text">Would you be willing to participate in future surveys?<span class="mandatory">*</span></label>
+                    <select name="Future_Participation" required>
+                        <option value="yes">Yes</option>
+                        <option value="no">No</option>
+                        <option value="maybe">Maybe</option>
+                    </select>
+                </div>
+
+                <div class="question-block">
+                    <label class="question-text">Survey length – was it appropriate?<span class="mandatory">*</span></label>
+                    <select name="Survey_Length_Feedback" required>
+                        <option value="yes">Yes</option>
+                        <option value="too_long">Too long</option>
+                        <option value="too_short">Too short</option>
+                    </select>
+                </div>
+
+                <div class="question-block">
+                    <label class="question-text">Survey experience – how did you feel about participating?<span class="mandatory">*</span></label>
+                    <select name="Survey_Experience" required>
+                        <option value="very_good">Very good</option>
+                        <option value="good">Good</option>
+                        <option value="neutral">Neutral</option>
+                        <option value="bad">Bad</option>
+                        <option value="very_bad">Very Bad</option>
+                    </select>
+                </div>
+
+                <div class="question-block">
+                    <label class="question-text">Do you have any final comments, suggestions or concerns?</label>
+                    <textarea name="Final_Comments" rows="3" placeholder="Anything else you'd like to share..."></textarea>
+                </div>
+
+                <div class="nav-buttons">
+                    <button type="button" class="btn btn-back" onclick="navigate(12)">Back</button>
+                    <button type="button" class="btn btn-submit" onclick="submitSurvey()">Submit Survey</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    let currentStep = 0;
+    const totalSteps = 14;
+
+    function navigate(stepNumber) {
+        const steps = document.querySelectorAll('.survey-step');
+        const currentStepEl = document.getElementById('step' + currentStep);
+
+        // Validate if moving forward
+        if (stepNumber > currentStep) {
+            if (!validateStep(currentStep)) {
+                alert("Please complete all mandatory fields (*) before continuing.");
+                return;
+            }
+        }
+
+        // Hide current step
+        steps.forEach(s => s.style.display = 'none');
+        
+        // Show new step
+        document.getElementById('step' + stepNumber).style.display = 'block';
+        
+        // Update progress bar
+        const progress = (stepNumber / (totalSteps - 1)) * 100;
+        document.getElementById('progress-bar').style.width = progress + '%';
+        
+        // Update step indicators
+        updateStepIndicators(stepNumber);
+        
+        // Update current step
+        currentStep = stepNumber;
+        
+        // Scroll to top
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function validateStep(step) {
+        const stepEl = document.getElementById('step' + step);
+        const requiredFields = stepEl.querySelectorAll('[required]');
+        let isValid = true;
+
+        requiredFields.forEach(field => {
+            if (field.type === 'radio') {
+                const radioGroup = stepEl.querySelectorAll(`input[name="${field.name}"]:checked`);
+                if (radioGroup.length === 0) {
+                    isValid = false;
+                    field.classList.add('error');
+                } else {
+                    field.classList.remove('error');
+                }
+            } else if (!field.value.trim()) {
+                isValid = false;
+                field.classList.add('error');
+            } else {
+                field.classList.remove('error');
+            }
+        });
+
+        return isValid;
+    }
+
+    function updateStepIndicators(step) {
+        const dots = document.querySelectorAll('.step-dot');
+        dots.forEach((dot, index) => {
+            dot.classList.remove('active', 'completed');
+            if (index === step) {
+                dot.classList.add('active');
+            } else if (index < step) {
+                dot.classList.add('completed');
+            }
+        });
+    }
+
+    function toggleOther(select, targetId) {
+        const target = document.getElementById(targetId);
+        if (target) {
+            target.style.display = select.value === 'other' || select.value === 'yes' ? 'block' : 'none';
+        }
+    }
+
+    function showFrequency(select, targetId) {
+        const target = document.getElementById(targetId);
+        if (target) {
+            const showValues = ['yes', 'occasionally', 'cigarettes', 'shisha', 'vape'];
+            target.style.display = showValues.includes(select.value) ? 'block' : 'none';
+        }
+    }
+
+    function submitSurvey() {
+        if (validateStep(13)) {
+            if (confirm('Thank you for completing the survey! Would you like to submit your responses?')) {
+                // Show loading state
+                document.body.classList.add('loading');
+                
+                // Submit the form
+                document.getElementById('healthSurvey').submit();
+                
+                // Success message
+                setTimeout(() => {
+                    alert('Survey submitted successfully! Thank you for your participation.');
+                }, 1000);
+            }
+        } else {
+            alert('Please complete all mandatory fields before submitting.');
+        }
+    }
+
+    // Initialize the survey
+    document.addEventListener('DOMContentLoaded', function() {
+        // Show welcome step
+        document.querySelectorAll('.survey-step').forEach(s => s.style.display = 'none');
+        document.getElementById('step0').style.display = 'block';
+        
+        // Initialize step indicators
+        updateStepIndicators(0);
+        
+        // Add input event listeners for validation
+        const inputs = document.querySelectorAll('input, select, textarea');
+        inputs.forEach(input => {
+            input.addEventListener('input', function() {
+                this.classList.remove('error');
+            });
+        });
+    });
+</script>
+</body>
+</html>
